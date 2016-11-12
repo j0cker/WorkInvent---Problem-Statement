@@ -17,7 +17,8 @@ elixir.config.sourcemaps = false;
 /*
 elixir(function(mix) {
     mix.sass('app.scss');
-});*/
+});
+*/
 
 //hace Mix por el asterisco y genera un archivo
 elixir(function(mix) {
