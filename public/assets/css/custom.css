@@ -1,0 +1,90 @@
+/**
+ * place custom style in this file
+ * add !important to the end if no effect
+ * e.g. color: #fff !important;
+ * --------------------------------------------------
+ *
+ */
+
+.post-box {
+  box-shadow: 0px 1px 1px 0px #dfdfdf;
+  background-color: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+
+.post-box-body {
+  padding: 24px 24px;
+}
+
+.post-box-title {
+  margin-bottom: 0;
+}
+
+.theme-options {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  position: fixed;
+  top: 100px;
+  left: -1px;
+  z-index: 9999;
+  width: 200px;
+  border: 1px solid #e5e5e5;
+  padding: 24px;
+}
+.theme-options:not(.active) {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.theme-options-toggle {
+  position: absolute;
+  top: -1px;
+  right: -48px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #e5e5e5;
+  border-left-color: #fff;
+}
+.theme-options-toggle a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 46px;
+  color: #212121;
+}
+
+.theme-option-title {
+  margin-bottom: 12px;
+}
+.theme-option-list {
+  list-style: none;
+  padding-left: 0;
+}
+.theme-option-list > li {
+  display: block;
+  padding-right: 2px;
+  padding-bottom: 4px;
+  padding-left: 2px;
+}
+.theme-option-list > li:not(.selected) {
+  opacity: .5;
+}
+.theme-option-list > li > a {
+  display: block;
+  height: 24px;
+}
+.theme-option-list > li > a span {
+  display: block;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
