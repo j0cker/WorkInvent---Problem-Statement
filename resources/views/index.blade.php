@@ -1,10 +1,12 @@
 @extends('layouts.index.master')
 
+  {{-- lang html tag --}}
+
+  @section('lang'){{$lang}}@stop
+
   {{-- Title Head --}}
 
-  @section('title')
-    {{$title}}
-  @stop
+  @section('title'){{$title}}@stop
 
   {{-- Metatag Head --}}
 
