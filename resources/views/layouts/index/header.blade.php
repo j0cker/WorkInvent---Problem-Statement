@@ -31,6 +31,8 @@
         {!! Html::script('assets/js/bootstrap.min.js') !!}
         {!! Html::script('assets/js/vendor.js') !!}
         {!! Html::script('assets/js/main.js') !!}
+        {!! Html::script('assets/js/messages.js') !!} <!--Messages of laravel to JS-->
+        {!! Html::script('js/index.js') !!} <!--Own Library-->
 
     </head>
     <body>

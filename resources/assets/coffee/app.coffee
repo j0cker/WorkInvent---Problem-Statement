@@ -65,7 +65,7 @@ $(document).ready ->
     $('.account').attr class: 'active'
     $('.account').css 'display', 'none'
     $(".total-price span.price").css("display","none"); 
-    null
+    null #es forzoso el null
 
 # Jquery Method
 $(".submit").click ->

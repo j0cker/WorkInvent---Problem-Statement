@@ -9,7 +9,7 @@ use Config;
 
 class index extends Controller
 {  public function index(){
-     $title = "101Errors";
+     $title = Config::get('app.name');
      $lang = Config::get('app.locale');
      //$lang = App::getLocale();
      //$lang = Lang::getLocale();
