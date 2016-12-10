@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="@yield('lang')">
+<html lang="@yield('lang')" ng-app="myApp">
     <head>
         
         {{-- Meta tags --}}
@@ -16,26 +16,36 @@
         {{-- Links --}}
 
         {!! Html::favicon('http://demo.bonefishcode.com/veronica/assets/img/favicon.ico') !!}
-        {!! Html::style('assets/css/index.css') !!}
-        {!! Html::style('assets/css/index2.css') !!}
-        {!! Html::style('assets/css/bootstrap.min.css') !!}
-        {!! Html::style('assets/css/vendor.css') !!}
-        {!! Html::style('assets/css/theme-1.css') !!}
-        {!! Html::style('assets/css/space.css') !!}
-        {!! Html::style('assets/css/custom.css') !!}
+        {!! Html::style('assets/css/index/fonts.css') !!}
+        {!! Html::style('assets/css/index/bootstrap.min.css') !!}
+        {!! Html::style('assets/css/index/vendor.css') !!}
+        {!! Html::style('assets/css/index/loader.css') !!}
+        {!! Html::style('assets/css/index/theme.css') !!}
 
         {{-- Scripts --}}
         
-        {!! Html::script('assets/js/modernizr.js') !!}
-        {!! Html::script('assets/js/jquery.min.js') !!}
-        {!! Html::script('assets/js/bootstrap.min.js') !!}
-        {!! Html::script('assets/js/vendor.js') !!}
-        {!! Html::script('assets/js/main.js') !!}
-        {!! Html::script('assets/js/messages.js') !!} <!--Messages of laravel to JS-->
-        {!! Html::script('js/index.js') !!} <!--Own Library-->
+        {!! Html::script('assets/js/index/modernizr.js') !!}
+        {!! Html::script('assets/js/index/jquery.min.js') !!}
+        {!! Html::script('assets/js/index/jquery-mask.js') !!}
+        {!! Html::script('assets/js/index/jquery.validate.min.js') !!}
+
+        <!--Angular-->
+        {!! Html::script('assets/js/index/angular/lib/angular.min.js') !!}
+        {!! Html::script('assets/js/index/angular/lib/sanitize.min.js') !!}
+        {!! Html::script('assets/js/index/angular/module.js') !!}
+        {!! Html::script('assets/js/index/angular/controllers.js') !!}
+        {!! Html::script('assets/js/index/angular/factory.js') !!}
+
+        {!! Html::script('assets/js/index/bootstrap.min.js') !!}
+        {!! Html::script('assets/js/index/vendor.js') !!}
+        {!! Html::script('assets/js/index/main.js') !!}
+        <!--Messages of laravel to JS-->
+        {!! Html::script('assets/js/messages.js') !!} 
+        <!--Own Library-->
+        {!! Html::script('assets/js/index/index.js') !!}
 
     </head>
-    <body>
+    <body ng-controller="ctrl">
         <!--[if lt IE 8]>
             <p class="browserupgrade">
                 You are using an <strong>outdated</strong> browser.
@@ -44,3 +54,7 @@
             </p><![endif]-->
     
         <!-- .page-loader-->
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section"></div>
+        </div> 

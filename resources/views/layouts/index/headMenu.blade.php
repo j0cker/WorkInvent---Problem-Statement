@@ -55,7 +55,7 @@
                 </ul>
               </li>
               <li>
-                  <button type="button" class="navbar-btn btn btn-pill btn-shadow btn-danger" onclick="window.open(&#39;http://bonefishcode.com/&#39;);">@lang('messages.register')</button>
+                  <button id="registerButton" type="button" class="navbar-btn btn btn-pill btn-shadow btn-danger">@lang('messages.register')</button>
               </li>
             </ul>
           </div>

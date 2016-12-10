@@ -20,17 +20,40 @@ elixir.config.sourcemaps = false;
 
 
 //hace Mix por el asterisco y genera un archivo
+/*
 elixir(function(mix) {
     mix.less('*.less')
     .version('public/css/style.css');
 });
+*/
 
+elixir(function(mix) {
+    mix.less('index/theme.less')
+    .version('public/css/theme.css');
+    mix.copy('public/css/theme.css', 'public/assets/css/index/theme.css');
+});
+
+/*
 elixir(function(mix) {
     mix.coffee('*.coffee')
     .version('public/js/coffe.js');
 });
+*/
 
 elixir(function(mix) {
-    mix.coffee('index.coffee')
+    mix.coffee('index/index.coffee')
     .version('public/js/index.js');
+    mix.copy('public/js/index.js', 'public/assets/js/index/index.js');
+});
+
+elixir(function(mix) {
+    mix.coffee('index/controllers.coffee')
+    .version('public/js/controllers.js');
+    mix.copy('public/js/controllers.js', 'public/assets/js/index/angular/controllers.js');
+});
+
+elixir(function(mix) {
+    mix.coffee('index/factory.coffee')
+    .version('public/js/factory.js');
+    mix.copy('public/js/factory.js', 'public/assets/js/index/angular/factory.js');
 });

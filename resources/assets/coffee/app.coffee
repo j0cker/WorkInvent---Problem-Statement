@@ -69,13 +69,13 @@ $(document).ready ->
 
 # Jquery Method
 $(".submit").click ->
-  console.log("submitted!")
+  console.log "submitted!"
   
 $(".button").on "click", ->
-  console.log("button clicked!")
+  console.log "button clicked!"
   
 $(document).on "click", ".button2", ->
-  console.log("delegated button click!")
+  console.log "delegated button click!"
 
 $(".button").on "click", (event) ->
   console.log("button clicked!")
