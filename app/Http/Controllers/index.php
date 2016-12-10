@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Lang;
 use App;
 use Config;
+use DB;
 
 class index extends Controller
 {  public function index(){
@@ -13,6 +14,9 @@ class index extends Controller
      $lang = Config::get('app.locale');
      //$lang = App::getLocale();
      //$lang = Lang::getLocale();
+
+     $users = DB::select('select * from bmsusr');
+
      return view('index',["title" => $title, "lang" => $lang]);
    }
     //

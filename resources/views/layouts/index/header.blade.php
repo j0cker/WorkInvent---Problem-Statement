@@ -8,6 +8,7 @@
         <meta http-equiv="x-ua-compatible" content="@yield('x-ua-compatible')">
         <meta name="description" content="@yield('description')">
         <meta name="viewport" content="@yield('viewport')">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         {{-- Title --}}
 
@@ -43,6 +44,8 @@
         {!! Html::script('assets/js/messages.js') !!} 
         <!--Own Library-->
         {!! Html::script('assets/js/index/index.js') !!}
+        <!--CSRF Protection-->
+        <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
 
     </head>
     <body ng-controller="ctrl">

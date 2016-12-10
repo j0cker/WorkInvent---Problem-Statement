@@ -1,4 +1,11 @@
 # JQuery Ready
+
+$.ajaxSetup ->
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr 'content'
+  }
+  null
+
 #$(document).ready -> 
 
     #loading()

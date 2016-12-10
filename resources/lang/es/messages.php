@@ -4,11 +4,12 @@ return [
     //'title' => '101Errors', no es necesaria ya que se declara en config -> app.php -> name
 
     ////form's' login and register
-    'user' => 'Usuario',
+    'user' => 'Nombre de Usuario',
     'login' => 'Ingresar',
     'register' => 'Registrarse',
     'userormail' => 'Usuario o Mail',
     'password' => 'Contraseña',
+    'confPassword' => 'Confirmar Password',
     'logfacebook' => 'Ingresar con Facebook',
     'signfacebook' => 'Iniciar con Facebook',
     'permisosredes' => 'No te preocupes. Nosotros no publicamos nada sin tu permiso y no almacenamos contraseñas.',
