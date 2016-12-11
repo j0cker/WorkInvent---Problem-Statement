@@ -18,7 +18,11 @@
   {{-- Body --}}
   
   @section('content')
-
+    @if ($errors->has('password'))
+        <span class="help-block">
+            <strong>{{ $errors->first('password') }}</strong>
+        </span>
+    @endif
     <!-- Content -->
     <div id="content" class="site-content">
       <div id="pageIntro" class="page-intro page-intro-sm page-intro-layout-text md-bg-dark">

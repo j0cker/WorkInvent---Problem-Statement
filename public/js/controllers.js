@@ -4,54 +4,53 @@
     evt.loading();
     $scope.loginButton = false;
     $scope.registerButton = false;
-    $('#nameForm').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    $('#mailForm').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+    $('#registerForm #name').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+    $('#registerForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
       translation: {
         "A": {
-          pattern: /[\w@\-.+]/,
-          recursive: true
+          pattern: /[\w@\-.+]/
         }
       }
     });
     $("#registerForm").validate({
-      rules: {
-        nameForm: "required",
-        mailForm: {
-          required: true,
-          email: true
+      'rules': {
+        'name': "required",
+        'email': {
+          'required': true,
+          'email': true
         },
-        passwordForm: {
-          required: true,
-          minlength: 5
+        'password': {
+          'required': true,
+          'minlength': 5
         }
       },
-      messages: {
-        nameForm: Lang.get("messages.nameForm", {
-          passwordForm: {
-            required: Lang.get("passwordFormRequired", {
-              minlength: Lang.get("passwordFormMinLength")
+      'messages': {
+        'name': Lang.get("messages.nameForm", {
+          'password': {
+            'required': Lang.get("passwordFormRequired", {
+              'minlength': Lang.get("passwordFormMinLength")
             })
           },
-          passwordConfForm: {
-            required: Lang.get("passwordFormRequired", {
-              minlength: Lang.get("passwordFormMinLength")
+          'password-confirm': {
+            'required': Lang.get("passwordFormRequired", {
+              'minlength': Lang.get("passwordFormMinLength")
             })
           },
-          mailForm: Lang.get("messages.mailForm")
+          'email': Lang.get("messages.mailForm")
         })
       },
-      errorPlacement: function(error, element) {
+      'errorPlacement': function(error, element) {
         var div;
         console.log("Validate: Error");
         element.css("width", "100%");
         div = $(element).closest('.input-group');
         return $(div).after(error);
       },
-      submitHandler: function(form) {
+      'submitHandler': function(form) {
         console.log("Validate: Submit Handler");
         return form.submit();
       },
-      success: function(label) {
+      'success': function(label) {
         return label.addClass("valid").text("Ok!");
       }
     });
@@ -67,6 +66,52 @@
       $scope.registerButton = true;
       $scope.$apply();
       $(".modal-title").html(Lang.get("messages.register"));
+      return null;
+    });
+    $('#loginForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+      translation: {
+        "A": {
+          pattern: /[\w@\-.+]/
+        }
+      }
+    });
+    $("#loginForm").validate({
+      'rules': {
+        'email': {
+          'required': true,
+          'email': true
+        },
+        'password': {
+          'required': true,
+          'minlength': 5
+        }
+      },
+      'messages': {
+        'password': {
+          'required': Lang.get("passwordFormRequired", {
+            'minlength': Lang.get("passwordFormMinLength")
+          })
+        },
+        'email': Lang.get("messages.mailForm")
+      },
+      'errorPlacement': function(error, element) {
+        var div;
+        console.log("Validate: Error");
+        element.css("width", "100%");
+        div = $(element).closest('.input-group');
+        return $(div).after(error);
+      },
+      'submitHandler': function(form) {
+        console.log("Validate: Submit Handler");
+        return form.submit();
+      },
+      'success': function(label) {
+        return label.addClass("valid").text("Ok!");
+      }
+    });
+    $("#loginButtonSubmit").unbind().click(function() {
+      console.log("[Login][Button][Submit]");
+      $("#loginButtonSubmit").submit();
       return null;
     });
     return $("#loginButton").unbind().click(function() {

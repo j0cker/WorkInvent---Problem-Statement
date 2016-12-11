@@ -7,52 +7,52 @@ app.controller 'ctrl', ($scope, evt) ->
     $scope.registerButton = false
 
     #register form mask with 50 chars
-    $('#nameForm').mask 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-    $('#mailForm').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+    $('#registerForm #name').mask 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+    $('#registerForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
         translation: {
-            "A": { pattern: /[\w@\-.+]/, recursive: true }
+            "A": { pattern: /[\w@\-.+]/ }
         }
     });
 
     $("#registerForm").validate({
-        rules: {
+        'rules': {
             # simple rule, converted to {required:true}
-            nameForm: "required",
+            'name': "required",
             # compound rule
-            mailForm: {
-                required: true,
-                email: true
+            'email': {
+                'required': true,
+                'email': true
             },
-            passwordForm: {
-                required: true,
-                minlength: 5
+            'password': {
+                'required': true,
+                'minlength': 5
             }
         }, 
-        messages: {
-            nameForm: Lang.get "messages.nameForm",
-            passwordForm: {
-                required: Lang.get "passwordFormRequired",
-                minlength: Lang.get "passwordFormMinLength"
+        'messages': {
+            'name': Lang.get "messages.nameForm",
+            'password': {
+                'required': Lang.get "passwordFormRequired",
+                'minlength': Lang.get "passwordFormMinLength"
             },
-            passwordConfForm: {
-                required: Lang.get "passwordFormRequired",
-                minlength: Lang.get "passwordFormMinLength"
+            'password-confirm': {
+                'required': Lang.get "passwordFormRequired",
+                'minlength': Lang.get "passwordFormMinLength"
             },
-            mailForm: Lang.get "messages.mailForm"
+            'email': Lang.get "messages.mailForm"
         },
-        errorPlacement: (error, element) -> 
+        'errorPlacement': (error, element) -> 
             console.log "Validate: Error"
             element.css "width","100%"
             div = $(element).closest '.input-group'
             $(div).after error
         ,
-        submitHandler: (form) ->
+        'submitHandler': (form) ->
             #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
             console.log "Validate: Submit Handler"
             #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
             form.submit();
         , 
-        success: (label) ->
+        'success': (label) ->
             #entra cuando un input ya está bien para el validador
             label.addClass("valid").text("Ok!");
     });
@@ -70,6 +70,54 @@ app.controller 'ctrl', ($scope, evt) ->
         $scope.registerButton = true
         $scope.$apply(); #this triggers a $digest
         $(".modal-title").html Lang.get "messages.register"
+        null
+
+    $('#loginForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+        translation: {
+            "A": { pattern: /[\w@\-.+]/ }
+        }
+    });
+
+    $("#loginForm").validate({
+        'rules': {
+            # compound rule
+            'email': {
+                'required': true,
+                'email': true
+            },
+            'password': {
+                'required': true,
+                'minlength': 5
+            }
+        }, 
+        'messages': {
+            'password': {
+                'required': Lang.get "passwordFormRequired",
+                'minlength': Lang.get "passwordFormMinLength"
+            },
+            'email': Lang.get "messages.mailForm"
+        },
+        'errorPlacement': (error, element) -> 
+            console.log "Validate: Error"
+            element.css "width","100%"
+            div = $(element).closest '.input-group'
+            $(div).after error
+        ,
+        'submitHandler': (form) ->
+            #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
+            console.log "Validate: Submit Handler"
+            #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
+            form.submit();
+        , 
+        'success': (label) ->
+            #entra cuando un input ya está bien para el validador
+            label.addClass("valid").text("Ok!");
+    });
+
+    $("#loginButtonSubmit").unbind().click ->
+        console.log "[Login][Button][Submit]"
+        #$('#registerForm').valid() #it is doing automatically
+        $("#loginButtonSubmit").submit(); #is going to validate first before enter to submitHandler
         null
 
     $("#loginButton").unbind().click ->

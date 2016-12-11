@@ -6,16 +6,20 @@ use Illuminate\Http\Request;
 use Lang;
 use App;
 use Config;
-use DB;
+use Auth;
 
-class index extends Controller
-{  public function index(){
+class Index extends Controller
+{  
+
+  public function index(){
+    if (Auth::check()) {
+      // The user is logged in...
+      return redirect('panel');
+    }
      $title = Config::get('app.name');
      $lang = Config::get('app.locale');
      //$lang = App::getLocale();
      //$lang = Lang::getLocale();
-
-     $users = DB::select('select * from bmsusr');
 
      return view('index',["title" => $title, "lang" => $lang]);
    }
