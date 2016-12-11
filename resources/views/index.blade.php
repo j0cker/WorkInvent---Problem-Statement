@@ -18,11 +18,19 @@
   {{-- Body --}}
   
   @section('content')
-    @if ($errors->has('password'))
-        <span class="help-block">
-            <strong>{{ $errors->first('password') }}</strong>
-        </span>
+    
+    @if ($errors->has('email'))
+        <div class="alert alert-success">
+            <strong>{{ $errors->first('email') }}</strong>
+        </div>
     @endif
+
+    @if ($errors->has('password'))
+        <div class="alert alert-success">
+            <strong>{{ $errors->first('password') }}</strong>
+        </div>
+    @endif
+
     <!-- Content -->
     <div id="content" class="site-content">
       <div id="pageIntro" class="page-intro page-intro-sm page-intro-layout-text md-bg-dark">
