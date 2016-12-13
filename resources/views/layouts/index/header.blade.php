@@ -22,6 +22,7 @@
         {!! Html::style('assets/css/index/vendor.css') !!}
         {!! Html::style('assets/css/index/loader.css') !!}
         {!! Html::style('assets/css/index/theme.css') !!}
+        {!! Html::style('assets/css/index/toastr.css') !!}
 
         {{-- Scripts --}}
         
@@ -29,6 +30,7 @@
         {!! Html::script('assets/js/index/jquery.min.js') !!}
         {!! Html::script('assets/js/index/jquery-mask.js') !!}
         {!! Html::script('assets/js/index/jquery.validate.min.js') !!}
+        {!! Html::script('assets/js/index/toastr.min.js') !!}
 
         <!--Angular-->
         {!! Html::script('assets/js/index/angular/lib/angular.min.js') !!}
@@ -46,6 +48,27 @@
         {!! Html::script('assets/js/index/index.js') !!}
         <!--CSRF Protection-->
         <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
+
+        <!--Errors Found-->
+        <script>
+            $( document ).ready(function() {
+
+
+                @foreach ($errors->all() as $error)
+                    {{ Log::error("[Index][Forms][Errors]") }}
+                    {{ Log::error($error) }}
+                @endforeach
+                
+
+                @if ($errors->has('email'))
+                    toastr.error('{{ $errors->first("email") }}', 'Error:');
+                @endif
+
+                @if ($errors->has('password'))
+                    toastr.error('{{ $errors->first("password") }}', 'Error:');
+                @endif
+            });
+        </script>
 
     </head>
     <body ng-controller="ctrl">

@@ -43,8 +43,10 @@
                             <button id="loginButtonSubmit" class="btn btn-lg btn-pill btn-shadow btn-theme-1" type="button">@lang('messages.login')</button>
                           </div>
                         </li>
-                        <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>                      
-                        <p style="text-align: center;" class="note">@lang('messages.permisosredes')</p>
+                        <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div> 
+                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                            Forgot Your Password?
+                        </a>                     
                       </form>
                     </ul>
                 </div>
@@ -96,7 +98,10 @@
                             </div>
                           </li>
                         </form>
-                        <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>                      
+                        <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>  
+                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                            Forgot Your Password?
+                        </a>                    
                         <p style="text-align: center;" class="note">@lang('messages.permisosredes')</p>
                     </ul>
                 </div>

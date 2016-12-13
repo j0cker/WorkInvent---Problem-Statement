@@ -18,18 +18,6 @@
   {{-- Body --}}
   
   @section('content')
-    
-    @if ($errors->has('email'))
-        <div class="alert alert-success">
-            <strong>{{ $errors->first('email') }}</strong>
-        </div>
-    @endif
-
-    @if ($errors->has('password'))
-        <div class="alert alert-success">
-            <strong>{{ $errors->first('password') }}</strong>
-        </div>
-    @endif
 
     <!-- Content -->
     <div id="content" class="site-content">

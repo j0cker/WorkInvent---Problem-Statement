@@ -7,11 +7,15 @@ use Lang;
 use App;
 use Config;
 use Auth;
+use Illuminate\Support\Facades\Log;
 
 class Index extends Controller
 {  
 
   public function index(){
+
+    Log::info('[Index]');
+
     if (Auth::check()) {
       // The user is logged in...
       return redirect('panel');
