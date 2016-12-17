@@ -15,5 +15,7 @@ Auth::routes();
 
 Route::get('/', 'Index@index');
 
+Route::get('/verify/{verification_code}', 'Index@verify');
+
 Route::get('/panel', 'Panel@panel');
 

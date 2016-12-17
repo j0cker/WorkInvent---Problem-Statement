@@ -6,6 +6,8 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
+use Config;
 
 class RegisterController extends Controller
 {
@@ -62,10 +64,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'verification_code' => str_random(20)
         ]);
+
+        //send verification mail to user
+        //---------------------------------------------------------
+        $data['verification_code']  = $user->verification_code;
+
+        Mail::send('emails.welcome', $data, function($message) use ($data)
+        {
+            $message->from('no-reply@site.com', Config::get('app.name'));
+            $message->subject("Welcome to site name");
+            $message->to($data['email']);
+        });
+
+        return $user;
     }
 }

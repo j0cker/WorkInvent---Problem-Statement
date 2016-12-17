@@ -25,7 +25,7 @@ app.controller 'ctrl', ($scope, evt) ->
             },
             'password': {
                 'required': true,
-                'minlength': 5
+                'minlength': 6
             }
         }, 
         'messages': {
@@ -87,7 +87,7 @@ app.controller 'ctrl', ($scope, evt) ->
             },
             'password': {
                 'required': true,
-                'minlength': 5
+                'minlength': 6
             }
         }, 
         'messages': {

@@ -27,5 +27,15 @@ class Index extends Controller
 
      return view('index',["title" => $title, "lang" => $lang]);
    }
+
+   public function verify($verification_code){
+
+      Log::info('[Verify]');
+
+      $bmsusr = App\Bmsusr::verify($verification_code)->get();
+
+      return $bmsusr;
+
+   }
     //
 }
