@@ -17,4 +17,12 @@ return [
     'passwordFormRequired' => "Please provide a password",
     'passwordFormMinLength' => "Your password must be at least 5 characters long",
     'mailForm' => "Please enter a valid email address",
+
+    //verification
+    'notVerified' => "The verification number doesn't exist",
+    'verified' => "Your account has been verified",
+    'wasVerified' => "Your account has already been verified previously",
+
+    //errors
+    'errorsBD' => "There was an error, please contact your administrator",
 ];

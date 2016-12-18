@@ -32,9 +32,30 @@ class Index extends Controller
 
       Log::info('[Verify]');
 
+      if (Auth::check()) {
+        // The user is logged in...
+        Auth::logout();
+      }
+
       $bmsusr = App\Bmsusr::verify($verification_code)->get();
 
-      return $bmsusr;
+      $title = Config::get('app.name');
+      $lang = Config::get('app.locale');
+
+      if($bmsusr->first()){
+        if($bmsusr->first()->verified==1){
+          return view('layouts.index.verification',["title" => $title, "lang" => $lang, "verify" => Lang::get('messages.wasVerified')]);
+        } else {
+          $addVerify = App\Bmsusr::addVerify($verification_code);
+          if($addVerify==1){
+            return view('layouts.index.verification',["title" => $title, "lang" => $lang, "verify" => Lang::get('messages.verified')]);
+          } else {
+            return view('layouts.index.verification',["title" => $title, "lang" => $lang, "verify" => Lang::get('messages.errorsBD')]);
+          }
+        }
+      } else {
+        return view('layouts.index.verification',["title" => $title, "lang" => $lang, "verify" => Lang::get('messages.notVerified')]);
+      }
 
    }
     //

@@ -11,4 +11,9 @@ class Bmsusr extends Model
     {   return $query->where('verification_code', $verification_code);
     }
 
+    public function scopeAddVerify($query, $verification_code){
+        return $query->where('verification_code', $verification_code)
+                     ->update(['verified' => 1]);
+    }
+
 }

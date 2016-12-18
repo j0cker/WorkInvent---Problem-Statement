@@ -7,9 +7,9 @@
               <span class="bar"></span>
               <span class="bar"></span>
             </button>
-            <a href="http://demo.bonefishcode.com/veronica/#" class="navbar-brand">
-              <img src="./assets/img/navbar-brand-media-img-dark.png" alt="" class="navbar-brand-media-img navbar-brand-media-img-dark">
-              <img src="./assets/img/navbar-brand-media-img-light.png" alt="" class="navbar-brand-media-img navbar-brand-media-img-light">
+            <a href="{{ url('/') }}" class="navbar-brand">
+              <img src="{{ url('/assets/img/navbar-brand-media-img-dark.png') }}" alt="" class="navbar-brand-media-img navbar-brand-media-img-dark">
+              <img src="{{ url('/assets/img/navbar-brand-media-img-light.png') }}" alt="" class="navbar-brand-media-img navbar-brand-media-img-light">
             </a>
           </div>
           <!-- .navbar-header-->

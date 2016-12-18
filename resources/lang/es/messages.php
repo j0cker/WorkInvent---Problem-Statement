@@ -17,4 +17,12 @@ return [
     'passwordFormRequired' => "Por favor proporcione una contraseña",
     'passwordFormMinLength' => "La contrasña debe contener al menos 5 caracteres",
     'mailForm' => "Por favor proporcione una dirección de correo válida",
+
+    //verification
+    'notVerified' => "El número de verificación no existe",
+    'verified' => "Tu cuenta ha sido verificada",
+    'wasVerified' => "Tu cuenta ya ha sido verificada con anterioridad",
+
+    //errors
+    'errorsBD' => "Hubo un error por favor contacte al administrador",
 ];
