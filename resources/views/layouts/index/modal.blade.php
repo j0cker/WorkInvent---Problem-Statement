@@ -44,7 +44,7 @@
                           </div>
                         </li>
                         <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div> 
-                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                        <a id="sendLinkPassButton" class="btn btn-link">
                             Forgot Your Password?
                         </a>                     
                       </form>
@@ -97,16 +97,45 @@
                               <button id="registerButtonSubmit" class="btn btn-lg btn-pill btn-shadow btn-theme-1" type="button">@lang('messages.register')</button>
                             </div>
                           </li>
-                        </form>
-                        <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>  
-                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                            Forgot Your Password?
-                        </a>                    
+                          <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>  
+                          <a id="sendLinkPassButton" class="btn btn-link">
+                              Forgot Your Password?
+                          </a>
+                        </form>           
                         <p style="text-align: center;" class="note">@lang('messages.permisosredes')</p>
                     </ul>
                 </div>
                 <!--<div class="divider"><span>Or</span></div>-->
               </div> <!-- fin registerButton --> <!--fin row-->
+
+              <!--SendLinkPass part-->
+
+              <div ng-show="sendLinkPassButton" clas="row">
+                <div class="text-center col-md-12">    
+                    <ul style="margin: 0;" class="list-unstyled social-login">
+                        <form method="POST" id="sendLinkPassForm" name="sendLinkPassForm" action="{{ url('/password/email') }}">
+                          {{ csrf_field() }}
+                          <li style="margin: 0;">
+                            <div class="col-md-2"></div>
+                            <div class="input-group input-group-lg col-md-8">
+                                  <input id="email" type="email" style="padding-left: 10px; border: 1px solid #ccc; height: 37px; font-size: 13px;" class="form-control" name="email" placeholder="email" required>
+                                  <span style="padding: 0px 9px 0px 8px; font-size: 12px; height: 30px; margin-top: 0px;" class="input-group-addon glyphicon glyphicon-user" id="sizing-addon1"></span>
+                            </div>
+                            <div class="col-md-2"></div>
+                          </li>
+                          <li style="margin-top: 10px;">
+                            <div class="text-center col-md-12">
+                              <button id="sendLinkPassButtonSubmit" class="btn btn-lg btn-pill btn-shadow btn-theme-1" type="button">
+                                @lang('messages.ResetPasswordButton')
+                              </button>
+                            </div>
+                          </li>
+                        </form>
+                        <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>             
+                    </ul>
+                </div>
+                <!--<div class="divider"><span>Or</span></div>-->
+              </div> <!-- fin Button --> <!--fin row-->
 
 
             </div><!--//modal-body-->

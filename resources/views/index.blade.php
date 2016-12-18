@@ -18,7 +18,7 @@
   {{-- Body --}}
   
   @section('content')
-
+  
     <!-- Content -->
     <div id="content" class="site-content">
       <div id="pageIntro" class="page-intro page-intro-sm page-intro-layout-text md-bg-dark">

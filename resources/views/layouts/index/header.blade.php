@@ -49,10 +49,9 @@
         <!--CSRF Protection-->
         <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
 
-        <!--Errors Found-->
+        <!--Alerts-->
         <script>
             $( document ).ready(function() {
-
 
                 @foreach ($errors->all() as $error)
                     {{ Log::error("[Index][Forms][Errors]") }}
@@ -66,6 +65,14 @@
 
                 @if ($errors->has('password'))
                     toastr.error('{{ $errors->first("password") }}', 'Error:');
+                @endif
+
+                @if ($errors->has('password_confirmation'))
+                    toastr.error('{{ $errors->first("password_confirmation") }}', 'Error:');
+                @endif
+
+                @if (session('status'))
+                    toastr.success('{{ session("status") }}', '');
                 @endif
             });
         </script>

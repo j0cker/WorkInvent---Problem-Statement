@@ -11,7 +11,7 @@ square = (x) -> x * x
 #function without return without parameters
 caca = -> #tambn compila así:     = () ->
     alert "no mms" if 1 if hola?
-    null
+    return
 
 # Arrays:
 list = [1, 2, 3, 4, 5]
@@ -65,7 +65,7 @@ $(document).ready ->
     $('.account').attr class: 'active'
     $('.account').css 'display', 'none'
     $(".total-price span.price").css("display","none"); 
-    null #es forzoso el null
+    return #es forzoso el return
 
 # Jquery Method
 $(".submit").click ->
@@ -84,13 +84,13 @@ $(".button").on "click", (event) ->
 # setTimeOut
 setTimeout ->
     something param
-    null
+    return
 , 1000
 
 # setTimeInterval
 setTimeInterval ->
     something param
-    null
+    return
 , 1000
     
 # Ajax

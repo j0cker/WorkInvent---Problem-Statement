@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Mail;
 use Config;
+use Lang;
 
 class RegisterController extends Controller
 {
@@ -77,8 +78,8 @@ class RegisterController extends Controller
 
         Mail::send('emails.welcome', $data, function($message) use ($data)
         {
-            $message->from('no-reply@site.com', Config::get('app.name'));
-            $message->subject("Welcome to site name");
+            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
+            $message->subject(Lang::get('messages.emailWelcome'));
             $message->to($data['email']);
         });
 

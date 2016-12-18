@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Log;
 class Index extends Controller
 {  
 
+  /*Index Landing Page*/
+
   public function index(){
 
     Log::info('[Index]');
@@ -27,6 +29,24 @@ class Index extends Controller
 
      return view('index',["title" => $title, "lang" => $lang]);
    }
+
+   /*Reset Password*/
+   public function reset($token){
+     
+     Log::info('[Reset]');
+
+     if (Auth::check()) {
+        // The user is logged in...
+        Auth::logout();
+      }
+
+      $title = Config::get('app.name');
+      $lang = Config::get('app.locale');
+
+      return view('layouts.index.reset',["title" => $title, "lang" => $lang, "token" => $token]);
+   }
+
+   /*Email Verification*/
 
    public function verify($verification_code){
 
