@@ -19,6 +19,8 @@ elixir(function(mix) {
 elixir.config.sourcemaps = false;
 
 
+//INDEX
+
 //hace Mix por el asterisco y genera un archivo
 /*
 elixir(function(mix) {
@@ -56,4 +58,47 @@ elixir(function(mix) {
     mix.coffee('index/factory.coffee')
     .version('public/js/factory.js');
     mix.copy('public/js/factory.js', 'public/assets/js/index/angular/factory.js');
+});
+
+
+
+//System
+
+//hace Mix por el asterisco y genera un archivo
+/*
+elixir(function(mix) {
+    mix.less('*.less')
+    .version('public/css/style.css');
+});
+*/
+
+elixir(function(mix) {
+    mix.less('system/theme.less')
+    .version('public/css/theme.css');
+    mix.copy('public/css/theme.css', 'public/assets/css/system/theme.css');
+});
+
+/*
+elixir(function(mix) {
+    mix.coffee('*.coffee')
+    .version('public/js/coffe.js');
+});
+*/
+
+elixir(function(mix) {
+    mix.coffee('system/index.coffee')
+    .version('public/js/index.js');
+    mix.copy('public/js/index.js', 'public/assets/js/system/index.js');
+});
+
+elixir(function(mix) {
+    mix.coffee('system/controllers.coffee')
+    .version('public/js/controllers.js');
+    mix.copy('public/js/controllers.js', 'public/assets/js/system/angular/controllers.js');
+});
+
+elixir(function(mix) {
+    mix.coffee('system/factory.coffee')
+    .version('public/js/factory.js');
+    mix.copy('public/js/factory.js', 'public/assets/js/system/angular/factory.js');
 });

@@ -19,5 +19,5 @@ Route::get('/verify/{verification_code}', 'Index@verify');
 
 Route::get('/password/reset/{token}', 'Index@reset');
 
-Route::get('/panel', 'Panel@panel');
+Route::get('/home', 'System@system');
 

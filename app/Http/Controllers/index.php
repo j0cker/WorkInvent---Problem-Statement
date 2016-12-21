@@ -20,7 +20,7 @@ class Index extends Controller
 
     if (Auth::check()) {
       // The user is logged in...
-      return redirect('panel');
+      return redirect('home');
     }
      $title = Config::get('app.name');
      $lang = Config::get('app.locale');
