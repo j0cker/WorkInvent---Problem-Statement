@@ -25,10 +25,28 @@
         {!! Html::style('assets/css/system/theme.css') !!}
         {!! Html::style('assets/css/system/toastr.css') !!}
 
-        {{-- Scripts --}}
+        <!--Box Images-->
+        {!! Html::style('assets/css/system/fresco.css') !!}
 
-        <!--Functions Library-->
-        {!! Html::script('assets/js/system/functions.js') !!}
+        {!! Html::style('assets/css/system/font-awesome.min.css') !!}
+        {!! Html::style('assets/css/system/flexslider.css') !!}
+        {!! Html::style('assets/css/system/_style.css') !!}
+        {!! Html::style('assets/css/system/fullcalendar.css') !!}
+        {!! Html::style('assets/css/system/bootstrap-tour.min.css') !!}
+        {!! Html::style('assets/css/system/bootstrap-tour-standalone.min.css') !!}
+        {!! Html::style('assets/css/system/jQuery-UI-v1.11.2.css') !!}
+        {!! Html::style('assets/css/system/timepicker.css') !!}
+        {!! Html::style('assets/css/system/materialize.min.css') !!}
+        {!! Html::style('assets/css/system/font-awesome.min.css') !!}
+        {!! Html::style('assets/css/system/animate.min.css') !!}
+        {!! Html::style('assets/css/system/material-design-iconic-font.min.css') !!}
+        {!! Html::style('assets/css/system/app.min.1.css') !!}
+        {!! Html::style('assets/css/system/app.min.2.css') !!}
+        {!! Html::style('assets/css/system/font-brenda/style.css') !!}
+        {!! Html::style('assets/css/system/style-loading.css') !!}
+        {!! Html::style('assets/css/system/sortable.css') !!}
+
+        {{-- Scripts --}}
         
         {!! Html::script('assets/js/system/modernizr.js') !!}
         {!! Html::script('assets/js/system/jquery.min.js') !!}
@@ -36,6 +54,9 @@
         {!! Html::script('assets/js/system/jquery-mask.js') !!}
         {!! Html::script('assets/js/system/jquery.validate.min.js') !!}
         {!! Html::script('assets/js/system/toastr.min.js') !!}
+        
+        <!--Functions Library-->
+        {!! Html::script('assets/js/system/functions.js') !!}
 
         <!--Angular-->
         {!! Html::script('assets/js/system/angular/lib/angular.min.js') !!}
@@ -45,6 +66,30 @@
         {!! Html::script('assets/js/system/angular/factory.js') !!}
 
         {!! Html::script('assets/js/system/bootstrap.min.js') !!}
+
+        <!--Box Images-->
+        {!! Html::script('assets/js/system/fresco.js') !!}
+
+        {!! Html::script('assets/js/system/bootstrap-tour.min.js') !!}
+        {!! Html::script('assets/js/system/bootstrap-tour-standalone.min.js') !!}
+        {!! Html::script('assets/js/system/jQuery-UI-v1.11.2.js') !!}
+        {!! Html::script('assets/js/system/timepicker.js') !!}
+        {!! Html::script('assets/js/system/modernizr.js') !!}
+        {!! Html::script('assets/js/system/bootstrap-typeahead.js') !!}
+        {!! Html::script('assets/js/system/moment.min.js') !!}
+        {!! Html::script('assets/js/system/fullcalendar.min.js') !!}
+        <!--{!! Html::script('assets/js/system/livechat.js') !!}-->
+        {!! Html::script('assets/js/system/google-analytics.js') !!}
+        {!! Html::script('assets/js/system/materialize.min.js') !!}
+        {!! Html::script('assets/js/system/mercado-pago.js') !!}
+        <!--{!! Html::script('assets/js/system/feedback.js') !!}-->
+        {!! Html::script('assets/js/system/menu.js') !!}
+
+        <!--Tag In
+        <link href="tag-it/css/jquery.css" rel="stylesheet" type="text/css">
+        <link href="tag-it/css/tagit.css" rel="stylesheet" type="text/css">
+        <script src="tag-it/js/tag-it.js" type="text/javascript" charset="utf-8"></script>-->
+        <!--Fin Tag In-->
 
         <!--Messages of laravel to JS-->
         {!! Html::script('assets/js/messages.js') !!} 

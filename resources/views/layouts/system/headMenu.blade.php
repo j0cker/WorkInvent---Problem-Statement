@@ -11,7 +11,7 @@
                 <li class="logo hidden-xs">
                   <div>
                     <a ng-click="rastrearHeaders('logo');" href="system.php">
-                      <img style="width:150px;" src="images/bamboostr7-blanco.png"/>
+                      <img style="width:150px;" src="{{ url('assets/img/system/logo.png') }}"/>
                     </a>
                   </div>
                 </li>
@@ -29,7 +29,7 @@
                 <ul class="top-menu">
                     <li style="width: 50px; top: 4px;  height: 35px; vertical-align: top;">
                       <div ng-click="rastrearHeaders('profile');" id="profileButton" style="text-align: center;" class="dropdown">
-                        <img onerror="this.src='images/logo-bamboostr.png'" class="round dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" alt="Perfil" title="Perfil" style="cursor: pointer; height: 30px; width: 30px;" src="$_SESSION['foto_bamboostr']" />
+                        <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" class="round dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" alt="Perfil" title="Perfil" style="cursor: pointer; height: 30px; width: 30px;" src="" />
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a ng-click="rastrearHeaders('profileProfile');" style="cursor: pointer;" href="profiles.php">Perfil</a></li>
                             <li><a ng-click="rastrearHeaders('profileAgregarRed');" style="cursor: pointer;" onclick="abrirSignUpModal();">Agregar otra red social</a></li>  
@@ -43,46 +43,6 @@
                         <a class="tm-search" href=""></a>
                     </li>
                     -->
-                    <li ng-click="rastrearHeaders('ai');" id="aiButton" style="cursor: pointer;" class="dropdown">
-                        <a style="color: white; font-size: 20px; margin-top: 8px; text-align: center; background: url('images/panda-as.png') no-repeat top center / 30px 24px transparent;" data-toggle="dropdown">
-                          <i ng-show="(notificationsMessages3 | filter: { read:0, tipo:'asistente'}).length" class="tmn-counts"><% notificationsMessages4.length %></i>
-                          <i ng-show="!(notificationsMessages3 | filter: { read:0, tipo:'asistente'}).length" class="tmn-counts">0</i>
-                        </a>
-                        <div style="height: 300px; overflow-y: scroll;" class="dropdown-menu dropdown-menu-lg pull-right">
-                            <div class="listview" id="notifications">
-                                <div class="lv-header">
-                                    Asistente Inteligente
-                                    
-                                    <ul class="actions">
-                                        <li ng-click="leerAi();"  class="dropdown">
-                                            <a href="" data-clear="notification">
-                                                <i class="zmdi zmdi-check-all"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="lv-body">
-                                  <a ng-repeat="z in notificationsMessages4 = (notificationsMessages3 | limitTo:100 | filter: { tipo:'asistente'})" class="lv-item" style="cursor: pointer;" ng-click="abrirNotMsg23D(z,3)">
-                                    <div class="media">
-                                      <div class="pull-left">
-                                        <i ng-if="z.read=='0'" style="font-size: 15px;" class="fa fa-envelope-o"></i>
-                                        <img ng-if="z.read=='1'" style="width: 15px;" src="images/openEnvelop.png">
-                                      </div>
-                                      <div class="media-body">
-                                        <div class="lv-title">
-                                          <% z.titulo %>
-                                        </div>
-                                        <small ng-if="z.tipo=='asistente'" class="lv-small">Asistente</small>
-                                        <small ng-if="z.tipo=='asistente'" class="lv-small"><% z.mensaje %></small>
-                                      </div>
-                                    </div>
-                                  </a>
-
-                                </div>
-                            </div>
-                    
-                        </div>
-                    </li>
                     <li style="height: 38px; vertical-align: top;">
                       <a ng-click="rastrearHeaders('home');" href="system.php" style="cursor: pointer; text-align: center; font-size: 21px; top: 7px; color: white;" class="fa fa-home"></a>
                     </li>
@@ -114,7 +74,7 @@
                                     <div class="media">
                                       <div class="pull-left">
                                         <i ng-if="x.read=='0'" style="font-size: 15px;" class="fa fa-envelope-o"></i>
-                                        <img ng-if="x.read=='1'" style="width: 15px;" src="images/openEnvelop.png">
+                                        <img ng-if="x.read=='1'" style="width: 15px;" src="{{ url('assets/img/system/openEnvelop.png') }}">
                                       </div>
                                       <div class="media-body">
                                         <div class="lv-title">
@@ -130,7 +90,7 @@
                                     <div class="media">
                                       <div class="pull-left">
                                         <i ng-if="y.read=='0'" style="font-size: 15px;" class="fa fa-envelope-o"></i>
-                                        <img ng-if="y.read=='1'" style="width: 15px;" src="images/openEnvelop.png">
+                                        <img ng-if="y.read=='1'" style="width: 15px;" src="{{ url('assets/img/system/openEnvelop.png') }}">
                                       </div>
                                       <div class="media-body">
                                         <div class="lv-title">
