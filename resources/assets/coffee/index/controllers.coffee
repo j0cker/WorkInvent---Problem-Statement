@@ -40,6 +40,7 @@ app.controller 'ctrl', ($scope, evt) ->
             #$('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val("");
             #$("#subscribeSubmit").submit();
             #form.submit();
+            evt.loading();
             evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then (response) ->
                 #success
                 if(response.data.success==Lang.get('messages.successTrue'))

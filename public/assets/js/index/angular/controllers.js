@@ -34,6 +34,7 @@
       },
       'submitHandler': function(form) {
         console.log("Validate: Submit Handler");
+        evt.loading();
         return evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then(function(response) {
           if (response.data.success === Lang.get('messages.successTrue')) {
             toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());
