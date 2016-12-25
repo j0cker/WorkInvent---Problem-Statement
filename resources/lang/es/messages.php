@@ -29,6 +29,7 @@ return [
     'Subscribe' => "Suscríbete",
     'SubscribeTxt' => "Suscríbete a nuestro boletín para recibir las últimas noticias.",
     'privacy' => "Respetamos su privacidad de correo electrónico.",
+    'subscribeSuccess' => "Se ha enviado un correo electrónico para confirmar su suscripción.",
 
     //verification
     'notVerified' => "El número de verificación no existe",

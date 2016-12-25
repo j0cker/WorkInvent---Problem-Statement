@@ -3,9 +3,17 @@
     return {
       loading: function() {
         $('body').addClass('load');
-        return setTimeout(function() {
+        setTimeout(function() {
           return $('body').addClass('loaded');
         }, 1000);
+      },
+      subscribe: function(url, email) {
+        return $http.post(url, {
+          cache: false,
+          params: {
+            email: email
+          }
+        });
       }
     };
   });

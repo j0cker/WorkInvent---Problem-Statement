@@ -29,6 +29,7 @@ return [
     'Subscribe' => "Subscribe",
     'SubscribeTxt' => "Subscribe to our newsletter to receive the latest news.",
     'privacy' => "We respect your email privacy.",
+    'subscribeSuccess' => "An email to confirm your subscription has been sent.",
 
     //verification
     'notVerified' => "The verification number doesn't exist",

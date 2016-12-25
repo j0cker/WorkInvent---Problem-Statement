@@ -8,6 +8,42 @@
     if (getCookie("pass")) {
       $("#loginForm #password").val(CryptoJS.AES.decrypt(getCookie("pass"), Lang.get("messages.keyPass")).toString(CryptoJS.enc.Utf8));
     }
+    $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+      translation: {
+        "A": {
+          pattern: /[\w@\-.+]/
+        }
+      }
+    });
+    $("#siteFooterSubscribeForm").validate({
+      'rules': {
+        'email': {
+          'required': true,
+          'email': true
+        }
+      },
+      'messages': {
+        'email': Lang.get("messages.mailForm")
+      },
+      'errorPlacement': function(error, element) {
+        var div;
+        console.log("Validate: Error");
+        element.css("width", "100%");
+        div = $(element).closest('.input-group');
+        return $(div).after(error);
+      },
+      'submitHandler': function(form) {
+        console.log("Validate: Submit Handler");
+        return evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then(function(response) {
+          toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());
+        }, function(response) {
+          toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+        });
+      },
+      'success': function(label) {
+        return label.addClass("valid").text("Ok!");
+      }
+    });
     $scope.loginButton = false;
     $scope.registerButton = false;
     $scope.sendLinkPassButton = false;
@@ -32,19 +68,17 @@
         }
       },
       'messages': {
-        'name': Lang.get("messages.nameForm", {
-          'password': {
-            'required': Lang.get("messages.passwordFormRequired", {
-              'minlength': Lang.get("messages.passwordFormMinLength")
-            })
-          },
-          'password-confirm': {
-            'required': Lang.get("messages.passwordFormRequired", {
-              'minlength': Lang.get("messages.passwordFormMinLength")
-            })
-          },
-          'email': Lang.get("messages.mailForm")
-        })
+        'name': Lang.get("messages.nameForm"),
+        'password': {
+          'required': Lang.get("messages.passwordFormRequired"),
+          'minlength': Lang.get("messages.passwordFormMinLength")
+        },
+        'password-confirm': {
+          'required': Lang.get("messages.passwordFormRequired", {
+            'minlength': Lang.get("messages.passwordFormMinLength")
+          })
+        },
+        'email': Lang.get("messages.mailForm")
       },
       'errorPlacement': function(error, element) {
         var div;

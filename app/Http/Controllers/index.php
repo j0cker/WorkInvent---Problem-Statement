@@ -30,6 +30,24 @@ class Index extends Controller
      return view('index',["title" => $title, "lang" => $lang]);
    }
 
+   /*Subscribe*/
+
+   public function subscribe(Request $request){
+
+     Log::info('[Subscribe]');
+
+     if($request->isMethod('post')) {
+       Log::info('[Subscribe][Post]');
+       $params = $request->input('params');
+       $email = $params['email'];
+       return $email;
+     } else {
+
+     }
+
+   }
+
+
    /*Reset Password*/
    public function reset($token){
      

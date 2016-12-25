@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::get('/', 'Index@index');
 
+Route::post('/subscribe', 'Index@subscribe');
+
 Route::get('/verify/{verification_code}', 'Index@verify');
 
 Route::get('/password/reset/{token}', 'Index@reset');

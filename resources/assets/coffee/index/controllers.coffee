@@ -7,7 +7,52 @@ app.controller 'ctrl', ($scope, evt) ->
         $("#loginForm #email").val getCookie("email");
     
     if getCookie("pass")
-        $("#loginForm #password").val CryptoJS.AES.decrypt(getCookie("pass"), Lang.get "messages.keyPass").toString(CryptoJS.enc.Utf8);
+        $("#loginForm #password").val CryptoJS.AES.decrypt(getCookie("pass"), Lang.get("messages.keyPass")).toString(CryptoJS.enc.Utf8);
+    
+    #Subscribe
+
+    $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+        translation: {
+            "A": { pattern: /[\w@\-.+]/ }
+        }
+    });
+
+    $("#siteFooterSubscribeForm").validate({
+        'rules': {
+            # compound rule
+            'email': {
+                'required': true,
+                'email': true
+            }
+        }, 
+        'messages': {
+            'email': Lang.get("messages.mailForm")
+        },
+        'errorPlacement': (error, element) -> 
+            console.log "Validate: Error"
+            element.css "width","100%"
+            div = $(element).closest '.input-group'
+            $(div).after error
+        ,
+        'submitHandler': (form) ->
+            #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
+            console.log "Validate: Submit Handler"
+            #$('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val("");
+            #$("#subscribeSubmit").submit();
+            #form.submit();
+            evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then (response) ->
+                #success
+                toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());		   
+                return
+            , (response) ->
+                #ERROR
+                toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                return
+        , 
+        'success': (label) ->
+            #entra cuando un input ya está bien para el validador
+            label.addClass("valid").text("Ok!");
+    });
 
     $scope.loginButton = false
     $scope.registerButton = false
@@ -36,10 +81,10 @@ app.controller 'ctrl', ($scope, evt) ->
             }
         }, 
         'messages': {
-            'name': Lang.get "messages.nameForm",
+            'name': Lang.get("messages.nameForm"),
             'password': {
-                'required': Lang.get "messages.passwordFormRequired",
-                'minlength': Lang.get "messages.passwordFormMinLength"
+                'required': Lang.get("messages.passwordFormRequired"),
+                'minlength': Lang.get("messages.passwordFormMinLength")
             },
             'password-confirm': {
                 'required': Lang.get "messages.passwordFormRequired",
