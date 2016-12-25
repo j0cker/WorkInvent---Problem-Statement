@@ -35,7 +35,11 @@
       'submitHandler': function(form) {
         console.log("Validate: Submit Handler");
         return evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then(function(response) {
-          toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());
+          if (response.data.success === Lang.get('messages.successTrue')) {
+            toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());
+          } else {
+            toastr.info(Lang.get("messages.errorsBDRepeat"), '');
+          }
         }, function(response) {
           toastr.error(Lang.get("messages.errorsBD", "ERROR"));
         });

@@ -40,9 +40,17 @@ class Index extends Controller
        Log::info('[Subscribe][Post]');
        $params = $request->input('params');
        $email = $params['email'];
-       return $email;
+       $bmsust = App\Bmsust::lookFor($email)->get();
+       if(count($bmsust)>0){
+         $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBDRepeat'));
+         return json_encode($responseJSON);
+       } else {
+         $bmsust = App\Bmsust::addSubscribe($email);
+         $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),Lang::get('messages.BDsuccess'));
+         return json_encode($responseJSON);
+       }
      } else {
-
+       abort(403, 'Unauthorized action.');
      }
 
    }

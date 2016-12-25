@@ -42,7 +42,10 @@ app.controller 'ctrl', ($scope, evt) ->
             #form.submit();
             evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then (response) ->
                 #success
-                toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());		   
+                if(response.data.success==Lang.get('messages.successTrue'))
+                  toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());		   
+                else
+                  toastr.info(Lang.get("messages.errorsBDRepeat"), '');		   
                 return
             , (response) ->
                 #ERROR

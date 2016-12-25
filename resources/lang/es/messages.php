@@ -48,6 +48,12 @@ return [
     'profile' => "Mi perfil",
     'home' => "Inicio",
 
-    //errors
+    //libraries
+    'successTrue' => "TRUE",
+    'successFalse' => "FALSE",
+
+    //BD Messages and Errors
+    'BDsuccess' => "La información se actualizó correctamente",
     'errorsBD' => "Hubo un error por favor contacte al administrador",
+    'errorsBDRepeat' => "Estos datos ya existen",
 ];

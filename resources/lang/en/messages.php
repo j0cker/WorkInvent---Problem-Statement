@@ -48,6 +48,12 @@ return [
     'profile' => "My profile",
     'home' => "Home",
 
-    //errors
+    //libraries
+    'successTrue' => "TRUE",
+    'successFalse' => "FALSE",
+
+    //BD Messages and Errors
+    'BDsuccess' => "The information was updated successfully",
     'errorsBD' => "There was an error, please contact your administrator",
+    'errorsBDRepeat' => "This data already exists",
 ];
