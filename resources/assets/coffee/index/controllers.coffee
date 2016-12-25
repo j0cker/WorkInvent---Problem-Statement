@@ -3,6 +3,12 @@ app.controller 'ctrl', ($scope, evt) ->
 
     evt.loading();
 
+    if getCookie("email")
+        $("#loginForm #email").val getCookie("email");
+    
+    if getCookie("pass")
+        $("#loginForm #password").val CryptoJS.AES.decrypt(getCookie("pass"), Lang.get "messages.keyPass").toString(CryptoJS.enc.Utf8);
+
     $scope.loginButton = false
     $scope.registerButton = false
     $scope.sendLinkPassButton = false
@@ -32,12 +38,12 @@ app.controller 'ctrl', ($scope, evt) ->
         'messages': {
             'name': Lang.get "messages.nameForm",
             'password': {
-                'required': Lang.get "passwordFormRequired",
-                'minlength': Lang.get "passwordFormMinLength"
+                'required': Lang.get "messages.passwordFormRequired",
+                'minlength': Lang.get "messages.passwordFormMinLength"
             },
             'password-confirm': {
-                'required': Lang.get "passwordFormRequired",
-                'minlength': Lang.get "passwordFormMinLength"
+                'required': Lang.get "messages.passwordFormRequired",
+                'minlength': Lang.get "messages.passwordFormMinLength"
             },
             'email': Lang.get "messages.mailForm"
         },
@@ -62,6 +68,16 @@ app.controller 'ctrl', ($scope, evt) ->
         console.log "[Register][Button][Submit]"
         #$('#registerForm').valid() #it is doing automatically
         $("#registerButtonSubmit").submit(); #is going to validate first before enter to submitHandler
+        return
+
+    $("#registerButtonFooter").unbind().click ->
+        console.log "[Register][Button][Footer]"
+        $("#modal").modal "show"
+        $scope.loginButton = false
+        $scope.registerButton = true
+        $scope.sendLinkPassButton = false
+        $scope.$apply(); #this triggers a $digest
+        $(".modal-title").html Lang.get "messages.register"
         return
 
     $("#registerButton").unbind().click ->
@@ -94,8 +110,8 @@ app.controller 'ctrl', ($scope, evt) ->
         }, 
         'messages': {
             'password': {
-                'required': Lang.get "passwordFormRequired",
-                'minlength': Lang.get "passwordFormMinLength"
+                'required': Lang.get "messages.passwordFormRequired",
+                'minlength': Lang.get "messages.passwordFormMinLength"
             },
             'email': Lang.get "messages.mailForm"
         },
@@ -118,8 +134,24 @@ app.controller 'ctrl', ($scope, evt) ->
 
     $("#loginButtonSubmit").unbind().click ->
         console.log "[Login][Button][Submit]"
+
+        if $("#loginForm #remember").prop "checked"
+            setCookie("pass",CryptoJS.AES.encrypt($("#loginForm #password").val(), Lang.get "messages.keyPass"),1)
+            setCookie("email",$("#loginForm #email").val(),1) 
+            
+
         #$('#registerForm').valid() #it is doing automatically
         $("#loginButtonSubmit").submit(); #is going to validate first before enter to submitHandler
+        return
+
+    $("#loginButtonFooter").unbind().click ->
+        console.log "[Login][Button][Footer]"
+        $("#modal").modal "show"
+        $scope.loginButton = true
+        $scope.registerButton = false
+        $scope.sendLinkPassButton = false
+        $scope.$apply(); #this triggers a $digest
+        $(".modal-title").html Lang.get "messages.login"
         return
 
     $("#loginButton").unbind().click ->
@@ -216,12 +248,12 @@ app.controller 'ctrl', ($scope, evt) ->
         }, 
         'messages': {
             'password': {
-                'required': Lang.get "passwordFormRequired",
-                'minlength': Lang.get "passwordFormMinLength"
+                'required': Lang.get "messages.passwordFormRequired",
+                'minlength': Lang.get "messages.passwordFormMinLength"
             },
             'password-confirm': {
-                'required': Lang.get "passwordFormRequired",
-                'minlength': Lang.get "passwordFormMinLength"
+                'required': Lang.get "messages.passwordFormRequired",
+                'minlength': Lang.get "messages.passwordFormMinLength"
             },
             'email': Lang.get "messages.mailForm"
         },

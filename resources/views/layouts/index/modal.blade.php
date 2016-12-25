@@ -1,13 +1,12 @@
 <!-- Login Modal -->
 <div class="modal modal-signup" id="modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="col-md-2"></div>
-    <div class="col-md-8" style="margin: 30px auto; padding-top: 30px; padding-bottom: 30px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="margin: 30px auto; padding-top: 30px; padding-bottom: 30px;">
         <div class="modal-content" style="overflow-y: auto; ">
             <div class="modal-header">
                 <button style="float: left; color: red; opacity: 1;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title" style="text-align: center; color: #a3a3a3;"></h3>
                 <!--<p class="intro text-center">It only takes 3 minutes!</p>-->
-                <p></p>
             </div>
             <div style="height: 400px;" class="modal-body col-md-12">
 
@@ -39,6 +38,15 @@
                           <div class="col-md-2"></div>
                         </li>
                         <li>
+                          <div class="form-group">
+                            <div class="checkbox">
+                                <label for="remember">
+                                <input id="remember" name="remember" type="checkbox"> Remember Me
+                                </label>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
                           <div style="margin-top: 10px;" class="text-center col-md-12">
                             <button id="loginButtonSubmit" class="btn btn-lg btn-pill btn-shadow btn-theme-1" type="button">@lang('messages.login')</button>
                           </div>
@@ -46,7 +54,13 @@
                         <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div> 
                         <a id="sendLinkPassButton" class="btn btn-link">
                             Forgot Your Password?
-                        </a>                     
+                        </a>
+                        <!--Redes Sociales-->
+                        <!--<div class="or-separator">or</div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-block btn-pill btn-shadow btn-facebook"><i class="icon icon-left fa fa-fw fa-facebook"></i> Log In With Facebook</button>
+                          <button type="submit" class="btn btn-block btn-pill btn-shadow btn-google-plus"><i class="icon icon-left fa fa-fw fa-google-plus"></i> Log In With Google+</button>
+                        </div>-->                     
                       </form>
                     </ul>
                 </div>
@@ -144,6 +158,9 @@
                 <p>Already have an account? <a class="login-link" id="login-link" href="http://themes.3rdwavemedia.com/tempo/1.4/#">Log in</a></p>                    
             </div>--><!--//modal-footer-->
         </div><!--//modal-content-->
+        <div class="popup-form-footer">
+            <div class="btn-group btn-group-lg btn-group-justified"><a id="loginButtonFooter" data-toggle="tab" class="btn btn-default">@Lang('messages.login')</a><a id="registerButtonFooter" data-toggle="tab" class="btn btn-default">@Lang('messages.register')</a></div>
+        </div>
     </div><!--//modal-dialog col-md-8-->
-    <div class="col-md-2"></div>
+    <div class="col-md-4"></div>
 </div><!--//modal-->

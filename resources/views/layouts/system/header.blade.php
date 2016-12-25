@@ -56,7 +56,7 @@
         {!! Html::script('assets/js/system/toastr.min.js') !!}
         
         <!--Functions Library-->
-        {!! Html::script('assets/js/system/functions.js') !!}
+        {!! Html::script('assets/js/functions.js') !!}
 
         <!--Angular-->
         {!! Html::script('assets/js/system/angular/lib/angular.min.js') !!}

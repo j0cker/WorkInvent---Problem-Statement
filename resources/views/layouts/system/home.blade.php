@@ -77,7 +77,7 @@
                             <a href="" style="cursor: pointer;" id="tableSys9"><i class="icon-subirpremium"></i> Conviértete a GOLD</a>
                         </li>
                         <li id="tableSys10">
-                            <a href="" style="cursor: pointer;"><i class="icon-salir"></i> Salir de bamboostr</a>
+                            <a href="{{ url('/logout') }}" style="cursor: pointer;"><i class="icon-salir"></i> Salir de {{Config::get('app.name')}}</a>
                         </li>
                   </ul>
                 </div>
@@ -90,8 +90,8 @@
               <div class="col-md-8">
                 <div class="card">
                     <div class="card-content">
-                      <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" src="" style="width: 100px; height: 100px; display: inline-block;">
-                      <p style="padding-left: 50px; font-size: 20px; display: inline-block;">Bienvenido <?PHP echo ""; ?></p>
+                      <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" src="{{Auth::user()->X_UFOTO}}" style="width: 100px; height: 100px; display: inline-block;">
+                      <p style="padding-left: 50px; font-size: 20px; display: inline-block;">@Lang('messages.welcome') {{Auth::user()->name}}</p>
                       <p style="padding-right: 50px; font-size: 20px; display: inline-block;" class="pull-right hidden-xs">
                         <button style="background-color: #26A8FF; margin-left: 50px;" class="btn waves-effect waves-light" type="submit" name="action">Botón
                             <span class="fa fa-plus"></span>

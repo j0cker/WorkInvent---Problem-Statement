@@ -3,6 +3,7 @@
 return [
     //'title' => '101Errors', no es necesaria ya que se declara en config -> app.php -> name
 
+    //index
     //form's' login, register, sendLinkPass, Reset Password
     'user' => 'User Name',
     'login' => 'Login',
@@ -19,6 +20,15 @@ return [
     'mailForm' => "Please enter a valid email address",
     'ResetPassword' => "Reset your Password",
     'ResetPasswordButton' => "Send Password Reset Link",
+    'keyPass' => 134343,
+
+    //footer
+    'Copyright' => "Copyright © 2016 BFC. All Rights Reserved.",
+
+    //Subscribe
+    'Subscribe' => "Subscribe",
+    'SubscribeTxt' => "Subscribe to our newsletter to receive the latest news.",
+    'privacy' => "We respect your email privacy.",
 
     //verification
     'notVerified' => "The verification number doesn't exist",
@@ -28,6 +38,14 @@ return [
     //emails
     'emailReset' => "Password reset Successfully",
     'emailWelcome' => "Welcome to ".Config::get('app.name')."",
+
+    //system
+    'welcome' => "Welcome ",
+
+    //system header menu
+    'help' => "¿Need Help?",
+    'profile' => "My profile",
+    'home' => "Home",
 
     //errors
     'errorsBD' => "There was an error, please contact your administrator",

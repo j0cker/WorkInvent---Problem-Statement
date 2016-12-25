@@ -2,6 +2,12 @@
   app.controller('ctrl', function($scope, evt) {
     console.log("[IndexCtrl]");
     evt.loading();
+    if (getCookie("email")) {
+      $("#loginForm #email").val(getCookie("email"));
+    }
+    if (getCookie("pass")) {
+      $("#loginForm #password").val(CryptoJS.AES.decrypt(getCookie("pass"), Lang.get("messages.keyPass")).toString(CryptoJS.enc.Utf8));
+    }
     $scope.loginButton = false;
     $scope.registerButton = false;
     $scope.sendLinkPassButton = false;
@@ -28,13 +34,13 @@
       'messages': {
         'name': Lang.get("messages.nameForm", {
           'password': {
-            'required': Lang.get("passwordFormRequired", {
-              'minlength': Lang.get("passwordFormMinLength")
+            'required': Lang.get("messages.passwordFormRequired", {
+              'minlength': Lang.get("messages.passwordFormMinLength")
             })
           },
           'password-confirm': {
-            'required': Lang.get("passwordFormRequired", {
-              'minlength': Lang.get("passwordFormMinLength")
+            'required': Lang.get("messages.passwordFormRequired", {
+              'minlength': Lang.get("messages.passwordFormMinLength")
             })
           },
           'email': Lang.get("messages.mailForm")
@@ -58,6 +64,15 @@
     $("#registerButtonSubmit").unbind().click(function() {
       console.log("[Register][Button][Submit]");
       $("#registerButtonSubmit").submit();
+    });
+    $("#registerButtonFooter").unbind().click(function() {
+      console.log("[Register][Button][Footer]");
+      $("#modal").modal("show");
+      $scope.loginButton = false;
+      $scope.registerButton = true;
+      $scope.sendLinkPassButton = false;
+      $scope.$apply();
+      $(".modal-title").html(Lang.get("messages.register"));
     });
     $("#registerButton").unbind().click(function() {
       console.log("[Register][Button]");
@@ -88,8 +103,8 @@
       },
       'messages': {
         'password': {
-          'required': Lang.get("passwordFormRequired", {
-            'minlength': Lang.get("passwordFormMinLength")
+          'required': Lang.get("messages.passwordFormRequired", {
+            'minlength': Lang.get("messages.passwordFormMinLength")
           })
         },
         'email': Lang.get("messages.mailForm")
@@ -111,7 +126,20 @@
     });
     $("#loginButtonSubmit").unbind().click(function() {
       console.log("[Login][Button][Submit]");
+      if ($("#loginForm #remember").prop("checked")) {
+        setCookie("pass", CryptoJS.AES.encrypt($("#loginForm #password").val(), Lang.get("messages.keyPass")), 1);
+        setCookie("email", $("#loginForm #email").val(), 1);
+      }
       $("#loginButtonSubmit").submit();
+    });
+    $("#loginButtonFooter").unbind().click(function() {
+      console.log("[Login][Button][Footer]");
+      $("#modal").modal("show");
+      $scope.loginButton = true;
+      $scope.registerButton = false;
+      $scope.sendLinkPassButton = false;
+      $scope.$apply();
+      $(".modal-title").html(Lang.get("messages.login"));
     });
     $("#loginButton").unbind().click(function() {
       console.log("[Login][Button]");
@@ -196,13 +224,13 @@
       },
       'messages': {
         'password': {
-          'required': Lang.get("passwordFormRequired", {
-            'minlength': Lang.get("passwordFormMinLength")
+          'required': Lang.get("messages.passwordFormRequired", {
+            'minlength': Lang.get("messages.passwordFormMinLength")
           })
         },
         'password-confirm': {
-          'required': Lang.get("passwordFormRequired", {
-            'minlength': Lang.get("passwordFormMinLength")
+          'required': Lang.get("messages.passwordFormRequired", {
+            'minlength': Lang.get("messages.passwordFormMinLength")
           })
         },
         'email': Lang.get("messages.mailForm")

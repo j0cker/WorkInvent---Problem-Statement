@@ -16,4 +16,8 @@ $(document).ready(function(){
             ga('send', 'event', 'Menu Izquierdo Responder', 'click', 'Menu Izquierdo Responder');
             window.location = "responder.php";
     }); 
+    $('#tableSys4').click(function(){
+            ga('send', 'event', 'Menu Izquierdo Pago', 'click', 'Menu Izquierdo Pago');
+            window.location = "https://www.mercadopago.com/mlm/debits/new?preapproval_plan_id=4a535e7b68be493ba1732ef2fab2e0d2";
+    }); 
 }); 

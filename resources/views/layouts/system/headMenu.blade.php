@@ -8,31 +8,31 @@
                     </div>
                 </li>
             
-                <li class="logo hidden-xs">
+                <li data-position="bottom" data-tooltip="Logo" class="logo hidden-xs tooltipped">
                   <div>
-                    <a ng-click="rastrearHeaders('logo');" href="system.php">
+                    <a ng-click="rastrearHeaders('logo');" href="{{ url('/home') }}">
                       <img style="width:150px;" src="{{ url('assets/img/system/logo.png') }}"/>
                     </a>
                   </div>
                 </li>
                 
-                <li style="height: 38px;" class="pull-right hidden-xs">
-                  <a ng-click="rastrearHeaders('ayuda');" href="ayuda.php">
+                <li data-position="bottom" data-tooltip="@Lang('messages.help')" style="height: 38px;" class="pull-right hidden-xs tooltipped">
+                  <a ng-click="rastrearHeaders('ayuda');" href="{{ url('/help') }}">
                     <div style="height: 38px; margin-top: 5px; margin-left: 15px; margin-right: 15px; color: white;" class="pull-right">
                       <span style="padding-top: 0px; font-size: 20px; display: inline-block;" class="fa fa-question-circle"></span>
-                      <p style="display: inline-block;">¿Necesitas Ayuda?</p>
+                      <p style="display: inline-block;">@Lang('messages.help')</p>
                     </div>
                   </a>
                 </li>
                 
                 <li class="pull-right">
                 <ul class="top-menu">
-                    <li style="width: 50px; top: 4px;  height: 35px; vertical-align: top;">
+                    <li style="width: 50px; top: 4px;  height: 35px; vertical-align: top;" class="">
                       <div ng-click="rastrearHeaders('profile');" id="profileButton" style="text-align: center;" class="dropdown">
-                        <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" class="round dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" alt="Perfil" title="Perfil" style="cursor: pointer; height: 30px; width: 30px;" src="" />
+                        <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" class="round dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; height: 30px; width: 30px;" src="{{Auth::user()->X_UFOTO}}" />
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a ng-click="rastrearHeaders('profileProfile');" style="cursor: pointer;" href="profiles.php">Perfil</a></li>
-                            <li><a ng-click="rastrearHeaders('profileAgregarRed');" style="cursor: pointer;" onclick="abrirSignUpModal();">Agregar otra red social</a></li>  
+                            <li><a ng-click="rastrearHeaders('profileProfile');" style="cursor: pointer;" href="{{ url('/profile') }}">@Lang('messages.profile')</a></li>
+                            <!--<li><a ng-click="rastrearHeaders('profileAgregarRed');" style="cursor: pointer;" onclick="abrirSignUpModal();">Agregar otra red social</a></li>-->
                             <li><a ng-click="rastrearHeaders('profileNews');" class="modal-trigger" data-target="news" style="cursor: pointer;">News<span id="notBadget" class="new badge">4</span></a></li>         
                             <!--<li><a style="cursor: pointer;" id="logOut123">Salir</a></li> -->
                         </ul>
@@ -43,8 +43,8 @@
                         <a class="tm-search" href=""></a>
                     </li>
                     -->
-                    <li style="height: 38px; vertical-align: top;">
-                      <a ng-click="rastrearHeaders('home');" href="system.php" style="cursor: pointer; text-align: center; font-size: 21px; top: 7px; color: white;" class="fa fa-home"></a>
+                    <li data-position="bottom" data-tooltip="@Lang('messages.home')" style="height: 38px; vertical-align: top;" class="tooltipped">
+                      <a ng-click="rastrearHeaders('home');" href="{{ url('/home') }}" style="cursor: pointer; text-align: center; font-size: 21px; top: 7px; color: white;" class="fa fa-home"></a>
                     </li>
                     <li style="height: 38px; vertical-align: top;">
                       <a ng-click="rastrearHeaders('escribir');" href="escribir.php" style="cursor: pointer; text-align: center; font-size: 21px; top: 7px; color: white;" class="fa fa-pencil"></a>

@@ -23,5 +23,12 @@ class System extends Controller
 
      return view('layouts.system.home',["title" => $title, "lang" => $lang]);
    }
+
+   public function profile(){
+    if (Auth::check()==false) {
+      // The user is not logged in...
+      return redirect('/');
+     }
+   }
     //
 }

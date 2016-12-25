@@ -42,10 +42,19 @@
         {!! Html::script('assets/js/index/bootstrap.min.js') !!}
         {!! Html::script('assets/js/index/vendor.js') !!}
         {!! Html::script('assets/js/index/main.js') !!}
+
         <!--Messages of laravel to JS-->
         {!! Html::script('assets/js/messages.js') !!} 
+
         <!--Own Library-->
         {!! Html::script('assets/js/index/index.js') !!}
+
+        <!--Functions Library-->
+        {!! Html::script('assets/js/functions.js') !!}
+
+        <!-- AES Crypter -->
+        {!! Html::script('assets/js/index/aes-min.js') !!}
+
         <!--CSRF Protection-->
         <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
 

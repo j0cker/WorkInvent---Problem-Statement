@@ -102,6 +102,12 @@ function restaFechas(f1,f2){
   var dias = Math.floor(dif / (1000 * 60 * 60 * 24)); 
   return dias;
 }
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 function deleteAllCookies() {
     /* NOTA: revisa si el dominio coincide ya que si no no se borrarán */
     console.log("Show Cookies");
