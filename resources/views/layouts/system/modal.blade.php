@@ -1,35 +1,48 @@
-<!-- Login Modal -->
+<!-- Configuration Modal -->
 <div class="modal modal-signup" id="modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="col-md-2"></div>
     <div class="col-md-8" style="margin: 30px auto; padding-top: 30px; padding-bottom: 30px;">
         <div class="modal-content" style="overflow-y: auto; ">
             <div class="modal-header">
-                <button style="float: left; color: red; opacity: 1;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <!--<button style="float: left; color: red; opacity: 1;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
                 <h3 class="modal-title" style="text-align: center; color: #a3a3a3;"></h3>
                 <!--<p class="intro text-center">It only takes 3 minutes!</p>-->
                 <p></p>
             </div>
             <div style="height: 400px;" class="modal-body col-md-12">
 
-              <!--SendLinkPass part-->
+              <!--configuration part-->
 
-              <div ng-show="sendLinkPassButton" clas="row">
+              <div clas="row">
                 <div class="text-center col-md-12">    
                     <ul style="margin: 0;" class="list-unstyled social-login">
-                        <form method="POST" id="sendLinkPassForm" name="sendLinkPassForm" action="{{ url('/password/email') }}">
+                        <form id="configurationForm" name="configurationsForm">
                           {{ csrf_field() }}
-                          <li style="margin: 0;">
-                            <div class="col-md-2"></div>
-                            <div class="input-group input-group-lg col-md-8">
-                                  <input id="email" type="email" style="padding-left: 10px; border: 1px solid #ccc; height: 37px; font-size: 13px;" class="form-control" name="email" placeholder="email" required>
-                                  <span style="padding: 0px 9px 0px 8px; font-size: 12px; height: 30px; margin-top: 0px;" class="input-group-addon glyphicon glyphicon-user" id="sizing-addon1"></span>
+                          <input id="timezone" type="hidden" value="{{ url('/timezone') }}">
+                          <input id="url" type="hidden" value="{{ url('/configuration') }}">
+
+                          <li style="margin: 0; margin-top: 20px;">
+                            <div style="text-align: left;" class="input-group input-group-lg col-md-12">
+                                  <span>@lang('messages.confTitle')</span>
                             </div>
-                            <div class="col-md-2"></div>
                           </li>
-                          <li style="margin-top: 10px;">
+
+                          @if (!isset(Auth::user()->I_UHID))
+                            <li style="margin: 0; margin-top: 20px;">
+                              <div sytle="text-align: left;" class="input-group input-group-lg col-md-10">
+                                    <span style="margin-top: 10px;">@lang('messages.selectTimezoneSpan')</span>
+                                    <select style="margin-top: 10px; display: block; !important" id="timezone" name="timezone" required>
+                                      <option>@lang('messages.selectTimezone')</option>
+                                      <option ng-repeat="x in timezone" class="lv-item" style="cursor: pointer;"><% x.N_UHNAME %></option>
+                                    </select>
+                              </div>
+                            </li>
+                          @endif
+
+                          <li style="margin: 0; margin-top: 20px;">
                             <div class="text-center col-md-12">
-                              <button id="sendLinkPassButtonSubmit" class="btn btn-lg btn-pill btn-shadow btn-theme-1" type="button">
-                                @lang('messages.ResetPasswordButton')
+                              <button id="configurationButtonSubmit" class="btn btn-lg btn-pill btn-shadow btn-theme-1" type="button">
+                                @lang('messages.continue')
                               </button>
                             </div>
                           </li>

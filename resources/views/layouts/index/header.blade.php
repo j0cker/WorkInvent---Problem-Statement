@@ -32,6 +32,9 @@
         {!! Html::script('assets/js/index/jquery.validate.min.js') !!}
         {!! Html::script('assets/js/index/toastr.min.js') !!}
 
+        <!--CSRF Protection Global Variables-->
+        <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
+
         <!--Angular-->
         {!! Html::script('assets/js/index/angular/lib/angular.min.js') !!}
         {!! Html::script('assets/js/index/angular/lib/sanitize.min.js') !!}
@@ -54,9 +57,6 @@
 
         <!-- AES Crypter -->
         {!! Html::script('assets/js/index/aes-min.js') !!}
-
-        <!--CSRF Protection-->
-        <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
 
         <!--Alerts-->
         <script>

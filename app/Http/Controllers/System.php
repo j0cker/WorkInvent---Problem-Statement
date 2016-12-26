@@ -24,6 +24,20 @@ class System extends Controller
      return view('layouts.system.home',["title" => $title, "lang" => $lang]);
    }
 
+   public function timezone(){
+     if (Auth::check()==false) {
+       abort(403, 'Unauthorized action.');
+     }
+     $bmsuuh = App\Bmsuuh::all();
+     return json_encode($bmsuuh);
+   }
+
+   public function configuration(){
+     if (Auth::check()==false) {
+       abort(403, 'Unauthorized action.');
+     }
+   }
+
    public function profile(){
     if (Auth::check()==false) {
       // The user is not logged in...

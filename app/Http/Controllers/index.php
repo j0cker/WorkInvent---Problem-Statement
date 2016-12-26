@@ -8,6 +8,7 @@ use App;
 use Config;
 use Auth;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class Index extends Controller
 {  
@@ -104,5 +105,12 @@ class Index extends Controller
       }
 
    }
-    //
+    
+   public function date(){
+
+     $date = Carbon::createFromFormat('Y-m-d H:i:s', '2015-10-23 17:64:00', 'Europe/Amsterdam');
+     $date->setTimezone('UTC');
+     
+     return $date;
+   }
 }

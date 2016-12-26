@@ -43,6 +43,12 @@ return [
     //system
     'welcome' => "Welcome ",
 
+    //configuration modal
+    'confTitle' => "Complete toda la información faltante, para poder configurar su perfil y empezar a utilizar ".Config::get('app.name')."",
+    'selectTimezone' => "Select your Timezone",
+    'selectTimezoneSpan' => "Please select your Timezone",
+    'continue' => "Continue",
+
     //system header menu
     'help' => "¿Need Help?",
     'profile' => "My profile",

@@ -21,5 +21,11 @@ Route::get('/verify/{verification_code}', 'Index@verify');
 
 Route::get('/password/reset/{token}', 'Index@reset');
 
+Route::get('/date', 'Index@date');
+
 Route::get('/home', 'System@system');
+
+Route::get('/timezone', 'System@timezone');
+
+Route::post('/configuration', 'System@configuration');
 

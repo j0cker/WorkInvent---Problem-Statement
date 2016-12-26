@@ -54,6 +54,13 @@
         {!! Html::script('assets/js/system/jquery-mask.js') !!}
         {!! Html::script('assets/js/system/jquery.validate.min.js') !!}
         {!! Html::script('assets/js/system/toastr.min.js') !!}
+
+        <!--CSRF Protection, Timezone, name global Variables-->
+        <script>
+        $( document ).ready(function() {
+            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}"}
+        });    
+        </script>
         
         <!--Functions Library-->
         {!! Html::script('assets/js/functions.js') !!}
@@ -96,9 +103,6 @@
 
         <!--Own Library-->
         {!! Html::script('assets/js/system/index.js') !!}
-
-        <!--CSRF Protection-->
-        <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
 
         <!--Alerts-->
         <script>

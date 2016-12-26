@@ -7,4 +7,6 @@ app.factory 'evt',($http) ->
             setTimeout ->
                 $('body').addClass 'loaded'
             , 1000
+        , timezone: (url) ->
+            return  $http.get(url, { cache: false })
     }
