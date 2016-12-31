@@ -37,3 +37,4 @@ Route::post('/configuration', 'System@configuration');
 
 Route::get('/profile', 'System@profile');
 
+Route::post('/profile', 'System@saveProfile');

@@ -141,4 +141,82 @@ app.controller 'profile', ($scope, evt, $window) ->
         toastr.error(Lang.get "messages.errorsBD", "ERROR");
         return
 
+    #register form mask with 50 chars
+    $('#profileForm #name').mask 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+
+    $('#profileForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+        translation: {
+            "A": { pattern: /[\w@\-.+]/ }
+        }
+    });
+
+    # add the rule here
+
+    $.validator.addMethod "valueNotEquals", (value, element, arg) ->
+        return arg != value;
+    , "Value must not equal arg."
+
+    $("#profileForm").validate({
+        'rules': {
+            # compound rule
+            'name': "required",
+            'email': {
+                'required': true,
+                'email': true
+            },
+            'timezoneProfile': {
+                'valueNotEquals': Lang.get('messages.selectTimezone')
+            },
+            'languageProfile': {
+                'valueNotEquals': Lang.get('messages.selectLanguage')
+            }
+        }, 
+        'messages': {
+            'name': Lang.get("messages.nameForm"),
+            'email': Lang.get("messages.mailForm"),
+            'timezoneProfile': {
+                'valueNotEquals': Lang.get("messages.timezoneForm")
+            },
+            'languageProfile': {
+                'valueNotEquals': Lang.get("messages.languageForm")
+            }
+        },
+        'errorPlacement': (error, element) -> 
+            console.log "Validate: Error"
+            element.css "width","100%"
+            div = $(element).closest '.input-group'
+            $(div).append error
+        ,
+        'submitHandler': (form) ->
+            $("#profileForm #profileButtonSubmit").css "display","none"
+            #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
+            console.log "Validate: Submit Handler"
+            #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
+            #form.submit();
+            evt.profile($("#profileForm #profileUrl").val(), $("#profileForm #name").val(), $("#profileForm #email").val(), $("#profileForm #timezoneProfile").val(), $("#profileForm #languageProfile").val()).then (response) ->
+                #success
+                if(response.data.success==Lang.get('messages.successFalse'))
+                    toastr.error(Lang.get("messages.errorsBD"), '');
+                else
+                    toastr.success(Lang.get("messages.BDsuccess"), '');
+
+                $("#profileForm #profileButtonSubmit").css "display",""
+                return
+            , (response) ->
+                #ERROR
+                toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                $("#profileForm #profileButtonSubmit").css "display",""
+                return
+        , 
+        'success': (label) ->
+            #entra cuando un input ya está bien para el validador
+            label.addClass("valid").text("Ok!");
+    });
+
+    $("#profileForm #profileButtonSubmit").unbind().click ->
+        console.log "[Modal][Button][Profile]";
+        $("#profileForm #profileButtonSubmit").submit();
+
+        return
+
     return

@@ -28,6 +28,18 @@
         }, {
           cache: false
         });
+      },
+      profile: function(url, name, email, timezone, language) {
+        return $http.post(url, {
+          params: {
+            name: name,
+            email: email,
+            timezone: timezone,
+            language: language
+          }
+        }, {
+          cache: false
+        });
       }
     };
   });

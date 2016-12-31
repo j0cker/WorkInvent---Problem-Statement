@@ -79,9 +79,8 @@
           'minlength': Lang.get("messages.passwordFormMinLength")
         },
         'password-confirm': {
-          'required': Lang.get("messages.passwordFormRequired", {
-            'minlength': Lang.get("messages.passwordFormMinLength")
-          })
+          'required': Lang.get("messages.passwordFormRequired"),
+          'minlength': Lang.get("messages.passwordFormMinLength")
         },
         'email': Lang.get("messages.mailForm")
       },
@@ -142,9 +141,8 @@
       },
       'messages': {
         'password': {
-          'required': Lang.get("messages.passwordFormRequired", {
-            'minlength': Lang.get("messages.passwordFormMinLength")
-          })
+          'required': Lang.get("messages.passwordFormRequired"),
+          'minlength': Lang.get("messages.passwordFormMinLength")
         },
         'email': Lang.get("messages.mailForm")
       },
@@ -263,14 +261,12 @@
       },
       'messages': {
         'password': {
-          'required': Lang.get("messages.passwordFormRequired", {
-            'minlength': Lang.get("messages.passwordFormMinLength")
-          })
+          'required': Lang.get("messages.passwordFormRequired"),
+          'minlength': Lang.get("messages.passwordFormMinLength")
         },
         'password-confirm': {
-          'required': Lang.get("messages.passwordFormRequired", {
-            'minlength': Lang.get("messages.passwordFormMinLength")
-          })
+          'required': Lang.get("messages.passwordFormRequired"),
+          'minlength': Lang.get("messages.passwordFormMinLength")
         },
         'email': Lang.get("messages.mailForm")
       },

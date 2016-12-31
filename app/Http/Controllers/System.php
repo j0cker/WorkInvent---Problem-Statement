@@ -91,5 +91,14 @@ class System extends Controller
 
      return view('layouts.system.profile',["title" => $title, "lang" => $lang]);
    }
-    //
+    
+   public function saveProfile(){
+
+    Log::info('[saveProfile]');
+
+    if (Auth::check()==false) {
+       // The user is not logged in...
+       abort(403, 'Unauthorized action.');
+     }
+   }
 }

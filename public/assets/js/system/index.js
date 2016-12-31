@@ -6,7 +6,6 @@
       },
       cache: false,
       ajaxStart: function() {
-        alert("hola");
         return $body.addClass("loading");
       },
       ajaxStop: function() {

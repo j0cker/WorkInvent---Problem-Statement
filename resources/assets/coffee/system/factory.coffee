@@ -13,4 +13,6 @@ app.factory 'evt',($http) ->
             return  $http.get(url, { cache: false })
         , configuration: (url, timezone, language) ->
             return  $http.post(url, params: {timezone:timezone, language:language} , { cache: false })
+        , profile: (url, name, email, timezone, language) ->
+            return  $http.post(url, params: {name:name, email:email, timezone:timezone, language:language} , { cache: false })
     }

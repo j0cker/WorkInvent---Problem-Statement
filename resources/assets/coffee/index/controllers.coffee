@@ -91,10 +91,10 @@ app.controller 'ctrl', ($scope, evt) ->
                 'minlength': Lang.get("messages.passwordFormMinLength")
             },
             'password-confirm': {
-                'required': Lang.get "messages.passwordFormRequired",
-                'minlength': Lang.get "messages.passwordFormMinLength"
+                'required': Lang.get("messages.passwordFormRequired"),
+                'minlength': Lang.get("messages.passwordFormMinLength")
             },
-            'email': Lang.get "messages.mailForm"
+            'email': Lang.get("messages.mailForm")
         },
         'errorPlacement': (error, element) -> 
             console.log "Validate: Error"
@@ -136,7 +136,7 @@ app.controller 'ctrl', ($scope, evt) ->
         $scope.registerButton = true
         $scope.sendLinkPassButton = false
         $scope.$apply(); #this triggers a $digest
-        $(".modal-title").html Lang.get "messages.register"
+        $(".modal-title").html Lang.get("messages.register")
         return
 
     $('#loginForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
@@ -159,8 +159,8 @@ app.controller 'ctrl', ($scope, evt) ->
         }, 
         'messages': {
             'password': {
-                'required': Lang.get "messages.passwordFormRequired",
-                'minlength': Lang.get "messages.passwordFormMinLength"
+                'required': Lang.get("messages.passwordFormRequired"),
+                'minlength': Lang.get("messages.passwordFormMinLength")
             },
             'email': Lang.get "messages.mailForm"
         },
@@ -200,7 +200,7 @@ app.controller 'ctrl', ($scope, evt) ->
         $scope.registerButton = false
         $scope.sendLinkPassButton = false
         $scope.$apply(); #this triggers a $digest
-        $(".modal-title").html Lang.get "messages.login"
+        $(".modal-title").html Lang.get("messages.login")
         return
 
     $("#loginButton").unbind().click ->
@@ -210,7 +210,7 @@ app.controller 'ctrl', ($scope, evt) ->
         $scope.registerButton = false
         $scope.sendLinkPassButton = false
         $scope.$apply(); #this triggers a $digest
-        $(".modal-title").html Lang.get "messages.login"
+        $(".modal-title").html Lang.get("messages.login")
         return
 
     #sendLinkPass
@@ -262,7 +262,7 @@ app.controller 'ctrl', ($scope, evt) ->
         $scope.registerButton = false
         $scope.sendLinkPassButton = true
         $scope.$apply(); #this triggers a $digest
-        $(".modal-title").html Lang.get "messages.ResetPassword"
+        $(".modal-title").html Lang.get("messages.ResetPassword")
         return
 
     $("#registerForm #sendLinkPassButton").unbind().click ->
@@ -272,7 +272,7 @@ app.controller 'ctrl', ($scope, evt) ->
         $scope.registerButton = false
         $scope.sendLinkPassButton = true
         $scope.$apply(); #this triggers a $digest
-        $(".modal-title").html Lang.get "messages.ResetPassword"
+        $(".modal-title").html Lang.get("messages.ResetPassword")
         return
 
     #ResetPassword View
@@ -297,12 +297,12 @@ app.controller 'ctrl', ($scope, evt) ->
         }, 
         'messages': {
             'password': {
-                'required': Lang.get "messages.passwordFormRequired",
-                'minlength': Lang.get "messages.passwordFormMinLength"
+                'required': Lang.get("messages.passwordFormRequired"),
+                'minlength': Lang.get("messages.passwordFormMinLength")
             },
             'password-confirm': {
-                'required': Lang.get "messages.passwordFormRequired",
-                'minlength': Lang.get "messages.passwordFormMinLength"
+                'required': Lang.get("messages.passwordFormRequired"),
+                'minlength': Lang.get("messages.passwordFormMinLength")
             },
             'email': Lang.get "messages.mailForm"
         },

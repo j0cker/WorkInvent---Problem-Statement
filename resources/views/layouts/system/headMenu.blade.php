@@ -27,17 +27,27 @@
                 
                 <li class="pull-right">
                 <ul class="top-menu">
-                    <li style="width: 50px; top: 4px;  height: 35px; vertical-align: top;" class="">
-                      <div ng-click="rastrearHeaders('profile');" id="profileButton" style="text-align: center;" class="dropdown">
-                        <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" class="round dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; height: 30px; width: 30px;" src="{{Auth::user()->X_UFOTO}}" />
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a ng-click="rastrearHeaders('profileProfile');" style="cursor: pointer;" href="{{ url('/profile') }}">@Lang('messages.profile')</a></li>
-                            <!--<li><a ng-click="rastrearHeaders('profileAgregarRed');" style="cursor: pointer;" onclick="abrirSignUpModal();">Agregar otra red social</a></li>-->
-                            <li><a ng-click="rastrearHeaders('profileNews');" class="modal-trigger" data-target="news" style="cursor: pointer;">News<span id="notBadget" class="new badge">4</span></a></li>         
-                            <!--<li><a style="cursor: pointer;" id="logOut123">Salir</a></li> -->
-                        </ul>
-                      </div>
+
+                    <li data-position="bottom" data-tooltip="@Lang('messages.profile')" style="text-align: center; height: 38px; vertical-align: middle;" class="tooltipped">
+                      <a style="top: 4px;" href="{{ url('/profile') }}">
+                        <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" class="round" style="cursor: pointer; height: 30px; width: 30px;" src="{{Auth::user()->X_UFOTO}}" />
+                      </a>
                     </li>
+
+                    <!--
+                    <li style="width: 50px; top: 4px;  height: 35px; vertical-align: top;" class="">
+                        <div ng-click="rastrearHeaders('profile');" id="profileButton" style="text-align: center;" class="dropdown">
+                          <img onerror="this.src='{{ url('assets/img/system/perfil_default.png') }}'" class="round dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; height: 30px; width: 30px;" src="{{Auth::user()->X_UFOTO}}" />
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a ng-click="rastrearHeaders('profileProfile');" style="cursor: pointer;" href="{{ url('/profile') }}">@Lang('messages.profile')</a></li>
+                            <li><a ng-click="rastrearHeaders('profileAgregarRed');" style="cursor: pointer;" onclick="abrirSignUpModal();">Agregar otra red social</a></li>
+                            <li><a ng-click="rastrearHeaders('profileNews');" class="modal-trigger" data-target="news" style="cursor: pointer;">News<span id="notBadget" class="new badge">4</span></a></li>  
+                            <li><a style="cursor: pointer;" id="logOut123">Salir</a></li>
+                          </ul>
+                        </div>
+                      </a>
+                    </li>
+                    -->
                     <!--
                     <li id="top-search">
                         <a class="tm-search" href=""></a>

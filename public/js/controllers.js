@@ -113,6 +113,71 @@
     }, function(response) {
       toastr.error(Lang.get("messages.errorsBD", "ERROR"));
     });
+    $('#profileForm #name').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+    $('#profileForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
+      translation: {
+        "A": {
+          pattern: /[\w@\-.+]/
+        }
+      }
+    });
+    $.validator.addMethod("valueNotEquals", function(value, element, arg) {
+      return arg !== value;
+    }, "Value must not equal arg.");
+    $("#profileForm").validate({
+      'rules': {
+        'name': "required",
+        'email': {
+          'required': true,
+          'email': true
+        },
+        'timezoneProfile': {
+          'valueNotEquals': Lang.get('messages.selectTimezone')
+        },
+        'languageProfile': {
+          'valueNotEquals': Lang.get('messages.selectLanguage')
+        }
+      },
+      'messages': {
+        'name': Lang.get("messages.nameForm"),
+        'email': Lang.get("messages.mailForm"),
+        'timezoneProfile': {
+          'valueNotEquals': Lang.get("messages.timezoneForm")
+        },
+        'languageProfile': {
+          'valueNotEquals': Lang.get("messages.languageForm")
+        }
+      },
+      'errorPlacement': function(error, element) {
+        var div;
+        console.log("Validate: Error");
+        element.css("width", "100%");
+        div = $(element).closest('.input-group');
+        return $(div).append(error);
+      },
+      'submitHandler': function(form) {
+        $("#profileForm #profileButtonSubmit").css("display", "none");
+        console.log("Validate: Submit Handler");
+        return evt.profile($("#profileForm #profileUrl").val(), $("#profileForm #name").val(), $("#profileForm #email").val(), $("#profileForm #timezoneProfile").val(), $("#profileForm #languageProfile").val()).then(function(response) {
+          if (response.data.success === Lang.get('messages.successFalse')) {
+            toastr.error(Lang.get("messages.errorsBD"), '');
+          } else {
+            toastr.success(Lang.get("messages.BDsuccess"), '');
+          }
+          $("#profileForm #profileButtonSubmit").css("display", "");
+        }, function(response) {
+          toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+          $("#profileForm #profileButtonSubmit").css("display", "");
+        });
+      },
+      'success': function(label) {
+        return label.addClass("valid").text("Ok!");
+      }
+    });
+    $("#profileForm #profileButtonSubmit").unbind().click(function() {
+      console.log("[Modal][Button][Profile]");
+      $("#profileForm #profileButtonSubmit").submit();
+    });
   });
 
 }).call(this);
