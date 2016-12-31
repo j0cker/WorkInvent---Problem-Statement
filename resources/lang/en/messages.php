@@ -44,10 +44,17 @@ return [
     'welcome' => "Welcome ",
 
     //configuration modal
-    'confTitle' => "Complete toda la información faltante, para poder configurar su perfil y empezar a utilizar ".Config::get('app.name')."",
+    'confTitle' => "Fill in all the missing information in order to configure your profile and start using ".Config::get('app.name')."",
     'selectTimezone' => "Select your Timezone",
     'selectTimezoneSpan' => "Please select your Timezone",
+    'selectLanguage' => "Select your Language",
+    'selectLanguageSpan' => "Please select your Language",
     'continue' => "Continue",
+
+    //configuration forms
+
+    'timezoneForm' => "Please enter a valid Timezone",
+    'languageForm' => "Please enter a valid Language",
 
     //system header menu
     'help' => "¿Need Help?",

@@ -9,16 +9,17 @@
                 <!--<p class="intro text-center">It only takes 3 minutes!</p>-->
                 <p></p>
             </div>
-            <div style="height: 400px;" class="modal-body col-md-12">
+            <div style="padding: 0; height: 400px;" class="modal-body col-md-12">
 
               <!--configuration part-->
 
               <div clas="row">
                 <div class="text-center col-md-12">    
                     <ul style="margin: 0;" class="list-unstyled social-login">
-                        <form id="configurationForm" name="configurationsForm">
+                        <form method="POST" id="configurationForm" name="configurationsForm" action="{{ url('/configuration') }}">
                           {{ csrf_field() }}
-                          <input id="timezone" type="hidden" value="{{ url('/timezone') }}">
+                          <input id="timezoneUrl" type="hidden" value="{{ url('/timezone') }}">
+                          <input id="languageUrl" type="hidden" value="{{ url('/language') }}">
                           <input id="url" type="hidden" value="{{ url('/configuration') }}">
 
                           <li style="margin: 0; margin-top: 20px;">
@@ -29,11 +30,21 @@
 
                           @if (!isset(Auth::user()->I_UHID))
                             <li style="margin: 0; margin-top: 20px;">
-                              <div sytle="text-align: left;" class="input-group input-group-lg col-md-10">
+                              <div sytle="text-align: center;" class="input-group input-group-lg col-xs-12 col-md-12">
                                     <span style="margin-top: 10px;">@lang('messages.selectTimezoneSpan')</span>
                                     <select style="margin-top: 10px; display: block; !important" id="timezone" name="timezone" required>
                                       <option>@lang('messages.selectTimezone')</option>
-                                      <option ng-repeat="x in timezone" class="lv-item" style="cursor: pointer;"><% x.N_UHNAME %></option>
+                                      <option ng-repeat="x in timezone" class="lv-item" style="cursor: pointer;" value="<% x.I_UHID %>"><% x.N_UHNAME %></option>
+                                    </select>
+                              </div>
+                            </li>
+
+                            <li style="margin: 0; margin-top: 20px;">
+                              <div sytle="text-align: center;" class="input-group input-group-lg col-xs-12  col-md-12">
+                                    <span style="margin-top: 10px;">@lang('messages.selectLanguageSpan')</span>
+                                    <select style="margin-top: 10px; display: block; !important" id="language" name="language" required>
+                                      <option>@lang('messages.selectLanguage')</option>
+                                      <option ng-repeat="x in language" class="lv-item" style="cursor: pointer;" value="<% x.I_IDIDI %>"><% x.N_IDINAME %></option>
                                     </select>
                               </div>
                             </li>

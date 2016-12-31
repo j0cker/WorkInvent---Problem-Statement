@@ -13,6 +13,6 @@
 
         <font color="red">In order to get your account ready:</font><br /><br />
 
-        Please click <a href="{!! url('/verify', ['code'=>$verification_code]) !!}"> Here</a> to confirm email<br /><br />
+        Please click <a href="{!! url('/verify', ['code'=>$verification_code]) !!}"> Here</a> to confirm your email<br /><br />
 
     @stop

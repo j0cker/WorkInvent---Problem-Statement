@@ -47,7 +47,14 @@ return [
     'confTitle' => "Complete toda la información faltante, para poder configurar su perfil y empezar a utilizar ".Config::get('app.name')."",
     'selectTimezone' => "Seleccione su zona horaria",
     'selectTimezoneSpan' => "Por favor seleccione su zona horaria",
+    'selectLanguage' => "Seleccione su idioma",
+    'selectLanguageSpan' => "Por favor seleccione su idioma",
     'continue' => "Continuar",
+    
+    //configuration forms
+
+    'timezoneForm' => "Por favor proporcione una Zona Horaria",
+    'languageForm' => "Por favor proporcione un Idioma",
 
     //system header menu
     'help' => "¿Necesitas ayuda?",

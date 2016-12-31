@@ -47,7 +47,12 @@ class Index extends Controller
          return json_encode($responseJSON);
        } else {
          $bmsust = App\Bmsust::addSubscribe($email);
-         $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),Lang::get('messages.BDsuccess'));
+         if($bmsust==1){
+           $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),Lang::get('messages.BDsuccess'));
+         } else {
+           $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+           return json_encode($responseJSON);
+         }
          return json_encode($responseJSON);
        }
      } else {

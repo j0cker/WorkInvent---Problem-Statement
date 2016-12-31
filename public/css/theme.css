@@ -14,3 +14,12 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+.error {
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  color: #f43d3e;
+}
+.error.valid {
+  color: #4dc755;
+}

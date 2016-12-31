@@ -23,7 +23,6 @@
         {!! Html::style('assets/css/system/vendor.css') !!}
         {!! Html::style('assets/css/system/loader.css') !!}
         {!! Html::style('assets/css/system/theme.css') !!}
-        {!! Html::style('assets/css/system/toastr.css') !!}
 
         <!--Box Images-->
         {!! Html::style('assets/css/system/fresco.css') !!}
@@ -45,6 +44,7 @@
         {!! Html::style('assets/css/system/font-brenda/style.css') !!}
         {!! Html::style('assets/css/system/style-loading.css') !!}
         {!! Html::style('assets/css/system/sortable.css') !!}
+        {!! Html::style('assets/css/system/toastr.css') !!}
 
         {{-- Scripts --}}
         

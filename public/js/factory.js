@@ -13,6 +13,21 @@
         return $http.get(url, {
           cache: false
         });
+      },
+      language: function(url) {
+        return $http.get(url, {
+          cache: false
+        });
+      },
+      configuration: function(url, timezone, language) {
+        return $http.post(url, {
+          params: {
+            timezone: timezone,
+            language: language
+          }
+        }, {
+          cache: false
+        });
       }
     };
   });

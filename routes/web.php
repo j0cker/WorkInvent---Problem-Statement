@@ -13,6 +13,10 @@
 
 Auth::routes();
 
+Route::get('logout', 'Auth\LoginController@logout');
+
+Route::get('/', 'Index@index');
+
 Route::get('/', 'Index@index');
 
 Route::post('/subscribe', 'Index@subscribe');
@@ -26,6 +30,8 @@ Route::get('/date', 'Index@date');
 Route::get('/home', 'System@system');
 
 Route::get('/timezone', 'System@timezone');
+
+Route::get('/language', 'System@language');
 
 Route::post('/configuration', 'System@configuration');
 

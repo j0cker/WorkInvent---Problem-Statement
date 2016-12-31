@@ -19,7 +19,7 @@ class Bmsust extends Model
     public function scopeAddSubscribe($query, $email)
     {   $bmsust = new Bmsust;
         $bmsust->email = $email;
-        $bmsust->save();
+        return $bmsust->save();
     }
 
 }
