@@ -113,8 +113,8 @@ class Index extends Controller
     
    public function date(){
 
-     $date = Carbon::createFromFormat('Y-m-d H:i:s', '2015-10-23 17:64:00', 'Europe/Amsterdam');
-     $date->setTimezone('UTC');
+     $date = Carbon::createFromFormat('Y-m-d H:i:s', '2016-12-30 23:37:00', 'America/Detroit');
+     $date->setTimezone(Config::get('app.timezone'));//America/Mexico_City
      
      return $date;
    }

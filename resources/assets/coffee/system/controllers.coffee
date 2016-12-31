@@ -70,6 +70,7 @@ app.controller 'ctrl', ($scope, evt, $window) ->
                 $(div).append error
             ,
             'submitHandler': (form) ->
+                $("#configurationForm #configurationButtonSubmit").css "display","none"
                 #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
                 console.log "Validate: Submit Handler"
                 #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
@@ -95,7 +96,6 @@ app.controller 'ctrl', ($scope, evt, $window) ->
 
         $("#configurationForm #configurationButtonSubmit").unbind().click ->
             console.log "[Modal][Button][Configuration]";
-
             $("#configurationForm #configurationButtonSubmit").submit();
 
             return

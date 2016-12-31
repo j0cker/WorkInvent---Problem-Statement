@@ -60,6 +60,7 @@
           return $(div).append(error);
         },
         'submitHandler': function(form) {
+          $("#configurationForm #configurationButtonSubmit").css("display", "none");
           console.log("Validate: Submit Handler");
           return evt.configuration($("#configurationForm #url").val(), $("#configurationForm #timezone").val(), $("#configurationForm #language").val()).then(function(response) {
             if (response.data.success === Lang.get('messages.successFalse')) {
