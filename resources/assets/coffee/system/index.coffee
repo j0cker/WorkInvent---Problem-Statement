@@ -4,8 +4,13 @@ $.ajaxSetup ->
   headers: {
   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr 'content'
   },
-  cache: false
+  cache: false,
+  ajaxStart: -> 
+    $body.addClass "loading"
+  , ajaxStop: ->
+    $body.removeClass "loading"
   null
+
 
 toastr.options = {
   "closeButton": false,

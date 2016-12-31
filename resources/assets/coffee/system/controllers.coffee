@@ -1,5 +1,5 @@
-app.controller 'ctrl', ($scope, evt, $window) ->
-    console.log "[SystemCtrl]"
+app.controller 'home', ($scope, evt, $window) ->
+    console.log "[HomeCtrl]"
 
     $('.tooltipped').tooltip({delay: 50});
 
@@ -100,9 +100,45 @@ app.controller 'ctrl', ($scope, evt, $window) ->
 
             return
 
-    null
-
+    return
 app.controller 'notsCtrl', ($rootScope, $scope, evt, $filter) ->
     
-    null
-return
+    return
+
+app.controller 'profile', ($scope, evt, $window) ->
+    console.log "[ProfileCtrl]"
+
+    $('.tooltipped').tooltip({delay: 50});
+
+    evt.loading();
+
+    evt.timezone($("#timezoneUrl").val()).then (response) ->
+        #success
+        if(response.data.success==Lang.get('messages.successFalse'))
+            toastr.info(Lang.get("messages.errorsBDRepeat"), '');	
+        else
+            console.log response.data
+
+        $scope.timezone = response.data;  
+        return
+    , (response) ->
+        #ERROR
+        toastr.error(Lang.get "messages.errorsBD", "ERROR");
+        return
+
+
+    evt.language($("#languageUrl").val()).then (response) ->
+        #success
+        if(response.data.success==Lang.get('messages.successFalse'))
+            toastr.info(Lang.get("messages.errorsBDRepeat"), '');	
+        else
+            console.log response.data
+
+        $scope.language = response.data;  
+        return
+    , (response) ->
+        #ERROR
+        toastr.error(Lang.get "messages.errorsBD", "ERROR");
+        return
+
+    return

@@ -58,7 +58,7 @@
         <!--CSRF Protection, Timezone, name global Variables-->
         <script>
         $( document ).ready(function() {
-            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}"}
+            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "language":"{{Auth::user()->I_IDIDI}}", }
         });    
         </script>
         
@@ -133,7 +133,7 @@
         </script>
 
     </head>
-    <body ng-controller="ctrl">
+    <body ng-controller="@yield('angularController')">
         <!--[if lt IE 8]>
             <p class="browserupgrade">
                 You are using an <strong>outdated</strong> browser.

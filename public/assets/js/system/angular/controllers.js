@@ -1,6 +1,6 @@
 (function() {
-  app.controller('ctrl', function($scope, evt, $window) {
-    console.log("[SystemCtrl]");
+  app.controller('home', function($scope, evt, $window) {
+    console.log("[HomeCtrl]");
     $('.tooltipped').tooltip({
       delay: 50
     });
@@ -83,13 +83,36 @@
         $("#configurationForm #configurationButtonSubmit").submit();
       });
     }
-    return null;
   });
 
-  app.controller('notsCtrl', function($rootScope, $scope, evt, $filter) {
-    return null;
-  });
+  app.controller('notsCtrl', function($rootScope, $scope, evt, $filter) {});
 
-  return;
+  app.controller('profile', function($scope, evt, $window) {
+    console.log("[ProfileCtrl]");
+    $('.tooltipped').tooltip({
+      delay: 50
+    });
+    evt.loading();
+    evt.timezone($("#timezoneUrl").val()).then(function(response) {
+      if (response.data.success === Lang.get('messages.successFalse')) {
+        toastr.info(Lang.get("messages.errorsBDRepeat"), '');
+      } else {
+        console.log(response.data);
+      }
+      $scope.timezone = response.data;
+    }, function(response) {
+      toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+    });
+    evt.language($("#languageUrl").val()).then(function(response) {
+      if (response.data.success === Lang.get('messages.successFalse')) {
+        toastr.info(Lang.get("messages.errorsBDRepeat"), '');
+      } else {
+        console.log(response.data);
+      }
+      $scope.language = response.data;
+    }, function(response) {
+      toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+    });
+  });
 
 }).call(this);

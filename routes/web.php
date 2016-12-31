@@ -35,3 +35,5 @@ Route::get('/language', 'System@language');
 
 Route::post('/configuration', 'System@configuration');
 
+Route::get('/profile', 'System@profile');
+

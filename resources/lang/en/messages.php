@@ -40,6 +40,9 @@ return [
     'emailReset' => "Password reset Successfully",
     'emailWelcome' => "Welcome to ".Config::get('app.name')."",
 
+    //system titles
+    'profileTitle' => "Profile",
+
     //system
     'welcome' => "Welcome ",
 
@@ -52,7 +55,6 @@ return [
     'continue' => "Continue",
 
     //configuration forms
-
     'timezoneForm' => "Please enter a valid Timezone",
     'languageForm' => "Please enter a valid Language",
 
@@ -60,6 +62,22 @@ return [
     'help' => "¿Need Help?",
     'profile' => "My profile",
     'home' => "Home",
+
+    //System profile
+    'headTitleProfile' => "My profile",
+    'headTitleProfile2' => "Modify your profile characteristics",
+    'changePicture' => "Change your photo",
+    'changePicture2' => "of profile",
+    'examinar' => "Examine&hellip;",
+    'nameProfile' => "Name",
+    'emailProfile' => "Email",
+    'zonaHorarioProfile' => "Time zone",
+    'idiomaProfile' => "Language",
+    'contraseñaActualProfile' => "Current password",
+    'olvidasteProfile' => "Did you forget your password?",
+    'nuevaContraseñaProfile' => "New Password",
+    'confirmarProfile' => "Confirm Password",
+    'saveChangesProfile' => "Save changes",
 
     //libraries
     'successTrue' => "TRUE",

@@ -32,7 +32,7 @@
                             <li style="margin: 0; margin-top: 20px;">
                               <div sytle="text-align: center;" class="input-group input-group-lg col-xs-12 col-md-12">
                                     <span style="margin-top: 10px;">@lang('messages.selectTimezoneSpan')</span>
-                                    <select style="margin-top: 10px; display: block; !important" id="timezone" name="timezone" required>
+                                    <select style="border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 36px; width: 100%; border-radius: 4px; margin-bottom:10px; margin-top: 10px; display: block; !important" id="timezone" name="timezone" required>
                                       <option>@lang('messages.selectTimezone')</option>
                                       <option ng-repeat="x in timezone" class="lv-item" style="cursor: pointer;" value="<% x.I_UHID %>"><% x.N_UHNAME %></option>
                                     </select>
@@ -42,7 +42,7 @@
                             <li style="margin: 0; margin-top: 20px;">
                               <div sytle="text-align: center;" class="input-group input-group-lg col-xs-12  col-md-12">
                                     <span style="margin-top: 10px;">@lang('messages.selectLanguageSpan')</span>
-                                    <select style="margin-top: 10px; display: block; !important" id="language" name="language" required>
+                                    <select style="border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 36px; width: 100%; border-radius: 4px; margin-bottom:10px; margin-top: 10px; display: block; !important" id="language" name="language" required>
                                       <option>@lang('messages.selectLanguage')</option>
                                       <option ng-repeat="x in language" class="lv-item" style="cursor: pointer;" value="<% x.I_IDIDI %>"><% x.N_IDINAME %></option>
                                     </select>

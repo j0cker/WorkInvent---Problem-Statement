@@ -4,7 +4,14 @@
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
-      cache: false
+      cache: false,
+      ajaxStart: function() {
+        alert("hola");
+        return $body.addClass("loading");
+      },
+      ajaxStop: function() {
+        return $body.removeClass("loading");
+      }
     });
     return null;
   });

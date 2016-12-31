@@ -80,9 +80,16 @@ class System extends Controller
     Log::info('[Profile]');
 
     if (Auth::check()==false) {
-      // The user is not logged in...
-      return redirect('/');
+       // The user is not logged in...
+       abort(403, 'Unauthorized action.');
      }
+
+     $title = Lang::get('messages.profileTitle');
+     $lang = Config::get('app.locale');
+     $lang = App::getLocale();
+     $lang = Lang::getLocale();
+
+     return view('layouts.system.profile',["title" => $title, "lang" => $lang]);
    }
     //
 }
