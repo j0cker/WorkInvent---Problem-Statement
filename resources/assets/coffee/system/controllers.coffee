@@ -150,6 +150,61 @@ app.controller 'profile', ($scope, evt, $window) ->
         }
     });
 
+    $scope.cambiarImagen = (url, url2) ->
+        $('body').attr "class","loading"
+        #ga('send', 'event', 'Subir Imágen Profile', 'click', 'Subir Imágen Profile');
+
+        rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+        console.log("[cambiarImagen][fileImage][Tamaño]: " + document.getElementById("fileImage").files.length);
+
+        if document.getElementById("fileImage").files.length==0
+            return
+
+        oFile = document.getElementById("fileImage").files[0]
+
+        if !rFilter.test(oFile.type)
+            $('body').addClass 'loaded'
+            toastr["error"](Lang.get('messages.errorFormat'), "ERROR");
+            return 
+        
+        fd = new FormData();
+        fd.append("fileImage", oFile);
+
+        console.log("[cambiarImagen][fd]");
+        console.log(fd);
+
+        evt.subirImagen(url, fd).then (response) ->
+
+            response = JSON.parse(response);
+
+            #success
+            if(response.success==Lang.get('messages.successFalse'))
+                toastr.info(Lang.get("messages.errorsBD"), 'ERROR');	
+            else 
+                evt.actualizarImageProfile(url2, response.description).then (response) ->
+
+                    #success
+                    if(response.data.success==Lang.get('messages.successFalse'))
+                        toastr.info(Lang.get("messages.errorsBD"), 'ERROR');	
+                    else
+                        toastr.success(Lang.get("messages.BDsuccess"), '');	
+                        window.location = "/profile";
+                    return
+                , (response) ->
+                    #ERROR
+                    toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                    return
+                return
+            return
+        , (response) ->
+            #ERROR
+            toastr.error(Lang.get "messages.errorsBD", "ERROR");
+            return
+        
+
+        return
+
     # add the rule here
 
     $.validator.addMethod "valueNotEquals", (value, element, arg) ->

@@ -25,4 +25,9 @@ class Bmsusr extends Model
                      ->update(['I_UHID' => $timezone, 'I_IDIDI' => $language]);
     }
 
+    public function scopeActualizarImageProfile($query, $imageUrl){
+        return $query->where('id', Auth::user()->id)
+                     ->update(['X_UFOTO' => 'storage/'.$imageUrl]);
+    }
+
 }

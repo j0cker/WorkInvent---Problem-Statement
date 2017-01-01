@@ -1,4 +1,4 @@
-app.factory 'evt',($http) ->
+app.factory 'evt',($http, $window) ->
     return {
         loading: ->
             $('body').removeClass 'load'
@@ -12,7 +12,19 @@ app.factory 'evt',($http) ->
         , language: (url) ->
             return  $http.get(url, { cache: false })
         , configuration: (url, timezone, language) ->
-            return  $http.post(url, params: {timezone:timezone, language:language} , { cache: false })
+            return  $http.post(url, params: {timezone:timezone, language:language}, { cache: false })
+        , subirImagen: (url, fd) ->
+            return $.ajax  
+                            url: url
+                            type: 'POST'
+                            data: fd
+                            processData: false
+                            contentType: false
+                            headers: {
+                                'X-CSRF-TOKEN': $window.window.Laravel.csrfToken
+                            }
+        , actualizarImageProfile: (url, imageUrl) ->
+            return $http.post(url, params: {imageUrl:imageUrl}, { cache: false })
         , profile: (url, name, email, timezone, language) ->
             return  $http.post(url, params: {name:name, email:email, timezone:timezone, language:language} , { cache: false })
     }

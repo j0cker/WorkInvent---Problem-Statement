@@ -58,7 +58,7 @@
         <!--CSRF Protection, Timezone, name global Variables-->
         <script>
         $( document ).ready(function() {
-            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "language":"{{Auth::user()->I_IDIDI}}", }
+            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "id":"{{Auth::user()->id}}", "language":"{{Auth::user()->I_IDIDI}}", }
         });    
         </script>
         

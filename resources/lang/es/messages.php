@@ -87,4 +87,5 @@ return [
     'BDsuccess' => "La información se actualizó correctamente",
     'errorsBD' => "Hubo un error por favor contacte al administrador",
     'errorsBDRepeat' => "Estos datos ya existen",
+    'errorFormat' => "El archivo que desea cargar tiene un formato no válido.",
 ];

@@ -113,7 +113,7 @@
                     </div>
 
                     <span class="file-input btn btn-block btn-primary btn-file col-lg-6 col-sm-6 col-12">
-                        @Lang('messages.examinar') <input id="fileImage" type="file" name="file" size="50" ng-model="photo" onchange="angular.element(this).scope().cambiarImagen()" type="file" accept="image/jpeg, image/png, image/gif, image/bmp" />
+                        @Lang('messages.examinar') <input id="fileImage" type="file" name="file" size="50" ng-model="photo" onchange="angular.element(this).scope().cambiarImagen('{{ url('/subirImagen') }}', '{{ url('/actualizarImageProfile') }}')" accept="image/jpeg, image/png, image/gif, image/bmp" />
                     </span>
 
                   </div>

@@ -37,4 +37,8 @@ Route::post('/configuration', 'System@configuration');
 
 Route::get('/profile', 'System@profile');
 
+Route::post('/subirImagen', ['as'=>'fileImage','uses'=> 'System@subirImagen']);
+
+Route::post('/actualizarImageProfile', 'System@actualizarImageProfile');
+
 Route::post('/profile', 'System@saveProfile');

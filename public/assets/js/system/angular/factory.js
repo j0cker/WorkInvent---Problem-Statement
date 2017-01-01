@@ -1,5 +1,5 @@
 (function() {
-  app.factory('evt', function($http) {
+  app.factory('evt', function($http, $window) {
     return {
       loading: function() {
         $('body').removeClass('load');
@@ -24,6 +24,27 @@
           params: {
             timezone: timezone,
             language: language
+          }
+        }, {
+          cache: false
+        });
+      },
+      subirImagen: function(url, fd) {
+        return $.ajax({
+          url: url,
+          type: 'POST',
+          data: fd,
+          processData: false,
+          contentType: false,
+          headers: {
+            'X-CSRF-TOKEN': $window.window.Laravel.csrfToken
+          }
+        });
+      },
+      actualizarImageProfile: function(url, imageUrl) {
+        return $http.post(url, {
+          params: {
+            imageUrl: imageUrl
           }
         }, {
           cache: false

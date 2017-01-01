@@ -91,6 +91,71 @@ class System extends Controller
 
      return view('layouts.system.profile',["title" => $title, "lang" => $lang]);
    }
+
+   public function subirImagen(Request $request){
+
+      Log::info('[subirImagen]');
+
+      if (Auth::check()==false) {
+        // The user is not logged in...
+        abort(403, 'Unauthorized action.');
+      }
+
+     if($request->isMethod('post')) {
+       Log::info('[subirImagen][Post]');
+       
+       if($request->hasFile('fileImage')){
+          if ($request->file('fileImage')->isValid()) {
+            $path = $request->fileImage->path();
+            $extension = $request->fileImage->extension();
+            Log::info('[subirImagen][Post][Valid] Path: '.$path.' Extension: '.$extension.'');
+            $path = $request->fileImage->store('images');
+            Log::info('[subirImagen][Post][Valid] Path: '.$path.'');
+            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),$path);
+            return json_encode($responseJSON);
+
+          } else {
+            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+            return json_encode($responseJSON);
+          }//fin isValid
+       } else {
+         $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+         return json_encode($responseJSON);
+       }//fin hasFIle
+     } else {
+       $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+       return json_encode($responseJSON);
+     }//fin method
+
+
+   }
+
+   public function actualizarImageProfile(Request $request){
+
+     Log::info('[actualizarImageProfile]');
+
+     if (Auth::check()==false) {
+       // The user is not logged in...
+       abort(403, 'Unauthorized action.');
+     }
+
+     if($request->isMethod('post')) {
+       Log::info('[actualizarImageProfile][Post]');
+       $params = $request->input('params');
+       $imageUrl = $params['imageUrl'];
+       $bmsusr = App\Bmsusr::actualizarImageProfile($imageUrl);
+       if($bmsusr==1){
+         $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'');
+         return json_encode($responseJSON);
+       } else {
+         $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+         return json_encode($responseJSON);
+       }
+     } else {
+       $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+       return json_encode($responseJSON);
+     }//fin method
+   }
     
    public function saveProfile(){
 

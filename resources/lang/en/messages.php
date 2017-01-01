@@ -87,4 +87,5 @@ return [
     'BDsuccess' => "The information was updated successfully",
     'errorsBD' => "There was an error, please contact your administrator",
     'errorsBDRepeat' => "This data already exists",
+    'errorFormat' => "The file that you want to upload has a not valid format.",
 ];
