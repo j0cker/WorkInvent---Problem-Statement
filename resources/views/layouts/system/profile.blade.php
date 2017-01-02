@@ -113,7 +113,7 @@
                     </div>
 
                     <span class="file-input btn btn-block btn-primary btn-file col-lg-6 col-sm-6 col-12">
-                        @Lang('messages.examinar') <input id="fileImage" type="file" name="file" size="50" ng-model="photo" onchange="angular.element(this).scope().cambiarImagen('{{ url('/subirImagen') }}', '{{ url('/actualizarImageProfile') }}')" accept="image/jpeg, image/png, image/gif, image/bmp" />
+                        @Lang('messages.examinar') <input style="cursor: hand;" id="fileImage" type="file" name="file" size="50" ng-model="photo" onchange="angular.element(this).scope().cambiarImagen('{{ url('/subirImagen') }}', '{{ url('/actualizarImageProfile') }}')" accept="image/jpeg, image/png, image/gif, image/bmp" />
                     </span>
 
                   </div>
@@ -170,27 +170,27 @@
                     </div>
 
                     <input id="languageUrl" type="hidden" value="{{ url('/language') }}">
-        
+                    <!--
                     <div class="input-group col-xs-12 col-sm-12 col-md-12">
 
                       <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.contraseñaActualProfile')</p>
-                      <input style="cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="password" class="form-control" value="password" aria-describedby="sizing-addon1" id="nombreURL">
+                      <input style="cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="password" class="form-control" value="password" aria-describedby="sizing-addon1" id="passwordActual">
 
                     </div>
-
-                    <p ng-click="olvidastePass()" style="font-size: 16px; color:#26a8ff; cursor: pointer; width:250px;">@Lang('messages.olvidasteProfile')</p>
+                    -->
+                    <p ng-click="olvidastePass()" style="font-size: 16px; color:#26a8ff; cursor: text; width:250px;">@Lang('messages.olvidasteProfile')</p>
                     
                     <div class="input-group col-xs-12 col-sm-12 col-md-12">
 
                       <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.nuevaContraseñaProfile')</p>
-                      <input style="cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="password" class="form-control" value="" aria-describedby="sizing-addon1" id="password52">
+                      <input style="cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="password" class="form-control" value="" aria-describedby="sizing-addon1" id="password" name="password">
 
                     </div>
                     
                     <div class="input-group col-xs-12 col-sm-12 col-md-12">
 
                       <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.confirmarProfile')</p>
-                      <input style="cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="password" class="form-control" value="" aria-describedby="sizing-addon1" id="passwordConf52">
+                      <input name="password_confirmation" id="password-confirm" data-rule-equalTo="#profileForm #password" style="cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="password" class="form-control" value="" aria-describedby="sizing-addon1" id="passwordConf52">
 
                     </div>
 

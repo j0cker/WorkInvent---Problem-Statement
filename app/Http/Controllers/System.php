@@ -109,7 +109,8 @@ class System extends Controller
             $path = $request->fileImage->path();
             $extension = $request->fileImage->extension();
             Log::info('[subirImagen][Post][Valid] Path: '.$path.' Extension: '.$extension.'');
-            $path = $request->fileImage->store('images');
+            $path = $request->fileImage->store('public/images');
+            $path = str_replace('public','',$path);
             Log::info('[subirImagen][Post][Valid] Path: '.$path.'');
             $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),$path);
             return json_encode($responseJSON);
@@ -157,7 +158,7 @@ class System extends Controller
      }//fin method
    }
     
-   public function saveProfile(){
+   public function saveProfile(Request $request){
 
     Log::info('[saveProfile]');
 
@@ -165,5 +166,45 @@ class System extends Controller
        // The user is not logged in...
        abort(403, 'Unauthorized action.');
      }
+
+     if($request->isMethod('post')) {
+       Log::info('[saveProfile][Post]');
+       $params = $request->input('params');
+       $name = $params['name'];
+       $email = $params['email'];
+       $timezone = $params['timezone'];
+       $language = $params['language'];
+       $pswd = $params['pswd'];
+
+       if(!$pswd){
+          Log::info('[saveProfile][Post][All][WithoutPass]');
+          $bmsusr = App\Bmsusr::allUpdateUsrConfWithoutPass($name, $email, $timezone, $language);
+          if($bmsusr==1){
+            $mail = new App\library\classes\sendMails($params);
+            $mail->verificationCompare();
+
+            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'Without Pass');
+            return json_encode($responseJSON);
+          } else {
+            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+            return json_encode($responseJSON);
+          }
+       } else {
+         Log::info('[saveProfile][Post][All]');
+         $bmsusr = App\Bmsusr::allUpdateUsrConf($name, $email, $timezone, $language, $pswd);
+          if($bmsusr==1){
+            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'With Pass');
+            return json_encode($responseJSON);
+          } else {
+            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+            return json_encode($responseJSON);
+          }
+       }
+     } else {
+       $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
+       return json_encode($responseJSON);
+     }//fin method
    }
+
+
 }

@@ -37,6 +37,7 @@ return [
     'wasVerified' => "Your account has already been verified previously",
 
     //emails
+    'emailVerification' => "Email Verification requiered",
     'emailReset' => "Password reset Successfully",
     'emailWelcome' => "Welcome to ".Config::get('app.name')."",
 

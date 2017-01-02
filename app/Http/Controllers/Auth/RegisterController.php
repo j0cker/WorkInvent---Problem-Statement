@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/panel';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -76,12 +76,8 @@ class RegisterController extends Controller
         //---------------------------------------------------------
         $data['verification_code']  = $user->verification_code;
 
-        Mail::send('emails.welcome', $data, function($message) use ($data)
-        {
-            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
-            $message->subject(Lang::get('messages.emailWelcome'));
-            $message->to($data['email']);
-        });
+        $mail = new \App\library\classes\sendMails($data);
+        $mail->welcome();
 
         return $user;
     }

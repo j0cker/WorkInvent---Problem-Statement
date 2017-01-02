@@ -37,6 +37,7 @@ return [
     'wasVerified' => "Tu cuenta ya ha sido verificada con anterioridad",
 
     //emails
+    'emailVerification' => "Se requiere verificación de correo electrónico",
     'emailReset' => "Nueva Contraseña",
     'emailWelcome' => "Bienvenido a ".Config::get('app.name')."",
 

@@ -29,7 +29,7 @@
         }
         $scope.language = response.data;
       }, function(response) {
-        toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+        toastr.error(Lang.get("messages.errorsBD"), "ERROR");
         $("#modal").modal("hide");
       });
       $.validator.addMethod("valueNotEquals", function(value, element, arg) {
@@ -70,7 +70,7 @@
             }
             $("#modal").modal("hide");
           }, function(response) {
-            toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+            toastr.error(Lang.get("messages.errorsBD"), "ERROR");
             $("#modal").modal("hide");
           });
         },
@@ -111,7 +111,7 @@
       }
       $scope.language = response.data;
     }, function(response) {
-      toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+      toastr.error(Lang.get("messages.errorsBD"), "ERROR");
     });
     $('#profileForm #name').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     $('#profileForm #email').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {
@@ -152,12 +152,12 @@
               window.location = "/profile";
             }
           }, function(response) {
-            toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+            toastr.error(Lang.get("messages.errorsBD"), "ERROR");
           });
           return;
         }
       }, function(response) {
-        toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+        toastr.error(Lang.get("messages.errorsBD"), "ERROR");
       });
     };
     $.validator.addMethod("valueNotEquals", function(value, element, arg) {
@@ -197,11 +197,12 @@
       'submitHandler': function(form) {
         $("#profileForm #profileButtonSubmit").css("display", "none");
         console.log("Validate: Submit Handler");
-        return evt.profile($("#profileForm #profileUrl").val(), $("#profileForm #name").val(), $("#profileForm #email").val(), $("#profileForm #timezoneProfile").val(), $("#profileForm #languageProfile").val()).then(function(response) {
+        return evt.profile($("#profileForm #profileUrl").val(), $("#profileForm #name").val(), $("#profileForm #email").val(), $("#profileForm #timezoneProfile").val(), $("#profileForm #languageProfile").val(), $("#profileForm #password").val()).then(function(response) {
           if (response.data.success === Lang.get('messages.successFalse')) {
             toastr.error(Lang.get("messages.errorsBD"), '');
           } else {
             toastr.success(Lang.get("messages.BDsuccess"), '');
+            window.location = "/profile";
           }
           $("#profileForm #profileButtonSubmit").css("display", "");
         }, function(response) {

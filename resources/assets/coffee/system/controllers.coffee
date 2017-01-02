@@ -35,7 +35,7 @@ app.controller 'home', ($scope, evt, $window) ->
             return
         , (response) ->
             #ERROR
-            toastr.error(Lang.get "messages.errorsBD", "ERROR");
+            toastr.error(Lang.get("messages.errorsBD"), "ERROR");
             $("#modal").modal "hide"
             return
 
@@ -49,18 +49,18 @@ app.controller 'home', ($scope, evt, $window) ->
             'rules': {
                 # compound rule
                 'timezone': {
-                    'valueNotEquals': Lang.get 'messages.selectTimezone'
+                    'valueNotEquals': Lang.get('messages.selectTimezone')
                 },
                 'language': {
-                    'valueNotEquals': Lang.get 'messages.selectLanguage'
+                    'valueNotEquals': Lang.get('messages.selectLanguage')
                 }
             }, 
             'messages': {
                 'timezone': {
-                    'valueNotEquals': Lang.get "messages.timezoneForm"
+                    'valueNotEquals': Lang.get("messages.timezoneForm")
                 },
                 'language': {
-                    'valueNotEquals': Lang.get "messages.languageForm"
+                    'valueNotEquals': Lang.get("messages.languageForm")
                 }
             },
             'errorPlacement': (error, element) -> 
@@ -85,7 +85,7 @@ app.controller 'home', ($scope, evt, $window) ->
                     return
                 , (response) ->
                     #ERROR
-                    toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                    toastr.error(Lang.get("messages.errorsBD"), "ERROR");
                     $("#modal").modal "hide"
                     return
             , 
@@ -138,7 +138,7 @@ app.controller 'profile', ($scope, evt, $window) ->
         return
     , (response) ->
         #ERROR
-        toastr.error(Lang.get "messages.errorsBD", "ERROR");
+        toastr.error(Lang.get("messages.errorsBD"), "ERROR");
         return
 
     #register form mask with 50 chars
@@ -193,13 +193,13 @@ app.controller 'profile', ($scope, evt, $window) ->
                     return
                 , (response) ->
                     #ERROR
-                    toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                    toastr.error(Lang.get("messages.errorsBD"), "ERROR");
                     return
                 return
             return
         , (response) ->
             #ERROR
-            toastr.error(Lang.get "messages.errorsBD", "ERROR");
+            toastr.error(Lang.get("messages.errorsBD"), "ERROR");
             return
         
 
@@ -248,12 +248,13 @@ app.controller 'profile', ($scope, evt, $window) ->
             console.log "Validate: Submit Handler"
             #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
             #form.submit();
-            evt.profile($("#profileForm #profileUrl").val(), $("#profileForm #name").val(), $("#profileForm #email").val(), $("#profileForm #timezoneProfile").val(), $("#profileForm #languageProfile").val()).then (response) ->
+            evt.profile($("#profileForm #profileUrl").val(), $("#profileForm #name").val(), $("#profileForm #email").val(), $("#profileForm #timezoneProfile").val(), $("#profileForm #languageProfile").val(), $("#profileForm #password").val()).then (response) ->
                 #success
                 if(response.data.success==Lang.get('messages.successFalse'))
                     toastr.error(Lang.get("messages.errorsBD"), '');
                 else
                     toastr.success(Lang.get("messages.BDsuccess"), '');
+                    window.location = "/profile";
 
                 $("#profileForm #profileButtonSubmit").css "display",""
                 return
