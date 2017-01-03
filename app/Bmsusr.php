@@ -39,7 +39,7 @@ class Bmsusr extends Model
 
     public function scopeActualizarImageProfile($query, $imageUrl){
         return $query->where('id', Auth::user()->id)
-                     ->update(['X_UFOTO' => 'storage '.$imageUrl.'']);
+                     ->update(['X_UFOTO' => 'storage'.$imageUrl.'']);
     }
 
     public function scopeAllUpdateUsrConfWithoutPass($query, $name, $email, $timezone, $language){

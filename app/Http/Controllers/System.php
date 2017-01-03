@@ -177,11 +177,16 @@ class System extends Controller
        $pswd = $params['pswd'];
 
        if(!$pswd){
+
           Log::info('[saveProfile][Post][All][WithoutPass]');
+
+          $bmsusrId = App\Bmsusr::getUser()->get()->all();
+          $bmsusrId = json_decode(json_encode($bmsusrId));
+
           $bmsusr = App\Bmsusr::allUpdateUsrConfWithoutPass($name, $email, $timezone, $language);
-          if($bmsusr==1){
+          if($bmsusr==1 && $bmsusrId[0]->email){
             $mail = new App\library\classes\sendMails($params);
-            $mail->verificationCompare();
+            $mail->verificationCompare($bmsusrId[0]->email);
 
             $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'Without Pass');
             return json_encode($responseJSON);
@@ -190,15 +195,23 @@ class System extends Controller
             return json_encode($responseJSON);
           }
        } else {
+
          Log::info('[saveProfile][Post][All]');
+
+         $bmsusrId = App\Bmsusr::getUser()->get()->all();
+         $bmsusrId = json_decode(json_encode($bmsusrId));
+
          $bmsusr = App\Bmsusr::allUpdateUsrConf($name, $email, $timezone, $language, $pswd);
-          if($bmsusr==1){
+         if($bmsusr==1 && $bmsusrId[0]->email){
+            $mail = new App\library\classes\sendMails($params);
+            $mail->verificationCompare($bmsusrId[0]->email);
+
             $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'With Pass');
             return json_encode($responseJSON);
-          } else {
+         } else {
             $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
             return json_encode($responseJSON);
-          }
+         }
        }
      } else {
        $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBD'));
