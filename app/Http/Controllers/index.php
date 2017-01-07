@@ -24,11 +24,23 @@ class Index extends Controller
       return redirect('home');
     }
      $title = Config::get('app.name');
-     $lang = Config::get('app.locale');
+
+     $lang = $this->getLanguage();
+     
+     //$lang = Config::get('app.locale');
      //$lang = App::getLocale();
      //$lang = Lang::getLocale();
 
      return view('index',["title" => $title, "lang" => $lang]);
+   }
+
+   public function getLanguage(){
+
+     $functions = new App\library\util\functions();
+     $lang = $functions->getUserLanguage();
+
+     return $lang;
+
    }
 
    /*Subscribe*/

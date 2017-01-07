@@ -20,6 +20,8 @@ return [
     'mailForm' => "Please enter a valid email address",
     'ResetPassword' => "Reset your Password",
     'ResetPasswordButton' => "Send Password Reset Link",
+    'RememberMe' => "Remember Me",
+    'Forgot' => "Forgot Your Password?",
     'keyPass' => 134343,
 
     //footer
@@ -43,6 +45,7 @@ return [
 
     //system titles
     'profileTitle' => "Profile",
+    'adminTitle' => "Administration",
 
     //system
     'welcome' => "Welcome ",
@@ -79,6 +82,8 @@ return [
     'nuevaContraseñaProfile' => "New Password",
     'confirmarProfile' => "Confirm Password",
     'saveChangesProfile' => "Save changes",
+
+    //System administrator
 
     //libraries
     'successTrue' => "TRUE",

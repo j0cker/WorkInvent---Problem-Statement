@@ -32,7 +32,7 @@
                         <li style="padding-top: 10px;">
                           <div class="col-md-2"></div>
                           <div class="input-group input-group-lg col-md-8">
-                                <input id="password" name="password" style="padding-left: 10px; border: 1px solid #ccc; height: 37px; font-size: 13px;" type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                                <input id="password" name="password" style="padding-left: 10px; border: 1px solid #ccc; height: 37px; font-size: 13px;" type="password" class="form-control" placeholder="@lang('messages.password')" aria-describedby="sizing-addon1">
                                 <span style="padding: 0px 9px 0px 8px; font-size: 12px; height: 30px; margin-top: 0px;" class="input-group-addon glyphicon glyphicon-lock" id="sizing-addon1"></span>
                           </div>
                           <div class="col-md-2"></div>
@@ -41,7 +41,7 @@
                           <div class="form-group">
                             <div class="checkbox">
                                 <label for="remember">
-                                <input id="remember" name="remember" type="checkbox"> Remember Me
+                                <input id="remember" name="remember" type="checkbox"> @lang('messages.RememberMe')
                                 </label>
                             </div>
                           </div>
@@ -53,7 +53,7 @@
                         </li>
                         <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div> 
                         <a id="sendLinkPassButton" class="btn btn-link">
-                            Forgot Your Password?
+                            @lang('messages.Forgot')
                         </a>
                         <!--Redes Sociales-->
                         <!--<div class="or-separator">or</div>
@@ -113,7 +113,7 @@
                           </li>
                           <div style="padding-top: 20px;" class="hidden-sm hidden-md hidden-lg"></div>  
                           <a id="sendLinkPassButton" class="btn btn-link">
-                              Forgot Your Password?
+                              @lang('messages.Forgot')
                           </a>
                         </form>           
                         <p style="text-align: center;" class="note">@lang('messages.permisosredes')</p>

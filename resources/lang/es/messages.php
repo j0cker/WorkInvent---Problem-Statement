@@ -19,7 +19,9 @@ return [
     'passwordFormMinLength' => "La contrasña debe contener al menos 5 caracteres",
     'mailForm' => "Por favor proporcione una dirección de correo válida",
     'ResetPassword' => "Recuperar Contraseña",
-    'ResetPasswordButton' => "Enviar link de reseteode password",
+    'ResetPasswordButton' => "Enviar link de reseteo de password",
+    'RememberMe' => "Recordar",
+    'Forgot' => "Olvidaste tu contraseña?",
     'keyPass' => 134343,
 
     //footer
@@ -43,6 +45,7 @@ return [
 
     //system titles
     'profileTitle' => "Perfil",
+    'adminTitle' => "Administración",
 
     //system
     'welcome' => "Bienvenido ",
@@ -79,6 +82,8 @@ return [
     'nuevaContraseñaProfile' => "Nueva contraseña",
     'confirmarProfile' => "Confirmar contraseña",
     'saveChangesProfile' => "Guardar cambios",
+
+    //System administrator
 
     //libraries
     'successTrue' => "TRUE",

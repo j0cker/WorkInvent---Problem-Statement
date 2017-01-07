@@ -20,13 +20,14 @@ class System extends Controller
       // The user is not logged in...
       return redirect('/');
     }
-     $title = Config::get('app.name');
-     $lang = Config::get('app.locale');
-     $lang = App::getLocale();
-     $lang = Lang::getLocale();
 
-     return view('layouts.system.home',["title" => $title, "lang" => $lang]);
-   }
+    $lang = $this->getLanguage();
+
+    $title = Config::get('app.name');
+
+    
+    return view('layouts.system.home',["title" => $title, "lang" => $lang]);
+  }
 
    public function timezone(){
 
@@ -37,6 +38,23 @@ class System extends Controller
      }
      $bmsuuh = App\Bmsuuh::all();
      return json_encode($bmsuuh);
+   }
+
+   public function getLanguage(){
+     $functions = new App\library\util\functions();
+     $lang = $functions->getUserLanguage();
+     $bmsidi = App\Bmsidi::lookUp()->get();
+
+     if($bmsidi){
+       $bmsidi=json_decode($bmsidi);
+       if($bmsidi[0]->N_VALUE){
+         Log::info('[System][ProfileIdiom] '.print_r($bmsidi[0]->N_VALUE,true));
+         App::setLocale($bmsidi[0]->N_VALUE);
+         $lang = $bmsidi[0]->N_VALUE;
+       }
+     }
+
+     return $lang;
    }
 
    public function language(){
@@ -84,10 +102,13 @@ class System extends Controller
        abort(403, 'Unauthorized action.');
      }
 
+     $lang = $this->getLanguage();
+
      $title = Lang::get('messages.profileTitle');
-     $lang = Config::get('app.locale');
-     $lang = App::getLocale();
-     $lang = Lang::getLocale();
+     
+     //$lang = Config::get('app.locale');
+     //$lang = App::getLocale();
+     //$lang = Lang::getLocale();
 
      return view('layouts.system.profile',["title" => $title, "lang" => $lang]);
    }
