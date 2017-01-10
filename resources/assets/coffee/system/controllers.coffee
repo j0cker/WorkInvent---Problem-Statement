@@ -82,6 +82,7 @@ app.controller 'home', ($scope, evt, $window) ->
                     else
                         toastr.success(Lang.get("messages.BDsuccess"), '');
                     $("#modal").modal "hide"
+                    window.location = "/";
                     return
                 , (response) ->
                     #ERROR

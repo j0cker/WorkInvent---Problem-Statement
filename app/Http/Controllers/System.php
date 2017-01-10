@@ -23,10 +23,62 @@ class System extends Controller
 
     $lang = $this->getLanguage();
 
+    $priv = $this->privileges(); //json_decode
+
     $title = Config::get('app.name');
 
-    
-    return view('layouts.system.home',["title" => $title, "lang" => $lang]);
+    return view('layouts.system.home',["title" => $title, "lang" => $lang, "priv" => $priv]);
+  }
+
+  public function admin(){
+
+    Log::info('[Admin]');
+
+    if (Auth::check()==false) {
+      // The user is not logged in...
+      return redirect('/');
+    }
+
+    $lang = $this->getLanguage();
+
+    $priv = $this->privileges(); //json_decode
+
+    if($priv[0]->N_PERNAME!=Lang::get("messages.admin")){
+        abort(403, 'Unauthorized action.');
+    }
+
+    $title = Lang::get('messages.adminTitle');
+
+    $data["name"] = "Fosas";
+    $data["email"] = "jockerclown690@gmail.com";
+    $data["password"] = "password";
+    $data["verification_code"] = "asdsa";
+
+    $mail = new App\library\classes\sendMails($data);
+    $mail->queueSend();
+
+    return view('layouts.system.admin',["title" => $title, "lang" => $lang, "priv" => $priv]);
+
+  }
+
+  public function privileges(){
+
+    Log::info('[Privileges]');
+
+    $bmsuper = App\Bmsuper::lookFor(Auth::user()->id)->get();
+
+    $bmsuper = json_decode($bmsuper,true);
+
+    if($bmsuper){
+
+        Log::info('[Privileges] Priv: '.$bmsuper[0]["I_PUDID"]);
+        $bmspud = App\Bmspud::lookFor($bmsuper[0]["I_PUDID"])->get();
+        $bmspud = json_decode($bmspud);
+        return $bmspud;
+    }
+
+    return null;
+
   }
 
    public function timezone(){
@@ -47,7 +99,7 @@ class System extends Controller
 
      if($bmsidi){
        $bmsidi=json_decode($bmsidi);
-       if($bmsidi[0]->N_VALUE){
+       if($bmsidi){
          Log::info('[System][ProfileIdiom] '.print_r($bmsidi[0]->N_VALUE,true));
          App::setLocale($bmsidi[0]->N_VALUE);
          $lang = $bmsidi[0]->N_VALUE;
@@ -104,13 +156,15 @@ class System extends Controller
 
      $lang = $this->getLanguage();
 
+     $priv = $this->privileges(); //json_decode
+
      $title = Lang::get('messages.profileTitle');
      
      //$lang = Config::get('app.locale');
      //$lang = App::getLocale();
      //$lang = Lang::getLocale();
 
-     return view('layouts.system.profile',["title" => $title, "lang" => $lang]);
+     return view('layouts.system.profile',["title" => $title, "lang" => $lang, "priv" => $priv]);
    }
 
    public function subirImagen(Request $request){
@@ -205,7 +259,7 @@ class System extends Controller
           $bmsusrId = json_decode(json_encode($bmsusrId));
 
           $bmsusr = App\Bmsusr::allUpdateUsrConfWithoutPass($name, $email, $timezone, $language);
-          if($bmsusr==1 && $bmsusrId[0]->email){
+          if($bmsusr==1 && $bmsusrId){
             $mail = new App\library\classes\sendMails($params);
             $mail->verificationCompare($bmsusrId[0]->email);
 
@@ -223,7 +277,7 @@ class System extends Controller
          $bmsusrId = json_decode(json_encode($bmsusrId));
 
          $bmsusr = App\Bmsusr::allUpdateUsrConf($name, $email, $timezone, $language, $pswd);
-         if($bmsusr==1 && $bmsusrId[0]->email){
+         if($bmsusr==1 && $bmsusrId){
             $mail = new App\library\classes\sendMails($params);
             $mail->verificationCompare($bmsusrId[0]->email);
 

@@ -69,6 +69,7 @@
               toastr.success(Lang.get("messages.BDsuccess"), '');
             }
             $("#modal").modal("hide");
+            window.location = "/";
           }, function(response) {
             toastr.error(Lang.get("messages.errorsBD"), "ERROR");
             $("#modal").modal("hide");

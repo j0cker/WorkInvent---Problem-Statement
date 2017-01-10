@@ -44,6 +44,17 @@ class sendMails
         });
     }
 
+    public function queueSend(){
+
+        $data = $this->data;
+
+        Mail::queue('emails.welcome', $data, function ($message) use ($data) {
+            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
+            $message->subject(Lang::get('messages.emailWelcome'));
+            $message->to($data['email']);
+        });
+    }
+
     public function verificationCompare($email){
 
         Log::info("[Mail][verificationCompare]");

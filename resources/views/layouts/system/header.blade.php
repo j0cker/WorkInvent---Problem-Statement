@@ -58,8 +58,23 @@
         <!--CSRF Protection, Timezone, name global Variables-->
         <script>
         $( document ).ready(function() {
-            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "id":"{{Auth::user()->id}}", "language":"{{Auth::user()->I_IDIDI}}", }
-        });    
+            var privPer = new Array();
+            var privName = "";
+            @foreach ($priv as $item)
+                    //{{ $item->I_PUDID }}
+                    //{{ $item->N_PERNAME }}
+                    //{{ $item->N_PERPER }}
+                    privName = "{{ $item->N_PERNAME }}"
+                    @if($item->N_PERPER)
+                      privPer.push("{{ $item->N_PERPER }}")
+                    @endif
+            @endforeach
+
+            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "id":"{{Auth::user()->id}}", "language":"{{Auth::user()->I_IDIDI}}", priv:[{"privName":privName, "privPer":privPer}]}
+
+            //console.log(window.Laravel.priv[0].privName);
+
+        });
         </script>
         
         <!--Functions Library-->

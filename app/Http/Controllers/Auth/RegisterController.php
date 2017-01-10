@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Mail;
 use Config;
 use Lang;
+use App;
+use Log;
 
 class RegisterController extends Controller
 {
@@ -71,6 +73,16 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'verification_code' => str_random(20)
         ]);
+
+        $user_transform = json_decode($user,true);
+
+        Log::info('[RegisterController][create] User_ID: '.$user_transform["id"]);
+
+        if($user_transform["id"]){
+
+            //add privileges
+            $bmsuper = App\Bmsuper::newUser($user_transform["id"],2,$user_transform["id"]);
+        }
 
         //send verification mail to user
         //---------------------------------------------------------

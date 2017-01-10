@@ -44,8 +44,10 @@ return [
     'emailWelcome' => "Welcome to ".Config::get('app.name')."",
 
     //system titles
+    'homeTitle' => "Home",
     'profileTitle' => "Profile",
-    'adminTitle' => "Administration",
+    'adminTitle' => "Administration Panel",
+    'helpTitle' => "¿Need Help?",
 
     //system
     'welcome' => "Welcome ",
@@ -84,10 +86,16 @@ return [
     'saveChangesProfile' => "Save changes",
 
     //System administrator
+    'headTitleAdmin' => 'As a admin user you can edit the general configuration of the platform',
+    'homeTab' => 'Home',
+    'mailsTab' => 'Mails',
+    'rolesTab' => 'Roles',
+    'homeDescription' => 'Welcome to the administration panel, here you are going to see the relevant information about the platform.',
 
     //libraries
     'successTrue' => "TRUE",
     'successFalse' => "FALSE",
+    'admin' => "ADMIN",
 
     //BD Messages and Errors
     'BDsuccess' => "The information was updated successfully",

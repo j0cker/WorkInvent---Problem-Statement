@@ -124,16 +124,18 @@
                   </a>
                 </div>
                 <div class="col-md-4">
-                  <a href="/admin">
-                    <div class="card" style="background-color: #1F8984;">
-                    
-                        <div class="card-content" style="height: 140px; padding-top: 12px;">
-                          <span style="color: white; font-size: 50px;" class="fa fa-cogs"></span>
-                          <p style="color: white; font-size: 20px; padding-top: 10px;">@Lang('messages.adminTitle')</p>
-                        </div>
-                        
-                    </div>
-                  </a>
+                  @if($priv[0]->N_PERNAME==Lang::get('messages.admin'))
+                    <a href="/admin">
+                      <div class="card" style="background-color: #1F8984;">
+                      
+                          <div class="card-content" style="height: 140px; padding-top: 12px;">
+                            <span style="color: white; font-size: 50px;" class="fa fa-cogs"></span>
+                            <p style="color: white; font-size: 20px; padding-top: 10px;">@Lang('messages.adminTitle')</p>
+                          </div>
+                          
+                      </div>
+                    </a>
+                  @endif
                 </div>
                 <div class="col-md-2">
                 </div>
