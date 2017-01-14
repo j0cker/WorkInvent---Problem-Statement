@@ -80,6 +80,8 @@ class RegisterController extends Controller
 
         if($user_transform["id"]){
 
+            $data['user_id'] = $user_transform["id"];
+
             //add privileges
             $bmsuper = App\Bmsuper::newUser($user_transform["id"],2,$user_transform["id"]);
         }
@@ -88,7 +90,7 @@ class RegisterController extends Controller
         //---------------------------------------------------------
         $data['verification_code']  = $user->verification_code;
 
-        $mail = new \App\library\classes\sendMails($data);
+        $mail = new \App\library\classes\queueMails($data);
         $mail->welcome();
 
         return $user;

@@ -44,3 +44,5 @@ Route::post('/actualizarImageProfile', 'System@actualizarImageProfile');
 Route::post('/profile', 'System@saveProfile');
 
 Route::get('/admin', 'System@admin');
+
+Route::get('/mailsLauncher', 'MailsLauncher@mailsLauncher');

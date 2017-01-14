@@ -49,14 +49,6 @@ class System extends Controller
 
     $title = Lang::get('messages.adminTitle');
 
-    $data["name"] = "Fosas";
-    $data["email"] = "jockerclown690@gmail.com";
-    $data["password"] = "password";
-    $data["verification_code"] = "asdsa";
-
-    $mail = new App\library\classes\sendMails($data);
-    $mail->queueSend();
-
     return view('layouts.system.admin',["title" => $title, "lang" => $lang, "priv" => $priv]);
 
   }

@@ -92,10 +92,12 @@ return [
     'rolesTab' => 'Roles',
     'homeDescription' => 'Welcome to the administration panel, here you are going to see the relevant information about the platform.',
 
-    //libraries
+    //libraries general configuration
     'successTrue' => "TRUE",
     'successFalse' => "FALSE",
     'admin' => "ADMIN",
+    'prioridadWelcome' => '2',
+    'prioridadReset' => '1',
 
     //BD Messages and Errors
     'BDsuccess' => "The information was updated successfully",

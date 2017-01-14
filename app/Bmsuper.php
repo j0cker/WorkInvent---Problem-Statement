@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bmsuper extends Model
 {   protected $table = 'bmsuper';
-    public $attributes;
+    //public $attributes; -> no la utilices hecha a perder los timestamps
 
     public $timestamps = true;
     const CREATED_AT = 'created_at'; 

@@ -96,6 +96,7 @@ return [
     'successTrue' => "TRUE",
     'successFalse' => "FALSE",
     'admin' => "ADMIN",
+    'prioridadWelcome' => '1',
 
     //BD Messages and Errors
     'BDsuccess' => "La información se actualizó correctamente",

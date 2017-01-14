@@ -8,7 +8,7 @@ use App;
 use Config;
 use Lang;
 
-class sendMails
+class queueMails
 {   private $data;
     
     public function __construct($data = []){
@@ -18,32 +18,21 @@ class sendMails
 
     public function welcome(){
 
-        Log::info("[Mail][welcome][send]");
+        Log::info("[Mail][welcome][queue]");
 
         $data = $this->data;
 
-        Mail::send('emails.welcome', $data, function($message) use ($data)
-        {
-            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
-            $message->subject(Lang::get('messages.emailWelcome'));
-            $message->to($data['email']);
-        });
+        $bmsmail = App\Bmsmail::addMailQueue($data['user_id'], 'emails.welcome', $data['email'], (int)Lang::get('messages.prioridadWelcome'), $data['name'], $data['password'], $data['verification_code']);
     }
 
     public function reset(){
 
-        Log::info("[Mail][reset][send]");
+        Log::info("[Mail][reset][queue]");
 
         $data = $this->data;
 
-        Mail::send('emails.reset', $data, function($message) use ($data)
-        {
-            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
-            $message->subject(Lang::get('messages.emailReset'));
-            $message->to($data['email']);
-        });
+        $bmsmail = App\Bmsmail::addMailQueue($data['user_id'], 'emails.reset', $data['email'], (int)Lang::get('messages.prioridadReset'), '', $data['password'], '');
     }
-
 
     public function verificationCompare($email){
 
