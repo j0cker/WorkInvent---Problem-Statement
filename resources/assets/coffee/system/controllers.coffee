@@ -277,3 +277,38 @@ app.controller 'profile', ($scope, evt, $window) ->
         return
 
     return
+
+app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
+
+    console.log "[adminCtrl]"
+
+    $('.tooltipped').tooltip({delay: 50});
+
+    evt.loading();
+
+    url = '' + $window.window.Laravel.url + '/adminTotals';
+    evt.adminTotals(url).then (response) ->
+        #success
+        if(response.data.success==Lang.get('messages.successFalse'))
+            toastr.error(Lang.get("messages.errorsBD"), '');
+        else 
+            $("#totalUsers").html(response.data.totalUsers);
+            $("#totalMailsVerified").html(response.data.totalMailsVerified);
+            $("#totalIdioms").html(response.data.totalIdioms);
+            $("#totalTimeZone").html(response.data.totalTimeZone);
+            $("#totalRoles").html(response.data.totalRoles);
+            $("#totalPlans").html(response.data.totalPlans);
+            $("#totalQueueMails").html(response.data.totalQueueMails);
+            $("#totalSubscribers").html(response.data.totalSubscribers);
+            #$("#").html(response.data.);
+            #$("#").html(response.data.);
+            #$("#").html(response.data.);
+            return
+
+        return
+    , (response) ->
+        #ERROR
+        toastr.error(Lang.get "messages.errorsBD", "ERROR");
+        $("#profileForm #profileButtonSubmit").css "display",""
+        return
+    return

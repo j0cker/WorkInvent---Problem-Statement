@@ -31,7 +31,6 @@ $style = [
     'header-1' => 'margin-top: 0; color: #2F3133; font-size: 19px; font-weight: bold; text-align: left;',
     'paragraph' => 'margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;',
     'paragraph-sub' => 'margin-top: 0; color: #74787E; font-size: 12px; line-height: 1.5em;',
-    'paragraph-sub-footer' => 'margin-top: 0; color: #FFFFFF; font-size: 12px; line-height: 1.5em;',
     'paragraph-center' => 'text-align: center;',
 
     /* Buttons ------------------------------ */
@@ -48,7 +47,6 @@ $style = [
 
 <?php $fontFamily = 'font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif;'; ?>
 
-
     @section('content')
 
                    <!-- Email Body -->
@@ -59,17 +57,17 @@ $style = [
                                     <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
                                         <!-- Greeting -->
                                         <h1 style="{{ $style['header-1'] }}">
-                                            Hey {{$name}}, This mail has been sent because you changed your email to {{$email}}.
+                                            Hey {{$name}}.
                                         </h1>
 
                                         <p style="{{ $style['paragraph'] }}">
-                                                    
                                             
-                                            <font color="red">In order to get your account ready, please click the button below to confirm your email</font><br /><br />
+                                            {{$body}}
+
                                         </p>
 
 
-                                        <!-- Action Button-->
+                                        <!-- Action Button
                                         <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td align="center">
@@ -82,9 +80,9 @@ $style = [
                                                     </a>
                                                 </td>
                                             </tr>
-                                        </table>
+                                        </table>-->
 
-                                        <!-- Button Paragraph -->
+                                        <!-- Button Paragraph
                                         <table style="{{ $style['body_sub'] }}">
                                             <tr>
                                                 <td style="{{ $fontFamily }}">
@@ -99,5 +97,5 @@ $style = [
                                                     </p>
                                                 </td>
                                             </tr>
-                                        </table>
+                                        </table>-->
     @stop

@@ -30,6 +30,39 @@ class System extends Controller
     return view('layouts.system.home',["title" => $title, "lang" => $lang, "priv" => $priv]);
   }
 
+  public function adminTotals(){
+
+    Log::info('[AdminTotals]');
+
+    if (Auth::check()==false) {
+      // The user is not logged in...
+      return redirect('/');
+    }
+
+    $collection = collect([]);
+
+    $bmsusr = App\Bmsusr::count();
+    $bmsuuh = App\Bmsuuh::count();
+    $bmsmail = App\Bmsmail::count();
+    $bmsusrVerified = App\Bmsusr::getVerifiedUsers()->get();
+    $bmsmidi = App\Bmsidi::count();
+    $bmspud = App\Bmspud::countDistinct()->get();
+    $bmstipo = App\Bmstipo::count();
+    $bmsust = App\Bmsust::count();
+
+    $collection->put('totalUsers', $bmsusr);
+    $collection->put('totalTimeZone', $bmsuuh);
+    $collection->put('totalQueueMails', $bmsmail);
+    $collection->put('totalMailsVerified', count($bmsusrVerified));
+    $collection->put('totalIdioms', $bmsmidi);
+    $collection->put('totalRoles', count($bmspud));
+    $collection->put('totalPlans', $bmstipo);
+    $collection->put('totalSubscribers', $bmsust);
+
+    return json_encode($collection);
+
+  }
+
   public function admin(){
 
     Log::info('[Admin]');

@@ -221,4 +221,32 @@
     });
   });
 
+  app.controller('admin', function($rootScope, $scope, evt, $filter, $window) {
+    var url;
+    console.log("[adminCtrl]");
+    $('.tooltipped').tooltip({
+      delay: 50
+    });
+    evt.loading();
+    url = '' + $window.window.Laravel.url + '/adminTotals';
+    evt.adminTotals(url).then(function(response) {
+      if (response.data.success === Lang.get('messages.successFalse')) {
+        toastr.error(Lang.get("messages.errorsBD"), '');
+      } else {
+        $("#totalUsers").html(response.data.totalUsers);
+        $("#totalMailsVerified").html(response.data.totalMailsVerified);
+        $("#totalIdioms").html(response.data.totalIdioms);
+        $("#totalTimeZone").html(response.data.totalTimeZone);
+        $("#totalRoles").html(response.data.totalRoles);
+        $("#totalPlans").html(response.data.totalPlans);
+        $("#totalQueueMails").html(response.data.totalQueueMails);
+        $("#totalSubscribers").html(response.data.totalSubscribers);
+        return;
+      }
+    }, function(response) {
+      toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+      $("#profileForm #profileButtonSubmit").css("display", "");
+    });
+  });
+
 }).call(this);

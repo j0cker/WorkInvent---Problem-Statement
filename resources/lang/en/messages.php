@@ -49,6 +49,14 @@ return [
     'emailResetText3' => "If you did not request a password reset, no further action is required.",
     'emailResetText4' => "If you’re having trouble clicking the button, copy and paste the URL below into your web browser:",
 
+    //email Administration
+    'emailAdminTitle' => "Custom Email's",
+    'emailAdminTarget' => "Scope target",
+    'emailAdminAllUsers' => "All Users",
+    'emailAdminSubscribers' => "All Subscribers",
+    'emailAdminSubject' => "Subject",
+    'emailAdminBody' => "Body",
+
     //system titles
     'homeTitle' => "Home",
     'profileTitle' => "Profile",
@@ -96,6 +104,7 @@ return [
     'homeTab' => 'Home',
     'mailsTab' => 'Mails',
     'rolesTab' => 'Roles',
+    'plansTab' => 'Plans',
     'homeDescription' => 'Welcome to the administration panel, here you are going to see the relevant information about the platform.',
 
     //libraries general configuration

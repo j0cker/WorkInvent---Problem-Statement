@@ -30,6 +30,7 @@ $style = [
     'paragraph' => 'margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;',
     'paragraph-sub' => 'margin-top: 0; color: #74787E; font-size: 12px; line-height: 1.5em;',
     'paragraph-center' => 'text-align: center;',
+    'paragraph-sub-footer' => 'margin-top: 0; color: #FFFFFF; font-size: 12px; line-height: 1.5em;',
 
     /* Buttons ------------------------------ */
 

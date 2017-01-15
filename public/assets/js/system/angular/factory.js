@@ -62,6 +62,11 @@
         }, {
           cache: false
         });
+      },
+      adminTotals: function(url) {
+        return $http.get(url, {
+          cache: false
+        });
       }
     };
   });

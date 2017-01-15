@@ -12,4 +12,8 @@ class Bmspud extends Model
         return $query->where('I_PUDID', $privilege);
     }
 
+    public function scopeCountDistinct($query){
+        return $query->distinct()->select('N_PERNAME');
+    }
+
 }

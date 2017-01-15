@@ -55,7 +55,7 @@
         {!! Html::script('assets/js/system/jquery.validate.min.js') !!}
         {!! Html::script('assets/js/system/toastr.min.js') !!}
 
-        <!--CSRF Protection, Timezone, name global Variables-->
+        <!--CSRF Protection, Url Default, Timezone, name global Variables-->
         <script>
         $( document ).ready(function() {
             var privPer = new Array();
@@ -70,7 +70,7 @@
                     @endif
             @endforeach
 
-            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "id":"{{Auth::user()->id}}", "language":"{{Auth::user()->I_IDIDI}}", priv:[{"privName":privName, "privPer":privPer}]}
+            window.Laravel = {"csrfToken":"{{ csrf_token() }}", "url":"{{ url('/') }}", "timezone":"{{Auth::user()->I_UHID}}", "name":"{{Auth::user()->name}}", "id":"{{Auth::user()->id}}", "language":"{{Auth::user()->I_IDIDI}}", priv:[{"privName":privName, "privPer":privPer}]}
 
             //console.log(window.Laravel.priv[0].privName);
 

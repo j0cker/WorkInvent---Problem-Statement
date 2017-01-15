@@ -54,4 +54,8 @@ class Bmsusr extends Model
                      ->update(['I_UHID' => $timezone, 'I_IDIDI' => $language, 'name' => $name, 'email' => $email, 'password' => bcrypt($pass)]);
     }
 
+    public function scopeGetVerifiedUsers($query)
+    {   return $query->where('verified', '1');
+    }
+
 }

@@ -13,11 +13,11 @@
 
                     <!-- Footer -->
                     <tr>
-                        <td>
+                        <td style="background-color: #343434;">
                             <table style="{{ $style['email-footer'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
-                                        <p style="{{ $style['paragraph-sub'] }}">
+                                        <p style="{{ $style['paragraph-sub-footer'] }}">
                                             @Lang('messages.Copyright')
                                         </p>
                                     </td>

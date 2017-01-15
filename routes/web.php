@@ -45,4 +45,6 @@ Route::post('/profile', 'System@saveProfile');
 
 Route::get('/admin', 'System@admin');
 
+Route::get('/adminTotals', 'System@adminTotals');
+
 Route::get('/mailsLauncher', 'MailsLauncher@mailsLauncher');

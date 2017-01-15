@@ -17,7 +17,7 @@
   @section('viewport','width=device-width, initial-scale=1')
   
   {{-- angular Controller Name --}}
-  @section('angularController','profile')
+  @section('angularController','admin')
 
   {{-- Body --}}
   
@@ -81,9 +81,8 @@
             
            <div class="col-md-8">
              <ul class="tabs">
-               <li class="tab col-md-4"><a class="active" href="#tab1">@Lang('messages.homeTab')</a></li>
-               <li class="tab col-md-4"><a href="#tab2">@Lang('messages.mailsTab')</a></li>
-               <li class="tab col-md-4"><a href="#tab3">@Lang('messages.rolesTab')</a></li>
+               <li class="tab col-md-6"><a class="active" href="#tab1">@Lang('messages.homeTab')</a></li>
+               <li class="tab col-md-6"><a href="#tab2">@Lang('messages.mailsTab')</a></li>
              </ul>
            </div>
          
@@ -111,7 +110,7 @@
                             <div class="card" style="background-color: #76BC12;">
                             
                                 <div class="card-content" style="height: 140px; padding-top: 12px;">
-                                  <span style="color: white; font-size: 50px;">-</span>
+                                  <span id="totalUsers" style="color: white; font-size: 50px;">-</span>
                                   <p style="color: white; font-size: 20px; padding-top: 10px;">Total Users</p>
                                 </div>
                                 
@@ -124,7 +123,7 @@
                             <div class="card" style="background-color: #274565;">
                                 
                                 <div class="card-content" style="height: 140px; padding-top: 12px;">
-                                  <span style="color: white; font-size: 50px;">-</span>
+                                  <span id="totalMailsVerified" style="color: white; font-size: 50px;">-</span>
                                   <p style="color: white; font-size: 20px; padding-top: 10px;">Total mails verified</p>
                                 </div>
                                 
@@ -137,7 +136,7 @@
                             <div class="card" style="background-color: #2EBEB5;">
                             
                                 <div class="card-content" style="height: 140px; padding-top: 12px;">
-                                  <span style="color: white; font-size: 50px;">-</span>
+                                  <span id="totalIdioms" style="color: white; font-size: 50px;">-</span>
                                   <p style="color: white; font-size: 20px; padding-top: 10px;">Total Idioms</p>
                                 </div>
                                 
@@ -156,7 +155,7 @@
                             <div class="card" style="background-color: #F68921;">
                             
                                 <div class="card-content" style="height: 140px; padding-top: 12px;">
-                                  <span style="color: white; font-size: 50px;">-</span>
+                                  <span id="totalUsersPaying" style="color: white; font-size: 50px;">-</span>
                                   <p style="color: white; font-size: 20px; padding-top: 10px;">Total users paying</p>
                                 </div>
                                 
@@ -169,7 +168,7 @@
                             <div class="card" style="background-color: #4C7AD8;">
                                 
                                 <div class="card-content" style="height: 140px; padding-top: 12px;">
-                                  <span style="color: white; font-size: 50px;">-</span>
+                                  <span id="totalTimeZone" style="color: white; font-size: 50px;">-</span>
                                   <p style="color: white; font-size: 20px; padding-top: 10px;">Total Time Zone's</p>
                                 </div>
                                 
@@ -182,8 +181,53 @@
                             <div class="card" style="background-color: #1F8984;">
                             
                                 <div class="card-content" style="height: 140px; padding-top: 12px;">
-                                  <span style="color: white; font-size: 50px;">-</span>
+                                  <span id="totalRoles" style="color: white; font-size: 50px;">-</span>
                                   <p style="color: white; font-size: 20px; padding-top: 10px;">Total Roles</p>
+                                </div>
+                                
+                            </div>
+                          </a>
+                        </div>
+
+                      </div><!--col-md-8-->
+                    </div><!--row-->
+
+                    <div style="margin-top: 10px;" class="row">
+                      <div class="col-md-12">
+
+                        <div class="col-md-4">
+                          <a href="escribir.php">
+                            <div class="card" style="background-color: #F44336;">
+                            
+                                <div class="card-content" style="height: 140px; padding-top: 12px;">
+                                  <span id="totalPlans" style="color: white; font-size: 50px;">-</span>
+                                  <p style="color: white; font-size: 20px; padding-top: 10px;">Total Plans</p>
+                                </div>
+                                
+                            </div>
+                          </a>
+                        </div>
+                        
+                        <div class="col-md-4">
+                          <a href="calendario.php">
+                            <div class="card" style="background-color: #9C27B0;">
+                                
+                                <div class="card-content" style="height: 140px; padding-top: 12px;">
+                                  <span id="totalQueueMails" style="color: white; font-size: 50px;">-</span>
+                                  <p style="color: white; font-size: 20px; padding-top: 10px;">Total Queue Mails</p>
+                                </div>
+                                
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="col-md-4">
+                          <a href="responder.php">
+                            <div class="card" style="background-color: #673AB7;">
+                            
+                                <div class="card-content" style="height: 140px; padding-top: 12px;">
+                                  <span id="totalSubscribers" style="color: white; font-size: 50px;">-</span>
+                                  <p style="color: white; font-size: 20px; padding-top: 10px;">Total Subscribers</p>
                                 </div>
                                 
                             </div>
@@ -198,10 +242,67 @@
                  </div> <!-- FIN TAB 1 -->
 
                  <div id="tab2" class="col s12"> 
+                    <div class="text-center col-md-12">                        
+                        <ul style="margin: 0;" class="list-unstyled social-login">
+                          <form method="POST" id="customMailForm" name="customMailForm" action="{{ url('/customMail') }}">
+                            {{ csrf_field() }}
+                            <li style="text-align: center;">
+                             
+                              <div class="col-xs-12 col-sm-12 col-md-12" style="text-align: center;">
+                                <p style="margin-bottom: 20px; text-align: center; font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminTitle')</p>
+                              </div>
+                             
+                            </li>
+                            <li style="margin-top: 0px;">
+                             
+                              <div class="input-group col-xs-12 col-sm-12 col-md-12">
+
+                                <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminTarget'): </p>
+                                <select style="border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 36px; width: 100%; border-radius: 4px; margin-bottom: 0px; margin-top: 10px; display: block; !important" name="target" value="" id="target">
+                                  <option name="@Lang('messages.emailAdminAllUsers')" value="@Lang('messages.emailAdminAllUsers')">@Lang('messages.emailAdminAllUsers')</option>
+                                  <option name="@Lang('messages.emailAdminSubscribers')" value="@Lang('messages.emailAdminSubscribers')">@Lang('messages.emailAdminSubscribers')</option>
+                                </select>
+
+                              </div>
+                             
+                            </li>
+                            <li style="margin-top: 10px;">
+                             
+                              <div class="input-group col-xs-12 col-sm-12 col-md-12">
+
+                                <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminSubject'): </p>
+                                <input style="margin-top: 10px; cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="text" class="form-control" value="" placeholder="@Lang('messages.emailAdminSubject')" aria-describedby="sizing-addon1" id="subject" name="subject">
+
+                              </div>
+                             
+                            </li>
+                            <li style="margin-top: 10px;">
+                             
+                              <div class="input-group col-xs-12 col-sm-12 col-md-12">
+
+                                <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminBody'): </p>
+                                <textarea style="margin-top: 10px; cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 340px; width: 100%; border-radius: 4px; margin-bottom:0;" type="text" class="form-control" value="" placeholder="@Lang('messages.emailAdminBody')" aria-describedby="sizing-addon1" id="body" name="body"></textarea>
+
+                              </div>
+                             
+                            </li>
+                            <li style="margin-bottom: 70px; margin-top: 20px; text-align: right;">
+                             
+                              <div class="col-md-12">
+                                <button style="background-color: #26A8FF;" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                  <span class="fa fa-paper-plane"></span>
+                                </button>
+                              </div>
+                             
+                            </li>
+                          </form>
+                        </ul>
+                    </div>
                  </div> <!-- FIN tab2 -->
 
+                 <!--tab3
                  <div id="tab3" class="col s12">
-                 </div><!--fin tab 3-->
+                 </div>--><!--fin tab 3-->
 
                </div> <!-- final card-content -->
              </div> <!-- final card -->
