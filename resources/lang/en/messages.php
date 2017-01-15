@@ -43,6 +43,12 @@ return [
     'emailReset' => "Password reset Successfully",
     'emailWelcome' => "Welcome to ".Config::get('app.name')."",
 
+    //email reset password
+    'emailResetText1' => "You are receiving this email because we received a password reset request for your account.",
+    'emailResetText2' => "Reset Password",
+    'emailResetText3' => "If you did not request a password reset, no further action is required.",
+    'emailResetText4' => "If you’re having trouble clicking the button, copy and paste the URL below into your web browser:",
+
     //system titles
     'homeTitle' => "Home",
     'profileTitle' => "Profile",
