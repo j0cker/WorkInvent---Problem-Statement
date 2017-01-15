@@ -25,7 +25,7 @@ return [
     'keyPass' => 134343,
 
     //footer
-    'Copyright' => "Copyright © 2016 BFC. All Rights Reserved.",
+    'Copyright' => "Copyright &copy; ".date('Y')." BFC. All Rights Reserved.",
 
     //Subscribe
     'Subscribe' => "Suscríbete",
@@ -96,7 +96,10 @@ return [
     'successTrue' => "TRUE",
     'successFalse' => "FALSE",
     'admin' => "ADMIN",
-    'prioridadWelcome' => '1',
+    'prioridadWelcome' => '3',
+    'prioridadReset' => '1',
+    'prioridadVerificationCompare' => '3',
+    'prioridadPswd' => '3',
 
     //BD Messages and Errors
     'BDsuccess' => "La información se actualizó correctamente",

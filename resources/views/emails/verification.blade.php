@@ -2,7 +2,7 @@
 
     @section('content')
         
-        Hey {{$name}}, This mail has been sent because you changed your email.<br><br />
+        Hey {{$name}}, This mail has been sent because you changed your email to {{$email}}.<br><br />
 
         <font color="red">In order to get verified your account email:</font><br /><br />
 

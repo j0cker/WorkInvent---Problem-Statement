@@ -51,8 +51,32 @@ class MailsLauncher extends Controller
           $mail_send = new \App\library\classes\sendMails($data);
           $mail_send->reset();
           App\Bmsmail::where('I_MAIL', $mail->I_MAIL)->delete();
+          $c_mails++;
+        } else if($mail->N_PLANTILLA=="emails.verification"){
+
+          Log::info('[mailsLauncher] Sending Verification');
+
+          $data['email'] = $mail->N_SEND_TO;
+          $data['name'] = $mail->N_VAR1;
+          $data['mail_previous'] = $mail->N_VAR2;
+
+          $mail_send = new \App\library\classes\sendMails($data);
+          $mail_send->verificationCompare();
+          App\Bmsmail::where('I_MAIL', $mail->I_MAIL)->delete();
+          $c_mails++;
+        } else if($mail->N_PLANTILLA=="emails.password"){
+
+          Log::info('[mailsLauncher] Sending Password');
+
+          $data['email'] = $mail->N_SEND_TO;
+          $data['pswd'] = $mail->N_VAR2;
+
+          $mail_send = new \App\library\classes\sendMails($data);
+          $mail_send->newPassword();
+          App\Bmsmail::where('I_MAIL', $mail->I_MAIL)->delete();
+          $c_mails++;
         }
-      }
+      }//fin foreach
       App\Bmsmail::getQuery()->delete();
       Log::info("[mailsLauncher] Total enviados: ".$c_mails."");
       echo "<br />";

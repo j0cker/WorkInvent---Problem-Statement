@@ -34,38 +34,23 @@ class queueMails
         $bmsmail = App\Bmsmail::addMailQueue($data['user_id'], 'emails.reset', $data['email'], (int)Lang::get('messages.prioridadReset'), '', $data['password'], '');
     }
 
-    public function verificationCompare($email){
+    public function verificationCompare(){
 
         Log::info("[Mail][verificationCompare]");
 
         $data = $this->data;
+    
+        $bmsmail = App\Bmsmail::addMailQueue($data['user_id'], 'emails.verification', $data['email'], (int)Lang::get('messages.prioridadVerificationCompare'), $data['name'], $data['mail_previous'], '');
 
-        $verification_code = str_random(20);
+    }
 
-        $bmsusrVer = App\Bmsusr::updateVerify($verification_code);
+    public function newPassword(){
 
-        Log::info('[saveProfile][Post][All][WithoutPass] emailBD: '.$email.' emailPost: '.$data["email"].'');
+        Log::info("[Mail][newPassword]");
 
-        if($email!=$data["email"]){
-
-            if($bmsusrVer==1){
-                $data["verification_code"] = $verification_code;
-
-                Log::info("[Mail][verificationCompare][send]");
-
-                Mail::send('emails.verification', $data, function($message) use ($data)
-                {
-                    $message->from(Config::get('mail.from.address'), Config::get('app.name'));
-                    $message->subject(Lang::get('messages.emailVerification'));
-                    $message->to($data['email']);
-                });
-                
-            } else {
-                Log::info("[Mail][verificationCompare][no send]");
-            }
-        } else {
-            Log::info("[Mail][verificationCompare][no send]");
-        }
+        $data = $this->data;
+    
+        $bmsmail = App\Bmsmail::addMailQueue($data['user_id'], 'emails.password', $data['email'], (int)Lang::get('messages.prioridadPswd'), '', $data['pswd'], '');
 
     }
   

@@ -252,8 +252,12 @@ class System extends Controller
 
           $bmsusr = App\Bmsusr::allUpdateUsrConfWithoutPass($name, $email, $timezone, $language);
           if($bmsusr==1 && $bmsusrId){
-            $mail = new App\library\classes\sendMails($params);
-            $mail->verificationCompare($bmsusrId[0]->email);
+
+            $params['mail_previous'] = $bmsusrId[0]->email;
+            $params['user_id'] = Auth::id();
+
+            $mail = new \App\library\classes\queueMails($params);
+            $mail->verificationCompare();
 
             $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'Without Pass');
             return json_encode($responseJSON);
@@ -270,8 +274,15 @@ class System extends Controller
 
          $bmsusr = App\Bmsusr::allUpdateUsrConf($name, $email, $timezone, $language, $pswd);
          if($bmsusr==1 && $bmsusrId){
-            $mail = new App\library\classes\sendMails($params);
-            $mail->verificationCompare($bmsusrId[0]->email);
+
+            $params['mail_previous'] = $bmsusrId[0]->email;
+            $params['user_id'] = Auth::id();
+
+            $mail = new App\library\classes\queueMails($params);
+            $mail->verificationCompare();
+
+            $mail = new App\library\classes\queueMails($params);
+            $mail->newPassword();
 
             $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),'With Pass');
             return json_encode($responseJSON);

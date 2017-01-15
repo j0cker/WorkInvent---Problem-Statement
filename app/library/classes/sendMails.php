@@ -45,13 +45,15 @@ class sendMails
     }
 
 
-    public function verificationCompare($email){
+    public function verificationCompare(){
 
         Log::info("[Mail][verificationCompare]");
 
         $data = $this->data;
 
         $verification_code = str_random(20);
+
+        $email=$data["mail_previous"];
 
         $bmsusrVer = App\Bmsusr::updateVerify($verification_code);
 
@@ -68,6 +70,13 @@ class sendMails
                 {
                     $message->from(Config::get('mail.from.address'), Config::get('app.name'));
                     $message->subject(Lang::get('messages.emailVerification'));
+                    $message->to($data['mail_previous']);
+                });
+
+                Mail::send('emails.verification', $data, function($message) use ($data)
+                {
+                    $message->from(Config::get('mail.from.address'), Config::get('app.name'));
+                    $message->subject(Lang::get('messages.emailVerification'));
                     $message->to($data['email']);
                 });
                 
@@ -78,6 +87,20 @@ class sendMails
             Log::info("[Mail][verificationCompare][no send]");
         }
 
+    }
+
+    public function newPassword(){
+
+        Log::info("[Mail][newPassword][send]");
+
+        $data = $this->data;
+
+        Mail::send('emails.password', $data, function($message) use ($data)
+        {
+            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
+            $message->subject(Lang::get('messages.emailReset'));
+            $message->to($data['email']);
+        });
     }
   
 }
