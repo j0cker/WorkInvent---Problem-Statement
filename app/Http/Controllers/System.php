@@ -30,6 +30,21 @@ class System extends Controller
     return view('layouts.system.home',["title" => $title, "lang" => $lang, "priv" => $priv]);
   }
 
+  public function adminGetScopeTarget(){
+
+    Log::info('[AdminGetScopeTarget]');
+
+    if (Auth::check()==false) {
+      // The user is not logged in...
+      return redirect('/');
+    }
+
+    $bmstipo = App\Bmstipo::all();
+
+    return json_decode($bmstipo);
+
+  }
+
   public function adminTotals(){
 
     Log::info('[AdminTotals]');
@@ -49,6 +64,7 @@ class System extends Controller
     $bmspud = App\Bmspud::countDistinct()->get();
     $bmstipo = App\Bmstipo::count();
     $bmsust = App\Bmsust::count();
+    $bmsusrPaid = App\Bmsusr::getPaidUsers()->get();
 
     $collection->put('totalUsers', $bmsusr);
     $collection->put('totalTimeZone', $bmsuuh);
@@ -58,6 +74,7 @@ class System extends Controller
     $collection->put('totalRoles', count($bmspud));
     $collection->put('totalPlans', $bmstipo);
     $collection->put('totalSubscribers', $bmsust);
+    $collection->put('totalUsersPaying', count($bmsusrPaid));
 
     return json_encode($collection);
 

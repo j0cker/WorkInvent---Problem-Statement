@@ -300,9 +300,23 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
             $("#totalPlans").html(response.data.totalPlans);
             $("#totalQueueMails").html(response.data.totalQueueMails);
             $("#totalSubscribers").html(response.data.totalSubscribers);
-            #$("#").html(response.data.);
-            #$("#").html(response.data.);
-            #$("#").html(response.data.);
+            $("#totalUsersPaying").html(response.data.totalUsersPaying);
+            return
+
+        return
+    , (response) ->
+        #ERROR
+        toastr.error(Lang.get "messages.errorsBD", "ERROR");
+        $("#profileForm #profileButtonSubmit").css "display",""
+        return
+
+    url = '' + $window.window.Laravel.url + '/adminGetScopeTarget';
+    evt.adminGetScopeTarget(url).then (response) ->
+        #success
+        if(response.data.success==Lang.get('messages.successFalse'))
+            toastr.error(Lang.get("messages.errorsBD"), '');
+        else
+            $("#target").append('<option value="'+i.N_TIPONAME+'" name="'+i.N_TIPONAME+'">'+Lang.get("messages.emailAdminAllTipo1")+' '+i.N_TIPONAME+' '+Lang.get("messages.emailAdminAllTipo2")+'</option>') for i in response.data by 1
             return
 
         return

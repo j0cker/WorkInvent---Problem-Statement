@@ -67,6 +67,11 @@
         return $http.get(url, {
           cache: false
         });
+      },
+      adminGetScopeTarget: function(url) {
+        return $http.get(url, {
+          cache: false
+        });
       }
     };
   });

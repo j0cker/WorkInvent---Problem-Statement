@@ -58,4 +58,13 @@ class Bmsusr extends Model
     {   return $query->where('verified', '1');
     }
 
+    public function scopeActualizarPaquete($query, $user, $tipo){
+        return $query->where('id', $user)
+                     ->update(['I_TIPOID' => $tipo]);
+    }
+
+    public function ScopeGetPaidUsers($query){
+        return $query->where('I_TIPOID', '!=' , '1');
+    }
+
 }

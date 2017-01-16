@@ -82,8 +82,12 @@ class RegisterController extends Controller
 
             $data['user_id'] = $user_transform["id"];
 
-            //add privileges
+            //add NORMAL privileges
             $bmsuper = App\Bmsuper::newUser($user_transform["id"],2,$user_transform["id"]);
+
+            //1 FREE
+            $bmsusr = App\Bmsusr::actualizarPaquete($user_transform["id"],1);
+
         }
 
         //send verification mail to user

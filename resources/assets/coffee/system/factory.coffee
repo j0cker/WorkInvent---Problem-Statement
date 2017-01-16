@@ -29,4 +29,6 @@ app.factory 'evt',($http, $window) ->
             return  $http.post(url, params: {name:name, email:email, timezone:timezone, language:language, pswd:pswd} , { cache: false })
         , adminTotals: (url) ->
             return  $http.get(url, { cache: false })
+        , adminGetScopeTarget: (url) ->
+            return  $http.get(url, { cache: false })
     }

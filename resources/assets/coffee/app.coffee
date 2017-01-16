@@ -39,6 +39,8 @@ return num += x for x in [1..10] by 2
 
 return num for x in [10..1] by -2
 
+ i.N_TIPONAME for i in response.data by 1
+
 foods = ['broccoli', 'spinach', 'chocolate']
 eat food for food in foods when food isnt 'chocolate' and food isnt 'vegetables'
 

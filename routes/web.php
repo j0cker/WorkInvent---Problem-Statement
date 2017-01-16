@@ -47,4 +47,6 @@ Route::get('/admin', 'System@admin');
 
 Route::get('/adminTotals', 'System@adminTotals');
 
+Route::get('/adminGetScopeTarget', 'System@adminGetScopeTarget');
+
 Route::get('/mailsLauncher', 'MailsLauncher@mailsLauncher');

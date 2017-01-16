@@ -53,9 +53,11 @@ return [
     'emailAdminTitle' => "Email's Personalizados",
     'emailAdminTarget' => "Objetivo de alcance",
     'emailAdminAllUsers' => "Todos los usuarios",
-    'emailAdminSubscribers' => "TOdos los suscriptores",
+    'emailAdminSubscribers' => "Todos los suscriptores",
     'emailAdminSubject' => "Asunto",
     'emailAdminBody' => "Cuerpo del mensaje",
+    'emailAdminAllTipo1' => "Todos los usuarios",
+    'emailAdminAllTipo2' => "",
 
     //system titles
     'homeTitle' => "Inicio",

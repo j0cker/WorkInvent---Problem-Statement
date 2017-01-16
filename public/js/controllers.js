@@ -241,6 +241,24 @@
         $("#totalPlans").html(response.data.totalPlans);
         $("#totalQueueMails").html(response.data.totalQueueMails);
         $("#totalSubscribers").html(response.data.totalSubscribers);
+        $("#totalUsersPaying").html(response.data.totalUsersPaying);
+        return;
+      }
+    }, function(response) {
+      toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+      $("#profileForm #profileButtonSubmit").css("display", "");
+    });
+    url = '' + $window.window.Laravel.url + '/adminGetScopeTarget';
+    evt.adminGetScopeTarget(url).then(function(response) {
+      var i, j, len, ref;
+      if (response.data.success === Lang.get('messages.successFalse')) {
+        toastr.error(Lang.get("messages.errorsBD"), '');
+      } else {
+        ref = response.data;
+        for (j = 0, len = ref.length; j < len; j += 1) {
+          i = ref[j];
+          $("#target").append('<option value="' + i.N_TIPONAME + '" name="' + i.N_TIPONAME + '">' + Lang.get("messages.emailAdminAllTipo1") + ' ' + i.N_TIPONAME + ' ' + Lang.get("messages.emailAdminAllTipo2") + '</option>');
+        }
         return;
       }
     }, function(response) {

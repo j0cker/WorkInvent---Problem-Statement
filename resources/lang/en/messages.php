@@ -56,6 +56,8 @@ return [
     'emailAdminSubscribers' => "All Subscribers",
     'emailAdminSubject' => "Subject",
     'emailAdminBody' => "Body",
+    'emailAdminAllTipo1' => "All",
+    'emailAdminAllTipo2' => "users",
 
     //system titles
     'homeTitle' => "Home",
