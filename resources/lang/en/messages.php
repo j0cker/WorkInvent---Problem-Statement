@@ -42,6 +42,7 @@ return [
     'emailVerification' => "Email Verification requiered",
     'emailReset' => "Password reset Successfully",
     'emailWelcome' => "Welcome to ".Config::get('app.name')."",
+    'selectFormRequired' => "Please enter a valid value",
 
     //email reset password
     'emailResetText1' => "You are receiving this email because we received a password reset request for your account.",
@@ -52,12 +53,15 @@ return [
     //email Administration
     'emailAdminTitle' => "Custom Email's",
     'emailAdminTarget' => "Scope target",
+    'emailAdminSelect' => "Select your scope target",
     'emailAdminAllUsers' => "All Users",
     'emailAdminSubscribers' => "All Subscribers",
     'emailAdminSubject' => "Subject",
     'emailAdminBody' => "Body",
     'emailAdminAllTipo1' => "All",
     'emailAdminAllTipo2' => "users",
+    'subjectFormRequired' => "Please enter a valid subject",
+    'bodyFormRequired' => "Please enter a valid body",
 
     //system titles
     'homeTitle' => "Home",
@@ -117,6 +121,7 @@ return [
     'prioridadReset' => '1',
     'prioridadVerificationCompare' => '3',
     'prioridadPswd' => '3',
+    'prioridadCustom' => '5',
 
     //BD Messages and Errors
     'BDsuccess' => "The information was updated successfully",

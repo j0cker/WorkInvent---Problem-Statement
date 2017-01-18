@@ -30,6 +30,33 @@ class System extends Controller
     return view('layouts.system.home',["title" => $title, "lang" => $lang, "priv" => $priv]);
   }
 
+  public function customMail(Request $request){
+
+      Log::info('[customMail]');
+
+      if (Auth::check()==false) {
+        // The user is not logged in...
+        abort(403, 'Unauthorized action.');
+      }
+
+     if($request->isMethod('post')) {
+       
+       Log::info('[customMail][Post]');
+
+       $params = $request->input('params');
+       $params['user_id'] = Auth::id();
+
+       $mail = new \App\library\classes\queueMails($params);
+       $mail->customMail();
+       
+       $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),Lang::get('messages.BDsuccess'));
+     } else {
+       $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBDRepeat'));
+     }
+
+     return $responseJSON;
+  }
+
   public function adminGetScopeTarget(){
 
     Log::info('[AdminGetScopeTarget]');

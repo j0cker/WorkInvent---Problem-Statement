@@ -278,6 +278,8 @@ app.controller 'profile', ($scope, evt, $window) ->
 
     return
 
+#admin controller
+
 app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
 
     console.log "[adminCtrl]"
@@ -285,6 +287,62 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
     $('.tooltipped').tooltip({delay: 50});
 
     evt.loading();
+
+    # add the rule here
+
+    $.validator.addMethod "valueNotEquals", (value, element, arg) ->
+        return arg != value;
+    , "Value must not equal arg."
+
+    $("#customMailForm").validate({
+        'rules': {
+            # compound rule
+            'subject': "required",
+            'body': {
+                'required': true
+            },
+            'target': {
+                'valueNotEquals': Lang.get('messages.emailAdminSelect')
+            }
+        }, 
+        'messages': {
+            'subject': Lang.get("messages.subjectFormRequired"),
+            'body': Lang.get("messages.bodyFormRequired"),
+            'target': {
+                'valueNotEquals': Lang.get("messages.emailAdminSelect")
+            }
+        },
+        'errorPlacement': (error, element) -> 
+            console.log "Validate: Error"
+            element.css "width","100%"
+            div = $(element).closest '.input-group'
+            $(div).append error
+        ,
+        'submitHandler': (form) ->
+            $("#customMailForm #customMailFormButtonSubmit").css "display","none"
+            #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
+            console.log "Validate: Submit Handler"
+            #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
+            #form.submit();
+            url = '' + $window.window.Laravel.url + '/customMail';
+            evt.customMail(url, $("#customMailForm #target").val(), $("#customMailForm #subject").val(), $("#customMailForm #body").val()).then (response) ->
+                #success
+                if(response.data.success==Lang.get('messages.successFalse'))
+                    toastr.error(Lang.get("messages.errorsBD"), '');
+                else
+                    toastr.success(Lang.get("messages.BDsuccess"), '');
+
+                return
+            , (response) ->
+                #ERROR
+                toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                $("#customMailForm #customMailFormButtonSubmit").css "display",""
+                return
+        , 
+        'success': (label) ->
+            #entra cuando un input ya está bien para el validador
+            label.addClass("valid").text("Ok!");
+    });
 
     url = '' + $window.window.Laravel.url + '/adminTotals';
     evt.adminTotals(url).then (response) ->

@@ -75,6 +75,19 @@ class MailsLauncher extends Controller
           $mail_send->newPassword();
           App\Bmsmail::where('I_MAIL', $mail->I_MAIL)->delete();
           $c_mails++;
+        } else if($mail->N_PLANTILLA=="emails.custom"){
+
+          Log::info('[mailsLauncher] Sending Custom');
+
+          $data['email'] = $mail->N_SEND_TO;
+          $data['body'] = $mail->N_VAR1;
+          $data['subject'] = $mail->N_VAR2;
+          $data['name'] = $mail->N_VAR3;
+
+          $mail_send = new \App\library\classes\sendMails($data);
+          $mail_send->customMail();
+          App\Bmsmail::where('I_MAIL', $mail->I_MAIL)->delete();
+          $c_mails++;
         }
       }//fin foreach
       App\Bmsmail::getQuery()->delete();

@@ -102,5 +102,19 @@ class sendMails
             $message->to($data['email']);
         });
     }
+
+    public function customMail(){
+
+        Log::info("[Mail][customMail][send]");
+
+        $data = $this->data;
+
+        Mail::send('emails.password', $data, function($message) use ($data)
+        {
+            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
+            $message->subject($data['subject']);
+            $message->to($data['email']);
+        });
+    }
   
 }

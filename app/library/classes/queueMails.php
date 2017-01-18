@@ -53,5 +53,28 @@ class queueMails
         $bmsmail = App\Bmsmail::addMailQueue($data['user_id'], 'emails.password', $data['email'], (int)Lang::get('messages.prioridadPswd'), '', $data['pswd'], '');
 
     }
+    public function customMail(){
+
+       Log::info("[Mail][customMail]");
+
+       $params = $this->data;
+
+       $target = $params['target'];
+       $subject = $params['subject'];
+       $body = $params['body'];
+
+       if($target=="all"){
+         $mailsToSend = App\Bmsusr::all();
+       } else if($target=="subs"){
+
+       } else {
+
+       }
+
+       $mailsToSend = json_decode($mailsToSend);
+
+       $bmsmail = App\Bmsmail::addMailQueue($params['user_id'], 'emails.custom', $data['email'], (int)Lang::get('messages.prioridadCustom'), $body, $subject, $data['name']);
+
+    }
   
 }

@@ -42,6 +42,7 @@ return [
     'emailVerification' => "Se requiere verificación de correo electrónico",
     'emailReset' => "Nueva Contraseña",
     'emailWelcome' => "Bienvenido a ".Config::get('app.name')."",
+    'selectFormRequired' => "Por favor ingresa un valor correcto",
 
     //email reset password
     'emailResetText1' => "You are receiving this email because we received a password reset request for your account.",
@@ -52,12 +53,15 @@ return [
     //email Administration
     'emailAdminTitle' => "Email's Personalizados",
     'emailAdminTarget' => "Objetivo de alcance",
+    'emailAdminSelect' => "Selecciona tu objetivo",
     'emailAdminAllUsers' => "Todos los usuarios",
     'emailAdminSubscribers' => "Todos los suscriptores",
     'emailAdminSubject' => "Asunto",
     'emailAdminBody' => "Cuerpo del mensaje",
     'emailAdminAllTipo1' => "Todos los usuarios",
     'emailAdminAllTipo2' => "",
+    'subjectFormRequired' => "Por favor ingresa un correcto asunto",
+    'bodyFormRequired' => "Por favor ingresa un correcto cuerpo de mensaje",
 
     //system titles
     'homeTitle' => "Inicio",
@@ -117,6 +121,7 @@ return [
     'prioridadReset' => '1',
     'prioridadVerificationCompare' => '3',
     'prioridadPswd' => '3',
+    'prioridadCustom' => '5',
 
     //BD Messages and Errors
     'BDsuccess' => "La información se actualizó correctamente",

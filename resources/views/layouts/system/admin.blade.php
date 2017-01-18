@@ -244,7 +244,7 @@
                  <div id="tab2" class="col s12"> 
                     <div class="text-center col-md-12">                        
                         <ul style="margin: 0;" class="list-unstyled social-login">
-                          <form method="POST" id="customMailForm" name="customMailForm" action="{{ url('/customMail') }}">
+                          <form id="customMailForm" name="customMailForm">
                             {{ csrf_field() }}
                             <li style="text-align: center;">
                              
@@ -259,8 +259,9 @@
 
                                 <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminTarget'): </p>
                                 <select style="border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 36px; width: 100%; border-radius: 4px; margin-bottom: 0px; margin-top: 10px; display: block; !important" name="target" value="" id="target">
-                                  <option name="@Lang('messages.emailAdminAllUsers')" value="@Lang('messages.emailAdminAllUsers')">@Lang('messages.emailAdminAllUsers')</option>
-                                  <option name="@Lang('messages.emailAdminSubscribers')" value="@Lang('messages.emailAdminSubscribers')">@Lang('messages.emailAdminSubscribers')</option>
+                                  <option name="@Lang('messages.emailAdminSelect')" value="@Lang('messages.emailAdminSelect')">@Lang('messages.emailAdminSelect')</option>
+                                  <option name="all" value="all">@Lang('messages.emailAdminAllUsers')</option>
+                                  <option name="subs" value="subs">@Lang('messages.emailAdminSubscribers')</option>
                                 </select>
 
                               </div>
@@ -289,7 +290,7 @@
                             <li style="margin-bottom: 70px; margin-top: 20px; text-align: right;">
                              
                               <div class="col-md-12">
-                                <button style="background-color: #26A8FF;" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                                <button type="" id="customMailFormButtonSubmit" style="background-color: #26A8FF;" class="btn waves-effect waves-light" name="customMailFormButtonSubmit">Enviar
                                   <span class="fa fa-paper-plane"></span>
                                 </button>
                               </div>

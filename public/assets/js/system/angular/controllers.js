@@ -228,6 +228,53 @@
       delay: 50
     });
     evt.loading();
+    $.validator.addMethod("valueNotEquals", function(value, element, arg) {
+      return arg !== value;
+    }, "Value must not equal arg.");
+    $("#customMailForm").validate({
+      'rules': {
+        'subject': "required",
+        'body': {
+          'required': true
+        },
+        'target': {
+          'valueNotEquals': Lang.get('messages.emailAdminSelect')
+        }
+      },
+      'messages': {
+        'subject': Lang.get("messages.subjectFormRequired"),
+        'body': Lang.get("messages.bodyFormRequired"),
+        'target': {
+          'valueNotEquals': Lang.get("messages.emailAdminSelect")
+        }
+      },
+      'errorPlacement': function(error, element) {
+        var div;
+        console.log("Validate: Error");
+        element.css("width", "100%");
+        div = $(element).closest('.input-group');
+        return $(div).append(error);
+      },
+      'submitHandler': function(form) {
+        var url;
+        $("#customMailForm #customMailFormButtonSubmit").css("display", "none");
+        console.log("Validate: Submit Handler");
+        url = '' + $window.window.Laravel.url + '/customMail';
+        return evt.customMail(url, $("#customMailForm #target").val(), $("#customMailForm #subject").val(), $("#customMailForm #body").val()).then(function(response) {
+          if (response.data.success === Lang.get('messages.successFalse')) {
+            toastr.error(Lang.get("messages.errorsBD"), '');
+          } else {
+            toastr.success(Lang.get("messages.BDsuccess"), '');
+          }
+        }, function(response) {
+          toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+          $("#customMailForm #customMailFormButtonSubmit").css("display", "");
+        });
+      },
+      'success': function(label) {
+        return label.addClass("valid").text("Ok!");
+      }
+    });
     url = '' + $window.window.Laravel.url + '/adminTotals';
     evt.adminTotals(url).then(function(response) {
       if (response.data.success === Lang.get('messages.successFalse')) {

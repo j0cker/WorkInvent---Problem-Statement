@@ -50,3 +50,5 @@ Route::get('/adminTotals', 'System@adminTotals');
 Route::get('/adminGetScopeTarget', 'System@adminGetScopeTarget');
 
 Route::get('/mailsLauncher', 'MailsLauncher@mailsLauncher');
+
+Route::post('/customMail', 'System@customMail');

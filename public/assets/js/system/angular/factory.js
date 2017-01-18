@@ -72,6 +72,17 @@
         return $http.get(url, {
           cache: false
         });
+      },
+      customMail: function(url, target, subject, body) {
+        return $http.post(url, {
+          params: {
+            target: target,
+            subject: subject,
+            body: body
+          }
+        }, {
+          cache: false
+        });
       }
     };
   });
