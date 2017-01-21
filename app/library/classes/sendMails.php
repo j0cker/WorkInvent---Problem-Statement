@@ -109,7 +109,7 @@ class sendMails
 
         $data = $this->data;
 
-        Mail::send('emails.password', $data, function($message) use ($data)
+        Mail::send('emails.custom', $data, function($message) use ($data)
         {
             $message->from(Config::get('mail.from.address'), Config::get('app.name'));
             $message->subject($data['subject']);

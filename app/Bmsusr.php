@@ -63,8 +63,14 @@ class Bmsusr extends Model
                      ->update(['I_TIPOID' => $tipo]);
     }
 
-    public function ScopeGetPaidUsers($query){
+    public function scopeGetPaidUsers($query){
         return $query->where('I_TIPOID', '!=' , '1');
+    }
+
+    public function scopeGetAllUsersTipo($query, $tipo){
+        return $query->join('bmstipo', 'bmsusr.I_TIPOID', '=', 'bmstipo.I_TIPOID')
+                     ->select('bmsusr.name','bmsusr.email','bmstipo.N_TIPONAME')
+                     ->where('bmsusr.I_TIPOID', '=' , $tipo);
     }
 
 }

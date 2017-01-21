@@ -38,7 +38,7 @@ class System extends Controller
         // The user is not logged in...
         abort(403, 'Unauthorized action.');
       }
-
+      
      if($request->isMethod('post')) {
        
        Log::info('[customMail][Post]');
@@ -54,7 +54,7 @@ class System extends Controller
        $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBDRepeat'));
      }
 
-     return $responseJSON;
+     return json_encode($responseJSON);
   }
 
   public function adminGetScopeTarget(){

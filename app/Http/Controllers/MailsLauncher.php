@@ -16,7 +16,7 @@ class MailsLauncher extends Controller
 
     Log::info('[mailsLauncher]');
 
-    $bmsmails = App\Bmsmail::all();
+    $bmsmails = App\Bmsmail::orderBy('I_prioridad', 'asc')->get();
 
     $bmsmails = json_decode($bmsmails);
 

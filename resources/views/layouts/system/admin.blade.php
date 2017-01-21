@@ -271,6 +271,36 @@
                              
                               <div class="input-group col-xs-12 col-sm-12 col-md-12">
 
+                                <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminIdioma'): </p>
+                                <select style="border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 36px; width: 100%; border-radius: 4px; margin-bottom: 0px; margin-top: 10px; display: block; !important" name="priority" value="" id="priority"> 
+                                  <option name="@Lang('messages.emailPrioritySelect')" value="@Lang('messages.emailPrioritySelect')">@Lang('messages.emailPrioritySelect')</option>
+                                  <option name="1" value="1">@Lang('messages.emailPrioridad1')</option>
+                                  <option name="3" value="3">@Lang('messages.emailPrioridad3')</option>
+                                  <option name="5" value="5">@Lang('messages.emailPrioridad5')</option>
+                                </select>
+
+                              </div>
+                             
+                            </li>
+                            <li style="margin-top: 10px;">
+                             
+                              <div class="input-group col-xs-12 col-sm-12 col-md-12">
+
+                                <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminPrioridad'): </p>
+                                <select style="border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 36px; width: 100%; border-radius: 4px; margin-bottom: 0px; margin-top: 10px; display: block; !important" name="priority" value="" id="priority"> 
+                                  <option name="@Lang('messages.emailPrioritySelect')" value="@Lang('messages.emailPrioritySelect')">@Lang('messages.emailPrioritySelect')</option>
+                                  <option name="1" value="1">@Lang('messages.emailPrioridad1')</option>
+                                  <option name="3" value="3">@Lang('messages.emailPrioridad3')</option>
+                                  <option name="5" value="5">@Lang('messages.emailPrioridad5')</option>
+                                </select>
+
+                              </div>
+                             
+                            </li>
+                            <li style="margin-top: 10px;">
+                             
+                              <div class="input-group col-xs-12 col-sm-12 col-md-12">
+
                                 <p style="font-size: 16px; color:#a3a3a3">@Lang('messages.emailAdminSubject'): </p>
                                 <input style="margin-top: 10px; cursor: text; border: 1px solid #26a8ff; height: 30px; font-size: 13px; color: #5e5e5e; padding-left: 10px; height: 34px; width: 100%; border-radius: 4px; margin-bottom:0;" type="text" class="form-control" value="" placeholder="@Lang('messages.emailAdminSubject')" aria-describedby="sizing-addon1" id="subject" name="subject">
 

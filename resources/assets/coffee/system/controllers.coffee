@@ -70,6 +70,8 @@ app.controller 'home', ($scope, evt, $window) ->
                 $(div).append error
             ,
             'submitHandler': (form) ->
+                evt.startLoading();
+                $("#modal").modal "hide"
                 $("#configurationForm #configurationButtonSubmit").css "display","none"
                 #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
                 console.log "Validate: Submit Handler"
@@ -81,13 +83,13 @@ app.controller 'home', ($scope, evt, $window) ->
                         toastr.error(Lang.get("messages.errorsBD"), '');
                     else
                         toastr.success(Lang.get("messages.BDsuccess"), '');
-                    $("#modal").modal "hide"
+                    evt.stopLoading();
                     window.location = "/";
                     return
                 , (response) ->
                     #ERROR
                     toastr.error(Lang.get("messages.errorsBD"), "ERROR");
-                    $("#modal").modal "hide"
+                    evt.stopLoading();
                     return
             , 
             'success': (label) ->
@@ -286,7 +288,7 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
 
     $('.tooltipped').tooltip({delay: 50});
 
-    evt.loading();
+    evt.startLoading();
 
     # add the rule here
 
@@ -303,6 +305,9 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
             },
             'target': {
                 'valueNotEquals': Lang.get('messages.emailAdminSelect')
+            },
+            'priority':{
+                'valueNotEquals' : Lang.get('messages.emailPrioritySelect')
             }
         }, 
         'messages': {
@@ -310,6 +315,9 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
             'body': Lang.get("messages.bodyFormRequired"),
             'target': {
                 'valueNotEquals': Lang.get("messages.emailAdminSelect")
+            },
+            'priority':{
+                'valueNotEquals' : Lang.get('messages.emailPrioritySelect')
             }
         },
         'errorPlacement': (error, element) -> 
@@ -319,23 +327,26 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
             $(div).append error
         ,
         'submitHandler': (form) ->
+            evt.startLoading();
             $("#customMailForm #customMailFormButtonSubmit").css "display","none"
             #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
             console.log "Validate: Submit Handler"
             #$("#registerButtonSubmit").submit(); no puede ir ésto aquí se hace un loop
             #form.submit();
             url = '' + $window.window.Laravel.url + '/customMail';
-            evt.customMail(url, $("#customMailForm #target").val(), $("#customMailForm #subject").val(), $("#customMailForm #body").val()).then (response) ->
+            evt.customMail(url, $("#customMailForm #target").val(), $("#customMailForm #subject").val(), $("#customMailForm #body").val(), $("#customMailForm #priority").val()).then (response) ->
                 #success
                 if(response.data.success==Lang.get('messages.successFalse'))
                     toastr.error(Lang.get("messages.errorsBD"), '');
                 else
                     toastr.success(Lang.get("messages.BDsuccess"), '');
-
+                evt.stopLoading();
+                $("#customMailForm #customMailFormButtonSubmit").css "display",""
                 return
             , (response) ->
                 #ERROR
                 toastr.error(Lang.get "messages.errorsBD", "ERROR");
+                evt.stopLoading();
                 $("#customMailForm #customMailFormButtonSubmit").css "display",""
                 return
         , 
@@ -359,13 +370,12 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
             $("#totalQueueMails").html(response.data.totalQueueMails);
             $("#totalSubscribers").html(response.data.totalSubscribers);
             $("#totalUsersPaying").html(response.data.totalUsersPaying);
-            return
-
+        evt.stopLoading();
         return
     , (response) ->
         #ERROR
         toastr.error(Lang.get "messages.errorsBD", "ERROR");
-        $("#profileForm #profileButtonSubmit").css "display",""
+        evt.stopLoading();
         return
 
     url = '' + $window.window.Laravel.url + '/adminGetScopeTarget';
@@ -374,7 +384,7 @@ app.controller 'admin', ($rootScope, $scope, evt, $filter, $window) ->
         if(response.data.success==Lang.get('messages.successFalse'))
             toastr.error(Lang.get("messages.errorsBD"), '');
         else
-            $("#target").append('<option value="'+i.N_TIPONAME+'" name="'+i.N_TIPONAME+'">'+Lang.get("messages.emailAdminAllTipo1")+' '+i.N_TIPONAME+' '+Lang.get("messages.emailAdminAllTipo2")+'</option>') for i in response.data by 1
+            $("#target").append('<option value="'+i.I_TIPOID+'" name="'+i.I_TIPOID+'">'+Lang.get("messages.emailAdminAllTipo1")+' '+i.N_TIPONAME+' '+Lang.get("messages.emailAdminAllTipo2")+'</option>') for i in response.data by 1
             return
 
         return

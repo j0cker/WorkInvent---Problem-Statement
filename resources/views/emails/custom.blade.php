@@ -65,37 +65,4 @@ $style = [
                                             {{$body}}
 
                                         </p>
-
-
-                                        <!-- Action Button
-                                        <table style="{{ $style['body_action'] }}" align="center" width="100%" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td align="center">
-
-                                                    <a href="{!! url('/verify', ['code'=>$verification_code]) !!}"
-                                                        style="{{ $fontFamily }} {{ $style['button'] }} {{ $style["button--green"] }}"
-                                                        class="button"
-                                                        target="_blank">
-                                                        Verify
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>-->
-
-                                        <!-- Button Paragraph
-                                        <table style="{{ $style['body_sub'] }}">
-                                            <tr>
-                                                <td style="{{ $fontFamily }}">
-                                                    <p style="{{ $style['paragraph-sub'] }}">
-                                                        @Lang('messages.emailResetText4')
-                                                    </p>
-
-                                                    <p style="{{ $style['paragraph-sub'] }}">
-                                                        <a style="{{ $style['anchor'] }}" href="{!! url('/verify', ['code'=>$verification_code]) !!}" target="_blank">
-                                                            {!! url('/verify', ['code'=>$verification_code]) !!}
-                                                        </a>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </table>-->
     @stop

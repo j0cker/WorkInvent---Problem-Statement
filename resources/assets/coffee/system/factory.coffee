@@ -7,7 +7,15 @@ app.factory 'evt',($http, $window) ->
             setTimeout ->
                 $('body').addClass 'loaded'
             , 1000
-        , timezone: (url) ->
+        , startLoading: ->
+            $('body').removeClass 'load'
+            $('body').removeClass 'loaded'
+            $('body').addClass 'load'
+        , stopLoading: ->
+            $('body').removeClass 'load'
+            $('body').removeClass 'loaded'
+            $('body').addClass 'loaded'    
+        timezone: (url) ->
             return  $http.get(url, { cache: false })
         , language: (url) ->
             return  $http.get(url, { cache: false })
@@ -31,6 +39,6 @@ app.factory 'evt',($http, $window) ->
             return  $http.get(url, { cache: false })
         , adminGetScopeTarget: (url) ->
             return  $http.get(url, { cache: false })
-        , customMail: (url, target, subject, body) ->
-             return  $http.post(url, params: {target:target, subject:subject, body:body} , { cache: false })
+        , customMail: (url, target, subject, body, priority) ->
+             return  $http.post(url, params: {target:target, subject:subject, body:body, priority:priority} , { cache: false })
     }

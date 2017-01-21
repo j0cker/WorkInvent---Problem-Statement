@@ -7,6 +7,7 @@ use Mail;
 use App;
 use Config;
 use Lang;
+use Auth;
 
 class queueMails
 {   private $data;
@@ -62,19 +63,33 @@ class queueMails
        $target = $params['target'];
        $subject = $params['subject'];
        $body = $params['body'];
+       $priority = $params['priority'];
 
        if($target=="all"){
+         Log::info("[Mail][customMail] all");
          $mailsToSend = App\Bmsusr::all();
        } else if($target=="subs"){
-
+         Log::info("[Mail][customMail] subs");
+         $mailsToSend = App\Bmsust::all();
        } else {
-
+         Log::info("[Mail][customMail] tipo de paquetes");
+         $mailsToSend = App\Bmsusr::getAllUsersTipo($target)->get();
        }
 
        $mailsToSend = json_decode($mailsToSend);
 
-       $bmsmail = App\Bmsmail::addMailQueue($params['user_id'], 'emails.custom', $data['email'], (int)Lang::get('messages.prioridadCustom'), $body, $subject, $data['name']);
-
+       if($mailsToSend){
+           Log::info("[Mail][customMail] hay mails de éste tipo");
+           foreach($mailsToSend as $item){
+                if($target=="subs"){
+                        $bmsmail = App\Bmsmail::addMailQueue(Auth::user()->id, 'emails.custom', $item->email, $priority, $body, $subject, 'Subscriber');
+                } else { 
+                        $bmsmail = App\Bmsmail::addMailQueue(Auth::user()->id, 'emails.custom', $item->email, $priority, $body, $subject, $item->name);
+                }
+           }
+       } else {
+           Log::info("[Mail][customMail] no hay mails de éste tipo");
+       }
     }
   
 }

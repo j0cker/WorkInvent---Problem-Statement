@@ -9,6 +9,16 @@
           return $('body').addClass('loaded');
         }, 1000);
       },
+      startLoading: function() {
+        $('body').removeClass('load');
+        $('body').removeClass('loaded');
+        return $('body').addClass('load');
+      },
+      stopLoading: function() {
+        $('body').removeClass('load');
+        $('body').removeClass('loaded');
+        return $('body').addClass('loaded');
+      },
       timezone: function(url) {
         return $http.get(url, {
           cache: false
@@ -73,12 +83,13 @@
           cache: false
         });
       },
-      customMail: function(url, target, subject, body) {
+      customMail: function(url, target, subject, body, priority) {
         return $http.post(url, {
           params: {
             target: target,
             subject: subject,
-            body: body
+            body: body,
+            priority: priority
           }
         }, {
           cache: false

@@ -60,6 +60,8 @@
           return $(div).append(error);
         },
         'submitHandler': function(form) {
+          evt.startLoading();
+          $("#modal").modal("hide");
           $("#configurationForm #configurationButtonSubmit").css("display", "none");
           console.log("Validate: Submit Handler");
           return evt.configuration($("#configurationForm #url").val(), $("#configurationForm #timezone").val(), $("#configurationForm #language").val()).then(function(response) {
@@ -68,11 +70,11 @@
             } else {
               toastr.success(Lang.get("messages.BDsuccess"), '');
             }
-            $("#modal").modal("hide");
+            evt.stopLoading();
             window.location = "/";
           }, function(response) {
             toastr.error(Lang.get("messages.errorsBD"), "ERROR");
-            $("#modal").modal("hide");
+            evt.stopLoading();
           });
         },
         'success': function(label) {
@@ -227,7 +229,7 @@
     $('.tooltipped').tooltip({
       delay: 50
     });
-    evt.loading();
+    evt.startLoading();
     $.validator.addMethod("valueNotEquals", function(value, element, arg) {
       return arg !== value;
     }, "Value must not equal arg.");
@@ -239,6 +241,9 @@
         },
         'target': {
           'valueNotEquals': Lang.get('messages.emailAdminSelect')
+        },
+        'priority': {
+          'valueNotEquals': Lang.get('messages.emailPrioritySelect')
         }
       },
       'messages': {
@@ -246,6 +251,9 @@
         'body': Lang.get("messages.bodyFormRequired"),
         'target': {
           'valueNotEquals': Lang.get("messages.emailAdminSelect")
+        },
+        'priority': {
+          'valueNotEquals': Lang.get('messages.emailPrioritySelect')
         }
       },
       'errorPlacement': function(error, element) {
@@ -257,17 +265,21 @@
       },
       'submitHandler': function(form) {
         var url;
+        evt.startLoading();
         $("#customMailForm #customMailFormButtonSubmit").css("display", "none");
         console.log("Validate: Submit Handler");
         url = '' + $window.window.Laravel.url + '/customMail';
-        return evt.customMail(url, $("#customMailForm #target").val(), $("#customMailForm #subject").val(), $("#customMailForm #body").val()).then(function(response) {
+        return evt.customMail(url, $("#customMailForm #target").val(), $("#customMailForm #subject").val(), $("#customMailForm #body").val(), $("#customMailForm #priority").val()).then(function(response) {
           if (response.data.success === Lang.get('messages.successFalse')) {
             toastr.error(Lang.get("messages.errorsBD"), '');
           } else {
             toastr.success(Lang.get("messages.BDsuccess"), '');
           }
+          evt.stopLoading();
+          $("#customMailForm #customMailFormButtonSubmit").css("display", "");
         }, function(response) {
           toastr.error(Lang.get("messages.errorsBD", "ERROR"));
+          evt.stopLoading();
           $("#customMailForm #customMailFormButtonSubmit").css("display", "");
         });
       },
@@ -289,11 +301,11 @@
         $("#totalQueueMails").html(response.data.totalQueueMails);
         $("#totalSubscribers").html(response.data.totalSubscribers);
         $("#totalUsersPaying").html(response.data.totalUsersPaying);
-        return;
       }
+      evt.stopLoading();
     }, function(response) {
       toastr.error(Lang.get("messages.errorsBD", "ERROR"));
-      $("#profileForm #profileButtonSubmit").css("display", "");
+      evt.stopLoading();
     });
     url = '' + $window.window.Laravel.url + '/adminGetScopeTarget';
     evt.adminGetScopeTarget(url).then(function(response) {
@@ -304,7 +316,7 @@
         ref = response.data;
         for (j = 0, len = ref.length; j < len; j += 1) {
           i = ref[j];
-          $("#target").append('<option value="' + i.N_TIPONAME + '" name="' + i.N_TIPONAME + '">' + Lang.get("messages.emailAdminAllTipo1") + ' ' + i.N_TIPONAME + ' ' + Lang.get("messages.emailAdminAllTipo2") + '</option>');
+          $("#target").append('<option value="' + i.I_TIPOID + '" name="' + i.I_TIPOID + '">' + Lang.get("messages.emailAdminAllTipo1") + ' ' + i.N_TIPONAME + ' ' + Lang.get("messages.emailAdminAllTipo2") + '</option>');
         }
         return;
       }
