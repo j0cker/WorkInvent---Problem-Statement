@@ -16,7 +16,7 @@
 
         {{-- Links --}}
 
-        {!! Html::favicon('http://demo.bonefishcode.com/veronica/assets/img/favicon.ico') !!}
+        <!--{!! Html::favicon('http://demo.bonefishcode.com/veronica/assets/img/favicon.ico') !!}-->
         {!! Html::style('assets/css/index/fonts.css') !!}
         {!! Html::style('assets/css/index/bootstrap.min.css') !!}
         {!! Html::style('assets/css/index/vendor.css') !!}
@@ -30,6 +30,7 @@
         {!! Html::script('assets/js/index/jquery.min.js') !!}
         {!! Html::script('assets/js/index/jquery-mask.js') !!}
         {!! Html::script('assets/js/index/jquery.validate.min.js') !!}
+        {!! Html::script('assets/js/system/google-analytics.js') !!}
         {!! Html::script('assets/js/index/toastr.min.js') !!}
 
         <!--CSRF Protection Global Variables-->

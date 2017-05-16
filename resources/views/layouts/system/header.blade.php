@@ -53,6 +53,7 @@
         {!! Html::script('assets/js/system/jquery-migrate-1.2.1.js') !!}
         {!! Html::script('assets/js/system/jquery-mask.js') !!}
         {!! Html::script('assets/js/system/jquery.validate.min.js') !!}
+        {!! Html::script('assets/js/system/google-analytics.js') !!}
         {!! Html::script('assets/js/system/toastr.min.js') !!}
 
         <!--CSRF Protection, Url Default, Timezone, name global Variables-->
@@ -101,7 +102,6 @@
         {!! Html::script('assets/js/system/moment.min.js') !!}
         {!! Html::script('assets/js/system/fullcalendar.min.js') !!}
         <!--{!! Html::script('assets/js/system/livechat.js') !!}-->
-        {!! Html::script('assets/js/system/google-analytics.js') !!}
         {!! Html::script('assets/js/system/materialize.min.js') !!}
         {!! Html::script('assets/js/system/mercado-pago.js') !!}
         <!--{!! Html::script('assets/js/system/feedback.js') !!}-->

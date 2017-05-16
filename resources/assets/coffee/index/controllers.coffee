@@ -35,6 +35,7 @@ app.controller 'ctrl', ($scope, evt) ->
             $(div).after error
         ,
         'submitHandler': (form) ->
+            ga 'subscriber button', 'event', 'Mensaje Normal', 'click', 'Problem Statement'
             #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
             console.log "Validate: Submit Handler"
             #$('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val("");
@@ -55,7 +56,7 @@ app.controller 'ctrl', ($scope, evt) ->
         , 
         'success': (label) ->
             #entra cuando un input ya está bien para el validador
-            label.addClass("valid").text("Ok!");
+            label.addClass("valid").text("Ok! " + Lang.get("messages.subscribersNot"));
     });
 
     $scope.loginButton = false

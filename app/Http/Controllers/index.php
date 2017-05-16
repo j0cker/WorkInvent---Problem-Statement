@@ -7,6 +7,7 @@ use Lang;
 use App;
 use Config;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -58,7 +59,18 @@ class Index extends Controller
          $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBDRepeat'));
          return json_encode($responseJSON);
        } else {
-         $bmsust = App\Bmsust::addSubscribe($email);
+         $bmsust = App\Bmsust::addSubscribe($email,'problemStatement');
+
+         //Send to queue email list of administrator mail
+         $data['to'] = Config::get('mail.from.address');
+         $data['body'] = "".Lang::get('messages.emailSubscribeBody')."".$email."";
+         $data['subject'] = Lang::get('messages.emailSubscribeSubject');
+         $data['name'] = Config::get('mail.from.name');
+         $data['priority'] = 5;
+
+         $mail = new \App\library\classes\queueMails($data);
+         $mail->customMailUnique();
+
          if($bmsust==1){
            $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successTrue'),Lang::get('messages.BDsuccess'));
          } else {

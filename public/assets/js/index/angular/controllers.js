@@ -33,6 +33,7 @@
         return $(div).after(error);
       },
       'submitHandler': function(form) {
+        ga('subscriber button', 'event', 'Mensaje Normal', 'click', 'Problem Statement');
         console.log("Validate: Submit Handler");
         evt.loading();
         return evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then(function(response) {
@@ -46,7 +47,7 @@
         });
       },
       'success': function(label) {
-        return label.addClass("valid").text("Ok!");
+        return label.addClass("valid").text("Ok! " + Lang.get("messages.subscribersNot"));
       }
     });
     $scope.loginButton = false;

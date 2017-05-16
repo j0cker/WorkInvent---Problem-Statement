@@ -5,7 +5,7 @@
                   <div class="col-md-5" style="text-align:left;">
                       <ul style="font-size:12px;" class="f-menu">
                           <li><img style="padding:0; padding-bottom:2px; width:100px;" src="{{ url('assets/img/system/logo.png') }}"></img></li>
-                          <li>Copyright © 2016 {{Config::get('app.name')}}</li>
+                          <li>Copyright © 2017 {{Config::get('app.name')}}</li>
                       </ul>
                   </div>
                   <div class="col-md-5" style="text-align:right;">

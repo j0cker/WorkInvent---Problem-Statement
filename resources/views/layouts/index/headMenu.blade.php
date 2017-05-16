@@ -8,14 +8,16 @@
               <span class="bar"></span>
             </button>
             <a href="{{ url('/') }}" class="navbar-brand">
-              <img src="{{ url('/assets/img/navbar-brand-media-img-dark.png') }}" alt="" class="navbar-brand-media-img navbar-brand-media-img-dark">
+              Work<font style="color: #f9c922;">invent</font>
+              <!--<img src="{{ url('/assets/img/navbar-brand-media-img-dark.png') }}" alt="" class="navbar-brand-media-img navbar-brand-media-img-dark">
               <img src="{{ url('/assets/img/navbar-brand-media-img-light.png') }}" alt="" class="navbar-brand-media-img navbar-brand-media-img-light">
+              -->
             </a>
           </div>
           <!-- .navbar-header-->
-          <div id="navbar-collapse" class="collapse navbar-collapse">
+          <div id="navbar-collapse" class="collapse navbar-collapse" style="display: none;">
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown"><a href="http://demo.bonefishcode.com/veronica/#" data-toggle="dropdown" class="dropdown-toggle">Pages <span class="caret"></span></a>
+              <li class="dropdown" style="display: none;"><a href="http://demo.bonefishcode.com/veronica/#" data-toggle="dropdown" class="dropdown-toggle">Pages <span class="caret"></span></a>
                 <div class="dropdown-menu multi-column">
                   <div class="row">
                     <div class="col-md-6 p-0">
@@ -47,14 +49,14 @@
                   </div>
                 </div>
               </li>
-              <li class="dropdown"><a href="http://demo.bonefishcode.com/veronica/#" data-toggle="dropdown" class="dropdown-toggle">Component <span class="caret"></span></a>
+              <li class="dropdown" style="display: none;"><a href="http://demo.bonefishcode.com/veronica/#" data-toggle="dropdown" class="dropdown-toggle">Component <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="http://demo.bonefishcode.com/veronica/component.html">Base Component</a></li>
                   <li><a href="http://demo.bonefishcode.com/veronica/module.html">Module</a></li>
                   <li><a href="http://demo.bonefishcode.com/veronica/typography.html">Typography</a></li>
                 </ul>
               </li>
-              <li>
+              <li style="display: none;">
                   <button id="registerButton" type="button" class="navbar-btn btn btn-pill btn-shadow btn-danger">@lang('messages.register')</button>
               </li>
             </ul>

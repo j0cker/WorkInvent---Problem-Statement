@@ -4,6 +4,9 @@ return [
     //'title' => '101Errors', no es necesaria ya que se declara en config -> app.php -> name
 
     //index
+    'UVPTitle' => 'Te ayudamos a controlar tu inventario inteligentemente - '.Config::get('app.name').'',
+    'UVP' => '<font style="color: #FFFFFF;">Work</font><font style="color: #f9c922;">invent</font> te ayuda a controlar tu inventario inteligentemente.',
+
     //form's' login and register
     'user' => 'Nombre de Usuario',
     'login' => 'Ingresar',
@@ -25,13 +28,15 @@ return [
     'keyPass' => 134343,
 
     //footer
-    'Copyright' => "Copyright &copy; ".date('Y')." BFC. All Rights Reserved.",
+    'Copyright' => "Copyright &copy; ".date('Y')." ".Config::get('app.name').". All Rights Reserved.",
 
     //Subscribe
-    'Subscribe' => "Suscríbete",
+    'Subscribe' => "Notifícame",
+    //'Subscribe' => "Suscríbete",
     'SubscribeTxt' => "Suscríbete a nuestro boletín para recibir las últimas noticias.",
     'privacy' => "Respetamos su privacidad de correo electrónico.",
     'subscribeSuccess' => "Se ha enviado un correo electrónico para confirmar su suscripción.",
+    'subscribersNot' => "da clic en Notifícame!",
 
     //verification
     'notVerified' => "El número de verificación no existe",
@@ -43,6 +48,8 @@ return [
     'emailReset' => "Nueva Contraseña",
     'emailWelcome' => "Bienvenido a ".Config::get('app.name')."",
     'selectFormRequired' => "Por favor ingresa un valor correcto",
+    'emailSubscribeSubject' => "Tiene un nuevo subscriptor.",
+    'emailSubscribeBody' => "Tienes un nuevo subscriptor. Correo: ",
 
     //email reset password
     'emailResetText1' => "You are receiving this email because we received a password reset request for your account.",

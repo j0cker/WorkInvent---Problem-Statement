@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Bmsust extends Model
-{   protected $table = 'bmsust';
+{   protected $table = 'invent_subscribers';
 
     public $timestamps = true;
     //protected $dateFormat = 'U';
@@ -16,9 +16,10 @@ class Bmsust extends Model
     {   return $query->where('email', $email);
     }
 
-    public function scopeAddSubscribe($query, $email)
+    public function scopeAddSubscribe($query, $email, $description)
     {   $bmsust = new Bmsust;
         $bmsust->email = $email;
+        $bmsust->description = $description;
         return $bmsust->save();
     }
 
