@@ -33,6 +33,7 @@
                 
                 <p class="section-title-lg">PROXIMAMENTE</p>
 
+                <p class="text-lead">Porporciónanos un correo electrónico para ponernos en contacto contigo.</p>
                 <form id="siteFooterSubscribeForm" class="form">
                     {{ csrf_field() }}
                     <input id="url" type="hidden" value="{{ url('/subscribe') }}">

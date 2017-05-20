@@ -14,7 +14,11 @@ class functions
 
     /*Creamos una función que detecte el idioma del navegador del cliente.*/
     public function getUserLanguage() { 
-        $idioma=substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+        Log::info("[functions][getUserLanguage]");
+    	if(!empty($_SERVER["HTTP_ACCEPT_LANGUAGE"]))
+       	    $idioma=substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+       	else 
+       	    $idioma="";
 
         Log::info("[functions][getUserLanguage] Idioma: ".$idioma);
 
