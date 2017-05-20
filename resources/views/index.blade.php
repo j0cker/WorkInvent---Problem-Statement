@@ -52,6 +52,7 @@
                     </div>
                     <span class="form-notify help-block text-primary"><i class="form-notify-icon-info"></i> @Lang('messages.privacy')</span>
                 </form>
+                <p class="text-lead">Contáctanos al (55)10800291 CDMX ó por mail a: hi@workinvent.com</p>
                 
                 <!--
                 <div class="section-cta">
