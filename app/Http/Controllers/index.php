@@ -18,7 +18,7 @@ class Index extends Controller
 
   public function index(){
 
-    Log::info('[Index]');
+    Log::info('[Index][index]');
 
     if (Auth::check()) {
       // The user is logged in...
@@ -32,7 +32,26 @@ class Index extends Controller
      //$lang = App::getLocale();
      //$lang = Lang::getLocale();
 
-     return view('index',["title" => $title, "lang" => $lang]);
+     $ABTesting = $this->getABTesting(3);
+
+     return view('index',["title" => $title, "lang" => $lang, "ABTesting" => $ABTesting]);
+   }
+
+   public function getABTesting($value){
+
+    Log::info('[Index][getABTesting]');
+
+     $ABTesting = rand(1,$value);
+     if($ABTesting=="1"){
+       $ABTesting = "A";
+     }
+     if($ABTesting=="2"){
+        $ABTesting = "B";
+     }
+     if($ABTesting=="3"){
+        $ABTesting = "C";
+     }
+     return $ABTesting;
    }
 
    public function getLanguage(){
@@ -48,10 +67,10 @@ class Index extends Controller
 
    public function subscribe(Request $request){
 
-     Log::info('[Subscribe]');
+     Log::info('[Index][Subscribe]');
 
      if($request->isMethod('post')) {
-       Log::info('[Subscribe][Post]');
+       Log::info('[Index][Subscribe][Post]');
        $params = $request->input('params');
        $email = $params['email'];
        $referral = $params['referral'];
@@ -90,7 +109,7 @@ class Index extends Controller
    /*Reset Password*/
    public function reset($token){
      
-     Log::info('[Reset]');
+     Log::info('[Index][Reset]');
 
      if (Auth::check()) {
         // The user is logged in...
@@ -107,7 +126,7 @@ class Index extends Controller
 
    public function verify($verification_code){
 
-      Log::info('[Verify]');
+      Log::info('[Index][Verify]');
 
       if (Auth::check()) {
         // The user is logged in...

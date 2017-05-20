@@ -5,7 +5,9 @@ return [
 
     //index
     'UVPTitle' => 'Te ayudamos a controlar tu inventario inteligentemente - '.Config::get('app.name').'',
-    'UVP' => '<font style="color: #FFFFFF;">Work</font><font style="color: #f9c922;">invent</font> te ayuda a controlar tu inventario inteligentemente.',
+    'UVP-A' => '<font style="color: #FFFFFF;">Work</font><font style="color: #f9c922;">invent</font> te ayuda a controlar tu inventario inteligentemente.',
+    'UVP-B' => '<font style="color: #FFFFFF;">Work</font><font style="color: #f9c922;">invent</font> la mejor forma de ordenar y controllar tu inventario.',
+    'UVP-C' => '<font style="color: #FFFFFF;">Work</font><font style="color: #f9c922;">invent</font> controla tu inventario ordenadamente.',
 
     //form's' login and register
     'user' => 'Nombre de Usuario',

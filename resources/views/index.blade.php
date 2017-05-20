@@ -22,10 +22,10 @@
     <script>
       $( document ).ready(function() {
           <!--Get referral url for subscribers-->
-          window.urlReferral = "{{ (!empty($_GET['action']))? $_GET['action'] : ''}}"
+          window.urlReferral = "Referral: {{ (!empty($_GET['action']))? $_GET['action'] : 'Sin Referral'}}, ABTesting: {{ (!empty($ABTesting))? $ABTesting : 'Sin A/B Testing' }}"
       });
     </script>
-  
+
     <!-- Content -->
     <div id="content" class="site-content">
       <div id="pageIntro" class="page-intro page-intro-sm page-intro-layout-text md-bg-dark">
@@ -35,8 +35,21 @@
           <div class="container">
             <div class="row-content row">
               <div class="col-content col-md-8 col-xs-8 col-sm-8 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-                <h1 class="section-title-lg">@Lang('messages.UVP')</h1>
-                <p class="text-lead">Gracias a ésta plataforma podrás controlar tu inventario, reducir riesgos de escape de dinero y predecir crecimientos de tu inventario.</p>
+                
+                @if($ABTesting=="A")
+                  <h1 class="section-title-lg">@Lang('messages.UVP-A')</h1>
+                  <p class="text-lead">Gracias a ésta plataforma podrás controlar tu inventario, reducir riesgos de escape de dinero y predecir crecimientos de tu inventario.</p>
+                @endif
+
+                @if($ABTesting=="B")
+                  <h1 class="section-title-lg">@Lang('messages.UVP-B')</h1>
+                  <p class="text-lead">Gracias a ésta plataforma podrás controlar tus activos, reducir riesgos de escape de dinero.</p>
+                @endif
+
+                @if($ABTesting=="C")
+                  <h1 class="section-title-lg">@Lang('messages.UVP-C')</h1>
+                  <p class="text-lead">Gracias a ésta plataforma podrás controlar tus activos, reducir riesgos de escape de dinero.</p>
+                @endif
                 
                 <p class="section-title-lg">PROXIMAMENTE</p>
 
