@@ -18,6 +18,13 @@
   {{-- Body --}}
   
   @section('content')
+
+    <script>
+      $( document ).ready(function() {
+          <!--Get referral url for subscribers-->
+          window.urlReferral = "{{ (!empty($_GET['action']))? $_GET['action'] : ''}}"
+      });
+    </script>
   
     <!-- Content -->
     <div id="content" class="site-content">

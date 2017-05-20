@@ -1,4 +1,4 @@
-app.controller 'ctrl', ($scope, evt) ->
+app.controller 'ctrl', ($scope, evt, $window) ->
     console.log "[IndexCtrl]"
 
     evt.loading();
@@ -42,7 +42,7 @@ app.controller 'ctrl', ($scope, evt) ->
             #$("#subscribeSubmit").submit();
             #form.submit();
             evt.loading();
-            evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then (response) ->
+            evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val(), $window.window.urlReferral).then (response) ->
                 #success
                 if(response.data.success==Lang.get('messages.successTrue'))
                   toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());		   

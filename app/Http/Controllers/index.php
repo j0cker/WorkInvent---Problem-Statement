@@ -54,12 +54,13 @@ class Index extends Controller
        Log::info('[Subscribe][Post]');
        $params = $request->input('params');
        $email = $params['email'];
+       $referral = $params['referral'];
        $bmsust = App\Bmsust::lookFor($email)->get();
        if(count($bmsust)>0){
          $responseJSON = new App\library\VO\responseJSON(Lang::get('messages.successFalse'),Lang::get('messages.errorsBDRepeat'));
          return json_encode($responseJSON);
        } else {
-         $bmsust = App\Bmsust::addSubscribe($email,'problemStatement');
+         $bmsust = App\Bmsust::addSubscribe($email,'problemStatement, '.$referral.'');
 
          //Send to queue email list of administrator mail
          $data['to'] = Config::get('mail.from.address');

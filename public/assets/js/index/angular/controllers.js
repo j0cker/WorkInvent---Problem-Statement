@@ -1,5 +1,5 @@
 (function() {
-  app.controller('ctrl', function($scope, evt) {
+  app.controller('ctrl', function($scope, evt, $window) {
     console.log("[IndexCtrl]");
     evt.loading();
     if (getCookie("email")) {
@@ -36,7 +36,7 @@
         ga('subscriber button', 'event', 'Mensaje Normal', 'click', 'Problem Statement');
         console.log("Validate: Submit Handler");
         evt.loading();
-        return evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val()).then(function(response) {
+        return evt.subscribe($("#siteFooterSubscribeForm #url").val(), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val(), $window.window.urlReferral).then(function(response) {
           if (response.data.success === Lang.get('messages.successTrue')) {
             toastr.success(Lang.get("messages.subscribeSuccess"), $('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val());
           } else {

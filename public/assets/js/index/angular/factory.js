@@ -9,11 +9,12 @@
           return $('body').addClass('loaded');
         }, 1000);
       },
-      subscribe: function(url, email) {
+      subscribe: function(url, email, referral) {
         return $http.post(url, {
           cache: false,
           params: {
-            email: email
+            email: email,
+            referral: referral
           }
         });
       }

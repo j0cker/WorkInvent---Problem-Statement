@@ -8,6 +8,6 @@ app.factory 'evt',($http) ->
                 $('body').addClass 'loaded'
             , 1000
             return
-        subscribe: (url, email) ->
-            return $http.post(url, {cache: false, params: { email:email } })
+        subscribe: (url, email, referral) ->
+            return $http.post(url, {cache: false, params: { email:email, referral:referral } })
     }
