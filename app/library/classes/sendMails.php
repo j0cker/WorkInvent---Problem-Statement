@@ -12,13 +12,13 @@ class sendMails
 {   private $data;
     
     public function __construct($data = []){
-        Log::info("[Mail][constructor]");
+        Log::info("[sendMails][constructor]");
         $this->data = $data;
     }
 
     public function welcome(){
 
-        Log::info("[Mail][welcome][send]");
+        Log::info("[sendMails][welcome][send]");
 
         $data = $this->data;
 
@@ -32,7 +32,7 @@ class sendMails
 
     public function reset(){
 
-        Log::info("[Mail][reset][send]");
+        Log::info("[sendMails][reset][send]");
 
         $data = $this->data;
 
@@ -47,7 +47,7 @@ class sendMails
 
     public function verificationCompare(){
 
-        Log::info("[Mail][verificationCompare]");
+        Log::info("[sendMails][verificationCompare]");
 
         $data = $this->data;
 
@@ -57,14 +57,14 @@ class sendMails
 
         $bmsusrVer = App\Bmsusr::updateVerify($verification_code);
 
-        Log::info('[saveProfile][Post][All][WithoutPass] emailBD: '.$email.' emailPost: '.$data["email"].'');
+        Log::info('[sendMails][saveProfile][Post][All][WithoutPass] emailBD: '.$email.' emailPost: '.$data["email"].'');
 
         if($email!=$data["email"]){
 
             if($bmsusrVer==1){
                 $data["verification_code"] = $verification_code;
 
-                Log::info("[Mail][verificationCompare][send]");
+                Log::info("[sendMails][verificationCompare][send]");
 
                 Mail::send('emails.verification', $data, function($message) use ($data)
                 {
@@ -81,17 +81,17 @@ class sendMails
                 });
                 
             } else {
-                Log::info("[Mail][verificationCompare][no send]");
+                Log::info("[sendMails][verificationCompare][no send]");
             }
         } else {
-            Log::info("[Mail][verificationCompare][no send]");
+            Log::info("[sendMails][verificationCompare][no send]");
         }
 
     }
 
     public function newPassword(){
 
-        Log::info("[Mail][newPassword][send]");
+        Log::info("[sendMails][newPassword][send]");
 
         $data = $this->data;
 
@@ -103,9 +103,23 @@ class sendMails
         });
     }
 
+    public function singleMailUnique(){
+
+        Log::info("[sendMails][singleMailUnique][send]");
+
+        $data = $this->data;
+
+        Mail::send('emails.single', $data, function($message) use ($data)
+        {
+            $message->from(Config::get('mail.from.address'), Config::get('app.name'));
+            $message->subject($data['subject']);
+            $message->to($data['email']);
+        });
+    }
+
     public function customMail(){
 
-        Log::info("[Mail][customMail][send]");
+        Log::info("[sendMails][customMail][send]");
 
         $data = $this->data;
 

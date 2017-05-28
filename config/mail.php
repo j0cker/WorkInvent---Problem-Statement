@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hi@workinvent.com',
-        'name' => 'Workinvent',
+        'address' => 'manlioelnum1@hotmail.com',
+        'name' => 'Emiliano Terán Ramos',
     ],
 
     /*

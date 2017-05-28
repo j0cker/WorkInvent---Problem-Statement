@@ -55,6 +55,23 @@ class queueMails
 
     }
 
+    //single custom unique emails
+    public function singleMailUnique(){
+
+       Log::info("[Mail][singleMailUnique]");
+
+       $params = $this->data;
+
+       $to = $params['to'];
+       $subject = $params['subject'];
+       $body = $params['body'];
+       $priority = $params['priority'];
+       $name = $params['name'];
+
+       $bmsmail = App\Bmsmail::addMailQueue(0, 'emails.single', $to, $priority, $body, $subject, $name);
+           
+    }
+
     //custom unique emails function from wherever
     public function customMailUnique(){
 

@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Bmsmail extends Model
-{   protected $table = 'invent_queue_mails';
+{   
+    protected $table = 'invent_queue_mails';
 
     public $timestamps = true;
     //protected $dateFormat = 'U';
@@ -25,3 +26,5 @@ class Bmsmail extends Model
     }
 
 }
+
+?>
