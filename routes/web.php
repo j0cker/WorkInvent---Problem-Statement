@@ -27,6 +27,8 @@ Route::get('/password/reset/{token}', 'Index@reset');
 
 Route::get('/date', 'Index@date');
 
+/*****System****/
+
 Route::get('/home', 'System@system');
 
 Route::get('/timezone', 'System@timezone');
@@ -52,3 +54,7 @@ Route::get('/adminGetScopeTarget', 'System@adminGetScopeTarget');
 Route::get('/mailsLauncher', 'MailsLauncher@mailsLauncher');
 
 Route::post('/customMail', 'System@customMail');
+
+/*******Demo******/
+
+Route::get('/demo', 'Demo@demo');
