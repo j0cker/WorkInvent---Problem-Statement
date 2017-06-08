@@ -35,7 +35,7 @@ app.controller 'ctrl', ($scope, evt, $window) ->
             $(div).after error
         ,
         'submitHandler': (form) ->
-            $window.ga 'subscriber button', 'event', 'Mensaje Normal', 'click', 'Problem Statement'
+            $window.ga 'send', 'event', 'subscriber button', 'click', 'subscriber button'
             #entra cuando todo está bien sin errores, pero anteriormente debes de hacer un $("#registerButtonSubmit").submit();
             console.log "Validate: Submit Handler"
             #$('#siteFooterSubscribeForm #siteFooterSubscribeFormEmail').val("");

@@ -16,14 +16,12 @@ class Demo extends Controller
     
     Log::info('[Demo][demo]');
 
-    if (Auth::attempt(['correo_user' => 'demo', 'password_user' => 'demo'])) {
-      Log::info('[Demo][demo] Login demo user True');      
-      // Authentication passed...
-      return redirect()->intended('dashboard');
-    } else {
+    if (!Auth::attempt(['correo_user' => 'demo', 'password_user' => sha1('demo')])) {    
       Log::info('[Demo][demo] Login demo user False');
       abort(403, 'Unauthorized action.');
-    }
+    } 
+
+    Log::info('[Demo][demo] Login demo user True');  
 
     $user = Auth::user();
 
